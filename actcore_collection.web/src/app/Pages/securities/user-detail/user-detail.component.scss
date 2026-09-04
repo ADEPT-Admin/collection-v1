@@ -1,0 +1,14 @@
+.contentBody {
+  max-height: calc(100vh - 165px);
+  height: calc(100vh - 196px);
+}
+
+
+.my-datetimepicker {
+  width: 100%; /* หรือ 500px */
+}
+
+
+::ng-deep .my-datetimepicker.input .e-input {
+  background-color: #ffffff !important; /* ขาว */
+}

@@ -1,0 +1,71 @@
+<div class="container-fluid d-flex">
+
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" data-lte-toggle="sidebar" href="javascript:;" role="button">
+        <i class="fas fa-bars"></i>
+      </a>
+    </li>
+  </ul>
+
+  <ul class="navbar-nav ms-auto">
+    <li class="nav-item user-menu">
+      <div class="d-flex align-items-center" style="height: 100%;">
+            <app-select name="langSelection" id="langSelection" class="langSelection" [icon]="'fa-solid fa-earth-americas'" [(ngModel)]="lang" [options]="dropdownLanguage" [showfilter]="false" [allowNull]="false" placeholder="{{ 'Select Filter' | translate }}" (valueChange)="changeLang($event)"></app-select>
+
+      </div>
+
+    </li>
+
+
+    <li class="nav-item dropdown user-menu">
+      <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+        <div class="d-flex">
+          <div class="d-flex  align-items-center">
+            <!-- <i class="fas fa-user shadow d-inline-block user-icon"></i> -->
+              <img class="rounded-circle shadow avatar" src="assets/img/{{avatar}}" />
+
+          </div>
+          <div class="d-none d-md-inline ms-2">
+
+              <span class="header-user">{{ user }}</span><br/>
+              <small class="header-group">{{ group }}</small>
+
+          </div>
+        </div>
+      </a>
+      <ul class="dropdown-menu  dropdown-menu-end">
+        <li>
+          <div class="py-1 px-3 text-left" *ngIf="employee != undefined">
+            <div>{{ employee?.nameLanguage[lang] }}</div>
+            <div>{{ textDepartmentandPosition[lang] }}</div>
+            <div>{{ employee.email}}</div>
+          </div>
+        </li>
+
+        <li class="submenu">
+          <div class="pt-2 pb-1 px-3">
+            <a href="javascript:;">{{ 'My Profile' | translate}}</a>
+          </div>
+          <div class="py-1 px-3">
+            <a href="javascript:;">{{ 'Settings' | translate}}</a>
+          </div>
+          <div class="py-1 px-3">
+            <a href="javascript:;" (click)="changePassword()">{{ 'Change Password' | translate}}</a>
+          </div>
+          <div class="py-1 pb-2 px-3">
+            <a href="javascript:;">{{ 'Help & Support' | translate}}</a>
+          </div>
+        </li>
+
+        <li class="">
+          <div class="py-2 px-3 text-start" appDebounceClick [debounceTime]="500" (onClick)="logout()">
+            <a href="javascript:;"><i class="fa-solid fa-right-from-bracket"></i> {{'Logout' | translate}}</a>
+          </div>
+
+
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

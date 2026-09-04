@@ -1,0 +1,140 @@
+<div class="row py-2">
+
+  <div class="row">
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'ContractNo' | translate }}
+        <input type="text" class="form-control w-80" id="contractNo" placeholder=""
+          [(ngModel)]="contractHeader.contractNo" name="contractNo" [readOnly]="true">
+      </label>
+
+    </div>
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{'CustomerName' | translate }}
+        <input type="text" class="form-control w-80" id="customerName" placeholder=""
+          [(ngModel)]="contractHeader.customerName" name="customerName" [readOnly]="true">
+      </label>
+    </div>
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'IDCard' | translate }}
+        <input type="text" class="form-control w-80" id="id_card" placeholder="" [(ngModel)]="contractHeader.nationalID"
+          name="nationalID" [readOnly]="true">
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'PrimaryPhoneNumber' | translate }}
+        <input type="text" class="form-control w-80" id="primaryPhoneNo" placeholder="" [(ngModel)]="contractHeader.primaryPhoneNo"
+          name="primaryPhoneNo" [readOnly]="true">
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'ContractStatus' | translate}}
+        <div class="d-flex items-center gap-2">
+          <input type="text" class="form-control w-80" id="contractStatusDesc" placeholder=""
+            [(ngModel)]="contractHeader.contractStatus" name="contractStatusDesc" [readOnly]="true">
+        </div>
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'DayPastDue' | translate}}
+        <div class="d-flex items-center gap-2">
+          <input type="text" class="form-control w-80" id="dayPastDue" placeholder=""
+            [(ngModel)]="contractHeader.dayPastDue" name="dayPastDue" [readOnly]="true">
+        </div>
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'Bucket' | translate}}
+        <div class="d-flex items-center gap-2">
+          <input type="text" class="form-control w-80" id="bucket" placeholder="" [(ngModel)]="contractHeader.bucket"
+            name="bucket" [readOnly]="true">
+        </div>
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'LastPaymentDate' | translate }}
+        <app-calendar [(ngModel)]="contractHeader.lastPaymentDate" name="lastPaymentDate" [format]="'dd/MM/yyyy'"
+          [placeholder]="'lastPaymentDate'" [disabled]="true"></app-calendar>
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'DueDate' | translate }}
+        <app-calendar [(ngModel)]="contractHeader.dueDate" name="dueDate" [format]="'dd/MM/yyyy'"
+          [placeholder]="'dueDate'" [disabled]="true"></app-calendar>
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'PaymentAmounts'| translate}}
+        <app-input-number name="overdueAmount" [(ngModel)]="contractHeader.overdueAmount" required
+          #overdueAmountModel="ngModel" [step]="1" [fractionDigits]="2" [readonly]="true">
+        </app-input-number>
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'OutstandingAmount'| translate}}
+        <app-input-number name="outstandingBalance" [(ngModel)]="contractHeader.outstandingBalance" required
+          #outstandingBalanceModel="ngModel" [step]="1" [fractionDigits]="2" [readonly]="true">
+        </app-input-number>
+      </label>
+    </div>
+  </div>
+  <hr>
+
+  <div class="col-6">
+    <label class="form-label bold d-block">{{ 'PaymentAmountDetails' | translate}}</label>
+    <ejs-grid #grid [dataSource]="dataSource" gridLines="Both"
+      [selectionSettings]="selectionOptions" [resizeSettings]="resizeSettings" [allowResizing]="true">
+      <e-columns>
+
+        <e-column *ngIf="!gridHeader || gridHeader.length === 0" field="empty" headerText="" width="100%"></e-column>
+        <ng-container *ngFor="let col of gridHeader">
+          <e-column [field]="col.key" [customAttributes]='customAttributes' [textAlign]="getTextAlign(col.type)"
+            clipMode='EllipsisWithTooltip' [headerTextAlign]="'Center'" [width]="col.columnWidth || 0">
+
+            <ng-template #headerTemplate>
+              {{ col.key | translate}}
+            </ng-template>
+
+            <ng-template *ngIf="col.type === 'DateTime'" #template let-data>
+              {{ data[col.key] | localizedDate: (col.dateFormat || 'dd/MM/yyyy HH:mm:ss') }}
+            </ng-template>
+
+            <ng-template *ngIf="col.type === 'Date'" #template let-data>
+              {{ data[col.key] | localizedDate: (col.dateFormat || 'dd/MM/yyyy') }}
+            </ng-template>
+
+            <ng-template *ngIf="col.type === 'Enum'" #template let-data>
+              <div [innerHTML]="data[col.key] | translate | safeHtml"></div>
+            </ng-template>
+
+            <ng-template *ngIf="col.type === 'Integer'" #template let-data>
+              {{ data[col.key.toLowerCase()] || data[col.key] }}
+            </ng-template>
+
+            <ng-template *ngIf="col.type === 'Decimal'" #template let-data>
+              {{ (data[col.key.toLowerCase()] || data[col.key]) | number:'1.2-2' }}
+            </ng-template>
+
+            <ng-template *ngIf="col.type === 'String'" #template let-data>
+              <div [innerHTML]="data.type ? data.type[translate.currentLang] : '' | safeHtml"></div>
+            </ng-template>
+
+          </e-column>
+        </ng-container>
+      </e-columns>
+
+      <ng-template #emptyRecordTemplate>
+        <div class='emptyRecordTemplate'>
+          <span>{{ 'EmptyRecord' | translate}}</span>
+        </div>
+      </ng-template>
+    </ejs-grid>
+  </div>
+</div>

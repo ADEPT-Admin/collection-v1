@@ -1,0 +1,122 @@
+
+
+
+<div class="app-content-header">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6"><h3 class="mb-0">{{'Dashboard' | translate}}</h3></div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-end">
+          <li class="breadcrumb-item"><a href="#">{{'Home' | translate}}</a></li>
+          <li class="breadcrumb-item active" aria-current="page">{{'Dashboard' | translate}}</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="app-content">
+  <div class="contentBody">
+    <div class="container-fluid">
+
+
+      <div class="row">
+
+        <div class="col-lg-3 col-12" >
+            <div class="small-box text-bg-secondary">
+              <div class="inner">
+                <h3>
+                  @if(totalAllWorklist != null){
+                    {{ totalAllWorklist }}
+                  }
+                  @else {
+                    <i class="fa-solid fa-spinner fa-spin loading-icon" ></i>
+                  }
+                </h3>
+                <p>{{ 'All Work List' | translate}}</p>
+              </div>
+              <i class="fa-solid fa-file-contract small-box small-box-icon"></i>
+            </div>
+          </div>
+
+        <div class="col-lg-3 col-12">
+          <div class="small-box text-bg-primary">
+            <div class="inner">
+              <h3>
+                @if(totalNew != null){
+                  {{ totalNew }}
+                }
+                @else {
+                  <i class="fa-solid fa-spinner fa-spin loading-icon" ></i>
+                }
+              </h3>
+              <p>{{ 'New Task' | translate }}</p>
+            </div>
+            <i class="fa-solid fa-file-circle-plus small-box small-box-icon"></i>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-12">
+          <div class="small-box text-bg-warning">
+            <div class="inner">
+              <h3>
+                @if(totalInProgress != null){
+                  {{ totalInProgress }}
+                }
+                @else {
+                  <i class="fa-solid fa-spinner fa-spin loading-icon" ></i>
+                }
+              </h3>
+              <p>{{ 'In Progress' | translate }}</p>
+            </div>
+            <i class="fa-solid fa-list-check small-box small-box-icon"></i>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-12">
+          <div class="small-box text-bg-success">
+            <div class="inner">
+              <h3>
+                @if(totalSuccess != null){
+                  {{ totalSuccess }}
+                }
+                @else {
+                  <i class="fa-solid fa-spinner fa-spin loading-icon" ></i>
+                }
+                </h3>
+              <p>{{ 'Success' | translate }}</p>
+            </div>
+            <i class="fa-solid fa-check-double small-box small-box-icon"></i>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 col-lg-6 text-center">
+          <div><h3>{{ 'Contract Overview' | translate }}</h3></div>
+
+          <div class="pie mx-auto mt-2"  >
+            <!-- <p-chart #pieChart id="pieChart" type="pie" [data]="chartData_pie" [options]="options_pie" class=""  [plugins]="piePlugins"  /> -->
+
+
+
+
+          </div>
+        </div>
+        <div class="col-12 col-lg-6 text-center">
+          <div><h3>{{ 'Work List Overview' | translate }}</h3></div>
+
+          <div class="bar mx-auto mt-2">
+            <!-- <p-chart #barChart type="bar" [data]="chartData_bar" [options]="options_bar" class="" /> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+

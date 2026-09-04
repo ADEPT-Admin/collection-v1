@@ -1,0 +1,133 @@
+@if (!isAccessdenied && permission?.allowView) {
+<div class="app-content-header">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6">
+        <h3 class="mb-0">{{ 'Approve Reassignment' | translate }}</h3>
+        <ol class="breadcrumb float-sm-start ">
+          <li class="breadcrumb-item active sizeText-breadcrumb" aria-current="page">{{ 'Worklist Management' | translate }}</li>
+          <li class="breadcrumb-item active sizeText-breadcrumb" aria-current="page">{{ 'Approve Reassignment' | translate }}</li>
+        </ol>
+      </div>
+      <div class="col-sm-6"></div>
+    </div>
+  </div>
+
+  <div class="app-content">
+    <div class="container-fluid p-0">
+      <div class="card p-3">
+        <div id="searchBody" class="collapse show">
+          <div class="row d-flex align-items-start m-0">
+              <div class="col-sm-auto mb-2 col-12 d-flex ps-0 align-items-center flex-nowrap">
+              <app-select class="" [(ngModel)]="collectorId" name="collectorId" id="collectorId" [options]="collectorList" placeholder="{{ 'SelectCollector' | translate }}"  >
+                </app-select>
+              </div>
+              <div class="col-sm-auto mb-2 col-12 d-flex ps-0 align-items-center flex-nowrap">
+              <button type="button" class="btn btn-primary " appDebounceClick [debounceTime]="1000"  (onClick)="reassign()">
+                <i class="fa-solid fa-shuffle"></i> {{ 'Reassign' | translate }}
+              </button>
+              </div>
+          </div>
+        </div>
+        <hr class="mt-0 mb-2"/>
+        <app-filter-select [criteria]="criteria" (search)="onFilterSearch($event)"></app-filter-select>
+
+        <div class="row py-2">
+          <div class="contentBody">
+            <ejs-grid #grid [dataSource]="dataSource"
+                      [allowPaging]="true"
+                      [pageSettings]="pageSettings"
+                      [allowSorting]="true"
+                      gridLines="Both"
+                      [selectionSettings]="selectionOptions"
+                      (actionBegin)="actionBegin($event)"
+                      (created)="dataBound($event)"
+                      [resizeSettings]="resizeSettings"
+                      [allowResizing]="true"
+                      >
+              <e-columns>
+                <e-column field="checked" width="30" textAlign="Center" [allowSorting]="false" [customAttributes]='customAttributes'>
+                  <ng-template #headerTemplate>
+                    <input type="checkbox" id="check-all" [checked]="selectAllChecked" [indeterminate]="isIndeterminate"
+                      (change)="toggleSelectAll($event)" />
+                  </ng-template>
+                  <ng-template #template let-data>
+                    @if (data.isMyTeam) {
+                    <input type="checkbox" id="check-{{data.contractNo}}" [checked]="selectedIds.has(data.contractNo)"
+                      (change)="onRowCheckboxChange(data, $event)" />
+                    }
+                  </ng-template>
+                </e-column>
+
+                <ng-container *ngFor="let col of gridHeader">
+                  <e-column [field]="col.key | lowercaseFirst" [customAttributes]='customAttributes' [textAlign]="getTextAlign(col.type)" clipMode='EllipsisWithTooltip'
+                    [headerTextAlign]="'Center'" [width]="col.columnWidth || 0">
+
+                    <ng-template #headerTemplate>
+                        {{ col.key | translate}}
+                    </ng-template>
+
+                    <ng-template *ngIf="col.type === 'DateTime'" #template let-data>
+                        {{ data[col.key | lowercaseFirst] | localizedDate: (col.dateFormat || 'dd/MM/yyyy HH:mm:ss') }}
+                    </ng-template>
+
+                    <ng-template *ngIf="col.type === 'Date'" #template let-data>
+                        {{ data[col.key | lowercaseFirst] | localizedDate: (col.dateFormat || 'dd/MM/yyyy') }}
+                    </ng-template>
+
+                    <ng-template *ngIf="col.type === 'Enum'" #template let-data>
+                      <div [innerHTML]="data[col.key | lowercaseFirst] | translate | safeHtml"></div>
+                    </ng-template>
+
+                    <ng-template *ngIf="col.type === 'Integer'" #template let-data>
+                        {{ data[col.key | lowercaseFirst]}}
+                    </ng-template>
+
+                    <ng-template *ngIf="col.type === 'Decimal'" #template let-data>
+                        {{ data[col.key | lowercaseFirst] | number:'1.2-2' }}
+                    </ng-template>
+
+                    <ng-template *ngIf="col.type === 'String'" #template let-data>
+                        {{ data[col.key | lowercaseFirst] }}
+                    </ng-template>
+
+                  </e-column>
+                </ng-container>
+
+                <e-column headerText="" textAlign="Center" [allowSorting]="false" width="180" freeze="Right" clipMode='EllipsisWithTooltip'
+                  [customAttributes]='customAttributes'>
+                  <ng-template #template let-data>
+                    <button ejs-button cssClass="e-primary e-small" [iconCss]="'fa-solid fa-check'" (click)="approveandreject(data,'a')">
+                      {{ 'Approve' | translate }}
+                    </button>
+                    &nbsp;
+                    <button ejs-button cssClass="e-danger e-small" [iconCss]="'fa-solid fa-xmark'" (click)="approveandreject(data,'r')">
+                      {{ 'Reject' | translate }}
+                    </button>
+                  </ng-template>
+                </e-column>
+              </e-columns>
+
+              <ng-template #emptyRecordTemplate>
+                <div class='emptyRecordTemplate'>
+                  <span>{{ 'EmptyRecord' | translate}}</span>
+                </div>
+              </ng-template>
+            </ejs-grid>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+}
+
+@if(isAccessdenied == true || permission?.allowView == false){
+  <div class="d-flex justify-content-center align-items-center vh-100">
+    <h2 class="text-muted">{{'No Permission' | translate}}</h2>
+  </div>
+}
+
+
+
+

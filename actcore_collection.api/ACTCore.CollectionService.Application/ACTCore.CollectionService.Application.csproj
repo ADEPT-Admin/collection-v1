@@ -1,0 +1,65 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Collection\ColAreaService.cs" />
+    <Compile Remove="Dto\ColAreaDto.cs" />
+    <Compile Remove="Dto\poc\AdjacentAreaDto.cs" />
+    <Compile Remove="Dto\poc\AreaCodeDto.cs" />
+    <Compile Remove="Dto\poc\CollectionNoteDto.cs" />
+    <Compile Remove="Dto\poc\CollectionRoleDto.cs" />
+    <Compile Remove="Dto\poc\CollectorDto.cs" />
+    <Compile Remove="Dto\poc\ColTeamGroupDto.cs" />
+    <Compile Remove="Dto\poc\ColTeamMappingAreaDto.cs" />
+    <Compile Remove="Dto\poc\ColWorkGroupDto.cs" />
+    <Compile Remove="Dto\poc\ContractDto.cs" />
+    <Compile Remove="Dto\poc\DepartmentDto.cs" />
+    <Compile Remove="Dto\poc\DistrictDto.cs" />
+    <Compile Remove="Dto\poc\EmployeeProfileDetailDto.cs" />
+    <Compile Remove="Dto\poc\EmployeeProfileDto.cs" />
+    <Compile Remove="Dto\poc\EnumDto.cs" />
+    <Compile Remove="Dto\poc\PositionDto.cs" />
+    <Compile Remove="Dto\poc\ProvinceDto.cs" />
+    <Compile Remove="Dto\poc\Security\ItemAccessRightDto.cs" />
+    <Compile Remove="Dto\poc\Security\LoginResponseDto.cs" />
+    <Compile Remove="Dto\poc\Security\RegisterationRequestDto.cs" />
+    <Compile Remove="Dto\poc\Security\SysItemAccessRightDto.cs" />
+    <Compile Remove="Dto\poc\Security\SysItemDto.cs" />
+    <Compile Remove="Dto\poc\Security\SysParameterDto.cs" />
+    <Compile Remove="Dto\poc\Security\SysUserItemFavoriteDto.cs" />
+    <Compile Remove="Dto\poc\Security\UserGroupAccessDto.cs" />
+    <Compile Remove="Dto\poc\Security\UserGroupCreateDto.cs" />
+    <Compile Remove="Dto\poc\Security\UserGroupDetailResponseDto.cs" />
+    <Compile Remove="Dto\poc\Security\UserGroupDto.cs" />
+    <Compile Remove="Dto\poc\Security\UserGroupUpdateDto.cs" />
+    <Compile Remove="Dto\poc\Security\UserItemFavoriteDto.cs" />
+    <Compile Remove="Dto\poc\Security\UserPermissionDto.cs" />
+    <Compile Remove="Dto\poc\Security\UserPermissionItemAccess.cs" />
+    <Compile Remove="Dto\poc\SubDistrictDto.cs" />
+    <Compile Remove="Dto\poc\TeamDto.cs" />
+    <Compile Remove="Dto\poc\WorklistDto.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="14.0.0" />
+    <PackageReference Include="CsvHelper" Version="33.1.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="EFCore.BulkExtensions" Version="9.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ACTCore.CollectionService.Domain\ACTCore.CollectionService.Domain.csproj" />
+    <ProjectReference Include="..\ACTCore.CollectionService.Infrastructure\ACTCore.CollectionService.Infrastructure.csproj" />
+    <ProjectReference Include="..\SharedKernel\SharedKernel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Dto\poc\Security\" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,28 @@
+<div class="select-container" [class.disabled]="disabled" [class.readonly]="readonly" [class.is-invalid]="invalid">
+  <input type="text" [attr.name]="name" [id]="id" [value]="selected?.value" hidden />
+  <div class="select-display" (click)="toggleDropdown()" [appTooltip]="selected?.label || placeholder">
+    <i *ngIf="icon" class="{{ icon }}"></i>
+    <span class="ellipsis" *ngIf="selected; else placeholderTpl" [innerHTML]="selected.label | safeHtml ">
+    </span>
+    <ng-template #placeholderTpl>
+
+      <span class="select-placeholder">{{ placeholder | translate}}</span>
+    </ng-template>
+    <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
+  </div>
+
+  <ul class="select-dropdown" *ngIf="isOpen" [class.open-upwards]="openUpwards">
+    <li *ngIf="showfilter">
+      <input class="form-control" type="search" placeholder="{{ 'Search' | translate }}..." [(ngModel)]="searchText" (input)="search($event)" (search)="search($event)" (keydown.enter)="$event.preventDefault(); $event.stopPropagation()" />
+    </li>
+    <li class="select-option" *ngFor="let option of filteredOptions"
+        (click)="selectOption(option)"
+        [class.selected]="option.value === selected?.value"
+        [appTooltip]="option.label" [innerHTML]="option.label | safeHtml " >
+
+    </li>
+    <li *ngIf="filteredOptions.length === 0">
+      <em>{{'No results found' | translate}}</em>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,207 @@
+@if(permission?.allowView == true){
+<div class="app-content-header">
+  <div class="container-fluid">
+    <app-header [header]="header"></app-header>
+  </div>
+</div>
+<div class="app-content">
+  <div class="container-fluid p-0">
+
+    <div class="contentBody">
+      <div class="card p-3">
+        <form #myForm="ngForm">
+
+          <app-toolbar class="mb-2" [showButton]="actionListbtn"
+            [dirty]="form?.dirty && (permission?.allowEdit || permission?.allowNew)" (clickBtnNew)="doNew()"
+            (clickBtnSave)="onSave()" (clickBtnBack)="doBack()" (clickBtnCancel)="doCancel()"
+            (clickBtnDelete)="doDel()"></app-toolbar>
+
+          <div class="row">
+            <div class="col-12 col-lg-3 mb-2">
+              <label class="form-label bold d-block">
+                {{ 'ColTeamCode' | translate }}
+                <div class="e-float-input e-input mt-0">
+                  <input class="form-control" type="text" name="colTeamCode" id="colTeamCode"
+                    [(ngModel)]="detail.colTeamCode" #colTeamCodeCtrl="ngModel"
+                    placeholder="{{ 'ColTeamCode' | translate }}" required
+                    [class.is-invalid]="colTeamCodeCtrl.invalid && colTeamCodeCtrl.touched">
+                </div>
+                <div class="text-danger mt-1"
+                  *ngIf="colTeamCodeCtrl.invalid && (colTeamCodeCtrl.dirty || colTeamCodeCtrl.touched)">
+                  <div *ngIf="colTeamCodeCtrl.errors?.['required']">
+                    {{ 'ColTeamCode' | translate }} {{ 'is required' | translate }}
+                  </div>
+                </div>
+              </label>
+            </div>
+
+            <div class="col-12 col-lg-3 mb-2">
+              <label class="form-label bold d-block">
+                {{ 'ColTeamName' | translate }}
+                <div class="e-float-input e-input mt-0">
+                  <input class="form-control" type="text" name="colTeamName" id="colTeamName"
+                    [(ngModel)]="detail.colTeamName" #colTeamNameCtrl="ngModel"
+                    placeholder="{{ 'ColTeamName' | translate }}" required
+                    [class.is-invalid]="colTeamNameCtrl.invalid && colTeamNameCtrl.touched">
+                </div>
+                <div class="text-danger mt-1"
+                  *ngIf="colTeamNameCtrl.invalid && (colTeamNameCtrl.dirty || colTeamNameCtrl.touched)">
+                  <div *ngIf="colTeamNameCtrl.errors?.['required']">
+                    {{ 'ColTeamName' | translate }} {{ 'is required' | translate }}
+                  </div>
+                </div>
+              </label>
+            </div>
+
+            <div class="col-12 col-lg-3 mb-2">
+              <label class="form-label bold d-block">
+                {{ 'TeamCapacity' | translate }}
+
+                <div class="e-float-input e-input mt-0">
+                  <app-input-number name="capacity" id="capacity" [(ngModel)]="detail.capacity" #capacityCtrl="ngModel" [min]="0"
+                    [step]="1" required [class.is-invalid]="capacityCtrl.invalid && capacityCtrl.touched">
+                  </app-input-number>
+
+                </div>
+
+                <div class="text-danger mt-1"
+                  *ngIf="capacityCtrl.invalid && (capacityCtrl.dirty || capacityCtrl.touched)">
+                  <div *ngIf="colTeamNameCtrl.errors?.['required']">
+                    {{ 'TeamCapacity' | translate }} {{ 'is required' | translate }}
+                  </div>
+                </div>
+              </label>
+            </div>
+
+            <div class="col-12 col-lg-3 mb-2 bold">&nbsp;
+                <div class="d-flex flex-wrap gap-4">
+                  <div class="d-flex items-center gap-2">
+                    <div class="col-12 py-2">
+                      <label class="form-label d-block">
+                        <input class="form-check-input" type="checkbox" id="isActive" name="isActive" [(ngModel)]="detail.isActive" />
+                        &nbsp;<strong class="ml-2">{{ 'ActiveStatus' | translate }}</strong>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 col-lg-12 mb-2">
+              <label class="form-label bold d-block">{{'Description' | translate }}
+                <textarea name="description" class="form-control w-80" id="description" placeholder="{{ 'Description' | translate }}"
+                  [(ngModel)]="detail.description"></textarea>
+              </label>
+            </div>
+          </div>
+
+        </form>
+        <hr />
+        <div class="row">
+          <div class="row">
+             <h4>{{ 'CollectorTeamAssignment' | translate }}</h4>
+            <div class="col d-flex py-3">
+              <button type="button" ejs-button class="ejs-button-left" cssClass="e-primary" iconCss="fa-solid fa-plus" (click)="Add()" [disabled]="id == null">{{ "AddCollector" | translate }}</button>
+              <button type="button" ejs-button class="ejs-button-left" cssClass="e-primary" iconCss="fa-solid fa-trash" (click)="delete()" [disabled]="id == null">{{ "RemoveCollector" | translate }}</button>
+            </div>
+          </div>
+          @if (id != null) {
+          <app-filter-select [criteria]="criteria" (search)="onFilterSearch($event)"></app-filter-select>
+          }
+          <!-- Grid -->
+          <div class="row py-2">
+            <div class="contentBody">
+              <ejs-grid #grid [dataSource]="dataSource"
+                        [allowPaging]="true"
+                        [pageSettings]="pageSettings"
+                        [allowSorting]="true"
+                        gridLines="Both"
+                        [selectionSettings]="selectionOptions"
+                        (actionBegin)="actionBegin($event)"
+                        (recordDoubleClick)="doubleClick($event)"
+                        (created)="dataBound($event)"
+                        [resizeSettings]="resizeSettings"
+                        [allowResizing]="true">
+                <e-columns>
+                  <e-column field="checked" width="30" textAlign="Center" [allowSorting]="false"
+                    [customAttributes]='customAttributes'>
+                    <ng-template #headerTemplate>
+                      <input type="checkbox" id="check-all" [checked]="selectAllChecked"
+                        [indeterminate]="isIndeterminate" (change)="toggleSelectAll($event)" />
+                    </ng-template>
+                    <ng-template #template let-data>
+                      <input type="checkbox" id="check-{{data.assignmentId}}"
+                        [checked]="selectedIds.has(data.assignmentId)" (change)="onRowCheckboxChange(data, $event)" />
+                    </ng-template>
+                  </e-column>
+
+                  <ng-container *ngFor="let col of gridHeader">
+                    <e-column [field]="col.key | lowercaseFirst" [customAttributes]='customAttributes'
+                      [textAlign]="getTextAlign(col.type)" clipMode='EllipsisWithTooltip' [headerTextAlign]="'Center'"
+                      [width]="col.columnWidth || 0">
+
+                      <ng-template #headerTemplate>
+                        {{ col.key | translate}}
+                      </ng-template>
+
+                      <ng-template *ngIf="col.type === 'DateTime'" #template let-data>
+                        <div class="text-center">
+                          {{ data[col.key | lowercaseFirst] | date: (col.dateFormat || 'dd/MM/yyyy HH:mm:ss') }}
+                        </div>
+                      </ng-template>
+
+                      <ng-template *ngIf="col.type === 'Enum'" #template let-data>
+                        <div class="text-center" [innerHTML]="data[col.key | lowercaseFirst] | translate | safeHtml">
+                        </div>
+                      </ng-template>
+
+                      <ng-template *ngIf="col.type === 'Number'" #template let-data>
+                        <div class="text-right">
+                          {{ data[col.key | lowercaseFirst] | number:'1.2-2' }}
+                        </div>
+                      </ng-template>
+
+                      <ng-template *ngIf="col.type === 'String'" #template let-data>
+                        {{ data[col.key | lowercaseFirst] }}
+                      </ng-template>
+
+                    </e-column>
+                  </ng-container>
+
+                  <!-- Actions -->
+                  <e-column headerText="" textAlign="Center" [allowSorting]="false" width="90" freeze="Right"
+                    [customAttributes]='customAttributes'>
+                    <ng-template #template let-data>
+
+                      <button ejs-button cssClass="e-primary e-small"
+                        [iconCss]="permission.allowEdit ? 'fa-solid fa-pen-to-square' : 'fa-solid fa-eye'"
+                        (click)="edit(data)">
+                      </button> &nbsp;
+
+                      <button ejs-button cssClass="e-danger e-small" iconCss="fa-solid fa-trash-arrow-up"
+                        [disabled]="!permission.allowDelete" (click)="delete(data)">
+                      </button>
+                    </ng-template>
+                  </e-column>
+                </e-columns>
+                <ng-template #emptyRecordTemplate>
+                  <div class='emptyRecordTemplate'>
+                    <span>{{ 'EmptyRecord' | translate}}</span>
+                  </div>
+                </ng-template>
+              </ejs-grid>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+}
+
+@if(permission?.allowView === false){
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <h2 class="text-muted">{{'No Permission' | translate}}</h2>
+</div>
+}

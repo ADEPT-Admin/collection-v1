@@ -1,0 +1,176 @@
+@if(permission?.allowView == true){
+<div class="app-content-header">
+  <div class="container-fluid">
+    <app-header [header]="header"></app-header>
+  </div>
+</div>
+<div class="app-content">
+  <div class="container-fluid p-0">
+    <form #myForm="ngForm">
+      <div class="contentBody">
+
+        <div class="card p-3">
+          <app-toolbar class="mb-2" [showButton]="actionListbtn"
+            [dirty]="form?.dirty && (permission?.allowEdit || permission?.allowNew)" (clickBtnNew)="doNew()"
+            (clickBtnSave)="onSave()" (clickBtnBack)="doBack()" (clickBtnCancel)="doCancel()"
+            (clickBtnDelete)="doDel()"></app-toolbar>
+
+          <div class="row">
+
+            <div class="col-12 col-lg-3 mb-2">
+              <label class="form-label bold d-block">
+                {{ 'ColTeamCode' | translate }}
+                <div class="e-float-input e-input mt-0">
+                  <app-select [(ngModel)]="detail.colTeamId" name="colTeamId" [options]="colTeamList"
+                    placeholder="{{ 'ColTeamCode' | translate }}" #colTeamIdCtrl="ngModel" required
+                    [invalid]="colTeamIdCtrl.invalid && (colTeamIdCtrl.dirty || colTeamIdCtrl.touched)"
+                    (valueChange)="setTeamCapacity($event)">
+                  </app-select>
+                </div>
+                <div class="text-danger mt-1"
+                  *ngIf="colTeamIdCtrl.invalid && (colTeamIdCtrl.dirty || colTeamIdCtrl.touched)">
+                  <div *ngIf="colTeamIdCtrl.errors?.['required']">
+                    {{ 'ColTeamCode' | translate }} {{ 'is required' | translate }}
+                  </div>
+                </div>
+              </label>
+            </div>
+
+            <div class="col-12 col-lg-3">
+              <label class="form-label bold d-block">
+                {{ 'TeamCapacity' | translate }}
+                <div class="e-float-input e-input mt-0">
+                  <app-input-number name="teamCapacity" id="teamCapacity" [(ngModel)]="detail.teamCapacity" [min]="0"
+                    #teamCapacityCtrl="ngModel" [step]="1" required
+                    [class.is-invalid]="teamCapacityCtrl.invalid && teamCapacityCtrl.touched">
+                  </app-input-number>
+                </div>
+              </label>
+            </div>
+
+            <div class="col-12 col-lg-3">
+              <label class="form-label bold d-block">
+                {{ 'CollectorEmpName' | translate }}
+                <div class="e-float-input e-input mt-0">
+                  <app-input-with-button [(ngModel)]="detail.collectorEmpName"
+                    placeholder="{{ 'CollectorEmpName' | translate }}" icon="fa-solid fa-ellipsis-vertical"
+                    (buttonClick)="openCollector()" id="collectorEmpName" name="collectorEmpName"
+                    #collectorEmpNameCtrl="ngModel" required
+                    [invalid]="collectorEmpNameCtrl.invalid && (collectorEmpNameCtrl.dirty || collectorEmpNameCtrl.touched)">
+                  </app-input-with-button>
+                </div>
+
+                <div class="text-danger mt-1"
+                  *ngIf="collectorEmpNameCtrl.invalid && (collectorEmpNameCtrl.dirty || collectorEmpNameCtrl.touched)">
+                  <div *ngIf="collectorEmpNameCtrl.errors?.['required']">
+                    {{ 'CollectorEmpName' | translate }} {{ 'is required' | translate }}
+                  </div>
+                </div>
+              </label>
+            </div>
+
+
+            <div class="col-12 col-lg-3">
+              <label class="form-label bold d-block">
+                {{ 'ColRoleName' | translate }}
+                <div class="e-float-input e-input mt-0">
+                  <input class="form-control" type="text" name="colRoleName" id="colRoleName"
+                    [(ngModel)]="detail.colRoleName" #colRoleNameCtrl="ngModel"
+                    placeholder="{{ 'ColRoleName' | translate }}" required
+                    [class.is-invalid]="colRoleNameCtrl.invalid && colRoleNameCtrl.touched">
+                </div>
+
+                <div class="text-danger mt-1"
+                  *ngIf="colRoleNameCtrl.invalid && (colRoleNameCtrl.dirty || colRoleNameCtrl.touched)">
+                  <div *ngIf="colRoleNameCtrl.errors?.['required']">
+                    {{ 'ColRoleName' | translate }} {{ 'is required' | translate }}
+                  </div>
+                </div>
+              </label>
+            </div>
+
+
+            <div class="col-12 col-lg-3">
+              <label class="form-label bold d-block">
+                {{ 'Capacity' | translate }}
+                <div class="e-float-input e-input mt-0">
+                  <app-input-number name="capacity" id="capacity" #capacityCtrl="ngModel"
+                    [(ngModel)]="detail.capacity" [step]="1" required [min]="0"
+                    [class.is-invalid]="capacityCtrl.invalid && capacityCtrl.touched">
+                  </app-input-number>
+                </div>
+
+                <div class="text-danger mt-1"
+                  *ngIf="capacityCtrl.invalid && (capacityCtrl.dirty || capacityCtrl.touched)">
+                  <div *ngIf="colRoleNameCtrl.errors?.['required']">
+                    {{ 'Capacity' | translate }} {{ 'is required' | translate }}
+                  </div>
+                </div>
+              </label>
+            </div>
+
+            <div class="col-12 col-lg-3 mb-2">
+              <label class="form-label bold d-block">{{ 'EffectiveDate' | translate }}
+                <div class="d-flex flex-wrap gap-4">
+                  <app-calendar [(ngModel)]="detail.effectiveDate" name="effectiveDate" [format]="'dd/MM/yyyy'"
+                    [placeholder]="'EffectiveDate'" #effectiveDateCtrl="ngModel" [maxDate]="maxStartDate"
+                    (valueChange)="onStartDateChange($event)"
+                    [class.is-invalid]="effectiveDateCtrl.invalid && (effectiveDateCtrl.dirty || effectiveDateCtrl.touched)">
+                  </app-calendar>
+                </div>
+              </label>
+            </div>
+
+            <div class="col-12 col-lg-3 mb-2">
+              <label class="form-label bold d-block">{{ 'ExpirationDate' | translate }}
+                <div class="d-flex flex-wrap gap-4">
+                  <app-calendar [(ngModel)]="detail.expireDate" name="expiryDate" [format]="'dd/MM/yyyy'"
+                    [minDate]="minEndDate" (valueChange)="onEndDateChange($event)"
+                    [placeholder]="'ExpirationDate'"></app-calendar>
+                </div>
+              </label>
+            </div>
+
+            <div class="col-12 col-lg-3 bold">&nbsp;
+                <div class="d-flex flex-wrap gap-4">
+                  <div class="d-flex items-center gap-2">
+                    <div class="col-12 py-2">
+                      <label class="form-label d-block">
+                      <input class="form-check-input" type="checkbox" id="supervisor" name="supervisor"
+                        [(ngModel)]="detail.isSupervisor" />
+                      &nbsp;<strong class="ml-2">{{ 'Supervisor' | translate }}</strong>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-3 bold">
+              &nbsp;
+              <div class="d-flex flex-wrap gap-4">
+                <div class="d-flex items-center gap-2">
+                  <div class="col-12">
+                    <label class="form-label d-block">
+                      <input class="form-check-input" type="checkbox" id="isActive" name="isActive" [(ngModel)]="detail.isActive" />
+                      &nbsp;<strong class="ml-2">{{ 'ActiveStatus' | translate }}</strong>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+}
+
+@if(permission?.allowView === false){
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <h2 class="text-muted">{{'No Permission' | translate}}</h2>
+</div>
+}

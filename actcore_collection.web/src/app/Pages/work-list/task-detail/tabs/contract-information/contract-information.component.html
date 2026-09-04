@@ -1,0 +1,484 @@
+<div class="row py-2">
+  <label class="form-label bold d-block font-larger">{{ 'ContractDescription' | translate}}</label>
+  <div class="row">
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'ContractNo' | translate }}
+        <input type="text" class="form-control w-80" id="contractNo" placeholder="" [(ngModel)]="contractID"
+          name="contractNo" [readOnly]="true">
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'ContractStartDate' | translate }}
+        <app-calendar [(ngModel)]="detailContract.contractStartDate" name="contractStartDate"
+          [format]="'dd/MM/yyyy'" [placeholder]="'contractStartDate'" [disabled]="true"></app-calendar>
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'ContractEndDate' | translate }}
+        <app-calendar [(ngModel)]="detailContract.contractEndDate" name="contractEndDate"
+          [format]="'dd/MM/yyyy'" [placeholder]="'contractEndDate'" [disabled]="true"></app-calendar>
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'LoanAmount'| translate}}
+        <app-input-number name="loanAmount" [(ngModel)]="detailContract.loanAmount" required #loanAmountModel="ngModel"
+          [step]="1" [fractionDigits]="2" [readonly]="true">
+        </app-input-number>
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'ContractTerm'| translate}}
+        <app-input-number name="contractTerm" [(ngModel)]="detailContract.term" required #contractTermModel="ngModel"
+          [step]="1" [readonly]="true">
+        </app-input-number>
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'InterestRate'| translate}}
+        <app-input-number name="interestRate" [(ngModel)]="detailContract.interestRate" required
+          #overdueAmountModel="ngModel" [step]="1" [fractionDigits]="2" [readonly]="true">
+        </app-input-number>
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'InterestRateType' | translate }}
+        <input type="text" class="form-control w-80" id="interestRateType" placeholder=""
+          [(ngModel)]="detailContract.interestRateType" name="interestRateType" [readOnly]="true">
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'InstallAmount'| translate}}
+        <app-input-number name="installAmount" [(ngModel)]="detailContract.installAmount" required
+          #overdueAmountModel="ngModel" [step]="1" [fractionDigits]="2" [readonly]="true">
+        </app-input-number>
+      </label>
+    </div>
+
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'ContractDueDay' | translate }}
+        <app-calendar [(ngModel)]="detailContract.dueDate" name="dueDate " [format]="'dd/MM/yyyy'"
+          [placeholder]="'dueDate'" [disabled]="true"></app-calendar>
+      </label>
+    </div>
+  </div>
+
+
+  <label class="form-label bold d-block font-larger">{{ 'AssetInfo' | translate}}</label>
+  <div class="col-12 col-lg-3 mb-2">
+    <label class="form-label bold d-block">{{ 'AssetGroup' | translate }}
+      <input type="text" class="form-control w-80" id="assetGroup" placeholder=""
+        [(ngModel)]="detailContract.assetGroup" name="assetGroup" [readOnly]="true">
+    </label>
+  </div>
+
+  <div class="col-12 col-lg-3 mb-2">
+    <label class="form-label bold d-block">{{ 'AssetType' | translate }}
+      <input type="text" class="form-control w-80" id="assetType" placeholder="" [(ngModel)]="detailContract.assetType"
+        name="assetType" [readOnly]="true">
+    </label>
+  </div>
+
+  <div class="col-12 col-lg-3 mb-2">
+    <label class="form-label bold d-block">{{ 'AssetDescription' | translate }}
+      <input type="text" class="form-control w-80" id="assetDescription" placeholder=""
+        [(ngModel)]="detailContract.description " name="assetDescription" [readOnly]="true">
+    </label>
+  </div>
+
+  <div class="col-12 col-lg-3 mb-2">
+    <label class="form-label bold d-block">{{ 'AssetPrice'| translate}}
+      <app-input-number name="assetPrice" [(ngModel)]="detailContract.assetPrice" required #assetPriceModel="ngModel"
+        [step]="1" [fractionDigits]="2" [readonly]="true">
+      </app-input-number>
+    </label>
+  </div>
+
+  <div class="col-12 col-lg-3 mb-2">
+    <label class="form-label bold d-block">{{ 'Brand' | translate }}
+      <input type="text" class="form-control w-80" id="brand" placeholder="" [(ngModel)]="detailContract.brand"
+        name="brand" [readOnly]="true">
+    </label>
+  </div>
+
+  <div class="col-12 col-lg-3 mb-2">
+    <label class="form-label bold d-block">{{ 'Model' | translate }}
+      <input type="text" class="form-control w-80" id="model" placeholder="" [(ngModel)]="detailContract.model"
+        name="model" [readOnly]="true">
+    </label>
+  </div>
+
+  <div class="col-12 col-lg-3 mb-2">
+    <label class="form-label bold d-block">{{ 'Series' | translate }}
+      <input type="text" class="form-control w-80" id="series" placeholder="" [(ngModel)]="detailContract.series"
+        name="series" [readOnly]="true">
+    </label>
+  </div>
+
+  <div class="col-12 col-lg-3 mb-2">
+    <label class="form-label bold d-block">{{ 'Year' | translate }}
+      <input type="text" class="form-control w-80" id="year" placeholder="" [(ngModel)]="detailContract.year "
+        name="year" [readOnly]="true">
+    </label>
+  </div>
+
+  <div class="col-12 col-lg-3 mb-2">
+    <label class="form-label bold d-block">{{ 'EngineNo' | translate }}
+      <input type="text" class="form-control w-80" id="engineNo" placeholder="" [(ngModel)]="detailContract.engineNo"
+        name="engineNo" [readOnly]="true">
+    </label>
+  </div>
+
+  <div class="col-12 col-lg-3 mb-2">
+    <label class="form-label bold d-block">{{ 'ChassisNo' | translate }}
+      <input type="text" class="form-control w-80" id="chassisNo" placeholder="" [(ngModel)]="detailContract.chassisNo"
+        name="chassisNo" [readOnly]="true">
+    </label>
+  </div>
+
+  <div class="col-12 col-lg-3 mb-2">
+    <label class="form-label bold d-block">{{ 'PlateNo' | translate }}
+      <input type="text" class="form-control w-80" id="plateNo" placeholder="" [(ngModel)]="detailContract.plateNo"
+        name="plateNo" [readOnly]="true">
+    </label>
+  </div>
+
+  <div class="col-12 col-lg-3 mb-2">
+    <label class="form-label bold d-block">{{ 'RegisterProvince' | translate }}
+      <input type="text" class="form-control w-80" id="year" placeholder=""
+        [(ngModel)]="detailContract.registerProvince " name="year" [readOnly]="true">
+    </label>
+  </div>
+  <hr>
+
+  <label class="form-label bold d-block font-larger">{{ 'BorrowerDetails' | translate}}</label>
+  <div class="row">
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'CustomerName' | translate }}
+        <input type="text" class="form-control w-80" [(ngModel)]="dataBorrowerdetail.fullName" [readOnly]="true">
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'IDCard' | translate }}
+        <input type="text" class="form-control w-80" [(ngModel)]="dataBorrowerdetail.idCard" [readOnly]="true">
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'DateOfBirth'| translate}}
+        <app-calendar [(ngModel)]="dataBorrowerdetail.dateOfBirth" name="dateOfBirth" [format]="'dd/MM/yyyy'"
+          [placeholder]="'DateOfBirth'" [disabled]="true"></app-calendar>
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'Age' | translate }}
+        <input type="text" class="form-control w-80" [(ngModel)]="dataBorrowerdetail.age" [readOnly]="true">
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'Gender' | translate }}
+        <input type="text" class="form-control w-80" [(ngModel)]="dataBorrowerdetail.gender" [readOnly]="true">
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'MaritalStatus' | translate }}
+        <input type="text" class="form-control w-80" [(ngModel)]="dataBorrowerdetail.maritalStatus" [readOnly]="true">
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'Occupation' | translate }}
+        <input type="text" class="form-control w-80" [(ngModel)]="dataBorrowerdetail.occupation" [readOnly]="true">
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'Income'| translate}}
+        <app-input-number name="income" [(ngModel)]="dataBorrowerdetail.income" required #incomeModel="ngModel"
+          [step]="1" [fractionDigits]="2" [readonly]="true">
+        </app-input-number>
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'WorkPlace' | translate }}
+        <input type="text" class="form-control w-80" [(ngModel)]="dataBorrowerdetail.workPlace" [readOnly]="true">
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'Email' | translate }}
+        <input type="text" class="form-control w-80" [(ngModel)]="dataBorrowerdetail.email" [readOnly]="true">
+      </label>
+    </div>
+
+  </div>
+
+  <div class="col-12 p-3">
+    <ejs-grid #grid [dataSource]="listBorrowerAddress" [allowPaging]="true"
+      [pageSettings]="pageSettings" [allowSorting]="true" gridLines="Both" [selectionSettings]="selectionOptions"
+      [resizeSettings]="resizeSettings" [allowResizing]="true">
+
+      <e-columns>
+        <e-column field="addressType " width="100" [customAttributes]="customAttributes" clipMode="EllipsisWithTooltip"
+          headerTextAlign="Center">
+          <ng-template #headerTemplate>
+            {{ 'AddressType' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            {{ data.addressType }}
+          </ng-template>
+        </e-column>
+
+        <e-column field="address" width="300" [customAttributes]="customAttributes" clipMode="EllipsisWithTooltip"
+          headerTextAlign="Center">
+          <ng-template #headerTemplate>
+            {{ 'Address' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            {{ data.address }}
+          </ng-template>
+        </e-column>
+
+        <e-column field="addressRemark" width="100" [customAttributes]="customAttributes" clipMode="EllipsisWithTooltip"
+          headerTextAlign="Center">
+          <ng-template #headerTemplate>
+            {{ 'Remark' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            {{ data.addressRemark }}
+          </ng-template>
+        </e-column>
+      </e-columns>
+
+      <ng-template #emptyRecordTemplate>
+        <div class='emptyRecordTemplate'>
+          <span>{{ 'EmptyRecord' | translate}}</span>
+        </div>
+      </ng-template>
+    </ejs-grid>
+
+
+  </div>
+
+  <div class="col-7 p-3">
+    <ejs-grid #grid [dataSource]="listBorrowerPhone" [allowPaging]="true"
+      [pageSettings]="pageSettings" [allowSorting]="true" gridLines="Both" [selectionSettings]="selectionOptions"
+      [resizeSettings]="resizeSettings" [allowResizing]="true">
+
+      <e-columns>
+        <e-column field="phoneType " width="120" [customAttributes]="customAttributes" clipMode="EllipsisWithTooltip"
+          headerTextAlign="Center">
+          <ng-template #headerTemplate>
+            {{ 'PhoneType' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            {{ data.phoneType }}
+          </ng-template>
+        </e-column>
+
+        <e-column field="phoneNo" width="150" [customAttributes]="customAttributes" clipMode="EllipsisWithTooltip"
+          headerTextAlign="Center">
+          <ng-template #headerTemplate>
+            {{ 'PhoneNumber' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            {{ data.phoneNo }}
+          </ng-template>
+        </e-column>
+
+        <e-column field="phoneRemark" width="200" [customAttributes]="customAttributes" clipMode="EllipsisWithTooltip"
+          headerTextAlign="Center">
+          <ng-template #headerTemplate>
+            {{ 'Remark' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            {{ data.phoneRemark }}
+          </ng-template>
+        </e-column>
+      </e-columns>
+
+      <ng-template #emptyRecordTemplate>
+        <div class='emptyRecordTemplate'>
+          <span>{{ 'EmptyRecord' | translate}}</span>
+        </div>
+      </ng-template>
+    </ejs-grid>
+
+
+  </div>
+
+  <label class="form-label bold d-block font-larger">{{ 'GuarantorDetails' | translate}}</label>
+  <div class="row">
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'CustomerName' | translate }}
+        <input type="text" class="form-control w-80" [(ngModel)]="dataGuarantordetail.fullName" [readOnly]="true">
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'IDCard' | translate }}
+        <input type="text" class="form-control w-80" [(ngModel)]="dataGuarantordetail.idCard" [readOnly]="true">
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'DateOfBirth'| translate}}
+        <app-calendar [(ngModel)]="dataGuarantordetail.dateOfBirth" name="dateOfBirth" [format]="'dd/MM/yyyy'"
+          [placeholder]="'DateOfBirth'" [disabled]="true"></app-calendar>
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'Age' | translate }}
+        <input type="text" class="form-control w-80" [(ngModel)]="dataGuarantordetail.age" [readOnly]="true">
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'Gender' | translate }}
+        <input type="text" class="form-control w-80" [(ngModel)]="dataGuarantordetail.gender" [readOnly]="true">
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'MaritalStatus' | translate }}
+        <input type="text" class="form-control w-80" [(ngModel)]="dataGuarantordetail.maritalStatus" [readOnly]="true">
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'Occupation' | translate }}
+        <input type="text" class="form-control w-80" [(ngModel)]="dataGuarantordetail.occupation" [readOnly]="true">
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'Income'| translate}}
+        <app-input-number name="income" [(ngModel)]="dataGuarantordetail.income" required #incomeModel="ngModel"
+          [step]="1" [fractionDigits]="2" [readonly]="true">
+        </app-input-number>
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'WorkPlace' | translate }}
+        <input type="text" class="form-control w-80" [(ngModel)]="dataGuarantordetail.workPlace" [readOnly]="true">
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'Email' | translate }}
+        <input type="text" class="form-control w-80" [(ngModel)]="dataGuarantordetail.email" [readOnly]="true">
+      </label>
+    </div>
+  </div>
+
+  <div class="col-12 p-3">
+    <ejs-grid #grid [dataSource]="listGuarantorAddress" [allowPaging]="true"
+      [pageSettings]="pageSettings" [allowSorting]="true"
+       gridLines="Both" [selectionSettings]="selectionOptions"
+      [resizeSettings]="resizeSettings" [allowResizing]="true">
+
+      <e-columns>
+        <e-column field="addressType " width="100" [customAttributes]="customAttributes" clipMode="EllipsisWithTooltip"
+          headerTextAlign="Center">
+          <ng-template #headerTemplate>
+            {{ 'AddressType' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            {{ data.addressType }}
+          </ng-template>
+        </e-column>
+
+        <e-column field="address" width="300" [customAttributes]="customAttributes" clipMode="EllipsisWithTooltip"
+          headerTextAlign="Center">
+          <ng-template #headerTemplate>
+            {{ 'Address' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            {{ data.address }}
+          </ng-template>
+        </e-column>
+
+        <e-column field="addressRemark" width="100" [customAttributes]="customAttributes" clipMode="EllipsisWithTooltip"
+          headerTextAlign="Center">
+          <ng-template #headerTemplate>
+            {{ 'Remark' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            {{ data.addressRemark }}
+          </ng-template>
+        </e-column>
+      </e-columns>
+
+      <ng-template #emptyRecordTemplate>
+        <div class='emptyRecordTemplate'>
+          <span>{{ 'EmptyRecord' | translate}}</span>
+        </div>
+      </ng-template>
+    </ejs-grid>
+
+
+  </div>
+
+  <!-- {{listGuarantorPhone | json}} -->
+  <div class="col-7 p-3">
+    <ejs-grid #grid [dataSource]="listGuarantorPhone" [allowPaging]="true"
+      [pageSettings]="pageSettings" [allowSorting]="true" gridLines="Both" [selectionSettings]="selectionOptions"
+      [resizeSettings]="resizeSettings" [allowResizing]="true">
+
+      <e-columns>
+        <e-column field="phoneType " width="120" [customAttributes]="customAttributes" clipMode="EllipsisWithTooltip"
+          headerTextAlign="Center">
+          <ng-template #headerTemplate>
+            {{ 'PhoneType' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            {{ data.phoneType }}
+          </ng-template>
+        </e-column>
+
+        <e-column field="phoneNo" width="150" [customAttributes]="customAttributes" clipMode="EllipsisWithTooltip"
+          headerTextAlign="Center">
+          <ng-template #headerTemplate>
+            {{ 'PhoneNumber' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            {{ data.phoneNo }}
+          </ng-template>
+        </e-column>
+
+        <e-column field="phoneRemark" width="200" [customAttributes]="customAttributes" clipMode="EllipsisWithTooltip"
+          headerTextAlign="Center">
+          <ng-template #headerTemplate>
+            {{ 'Remark' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            {{ data.phoneRemark }}
+          </ng-template>
+        </e-column>
+      </e-columns>
+
+      <ng-template #emptyRecordTemplate>
+        <div class='emptyRecordTemplate'>
+          <span>{{ 'EmptyRecord' | translate}}</span>
+        </div>
+      </ng-template>
+    </ejs-grid>
+
+
+  </div>
+
+</div>

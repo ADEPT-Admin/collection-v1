@@ -1,0 +1,100 @@
+<div class="row">
+  <div class="col-12">
+    <ejs-grid #grid [dataSource]="list" gridLines="Both" [allowPaging]="true" [pageSettings]="pageSettings" [allowSorting]="true"
+      (actionBegin)="actionBegin($event)" (created)="dataBound($event)" [resizeSettings]="resizeSettings" [allowResizing]="true"
+      [selectionSettings]="selectionOptions">
+
+      <e-columns>
+        <!-- Payment Date -->
+        <e-column field="paymentDate" width="150" textAlign="Center" headerTextAlign="Center" headerTextAlign="Center" clipMode="EllipsisWithTooltip"
+          [customAttributes]="customAttributes">
+          <ng-template #headerTemplate>
+            {{ 'PaymentDate' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            {{ data.paymentDate | localizedDate:'dd/MM/yyyy' }}
+          </ng-template>
+        </e-column>
+
+        <!-- Payment Amount -->
+        <e-column field="paymentAmount" width="120" textAlign="Right" headerTextAlign="Center" headerTextAlign="Center" clipMode="EllipsisWithTooltip"
+          [customAttributes]="customAttributes">
+          <ng-template #headerTemplate>
+            {{ 'PaymentAmount' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            <div class="text-right">
+              {{ data.paymentAmount | number:'1.2-2' }}
+            </div>
+          </ng-template>
+        </e-column>
+
+        <!-- Payment Channel -->
+        <e-column field="paymentChannel" width="150" [customAttributes]="customAttributes" headerTextAlign="Center" clipMode="EllipsisWithTooltip">
+          <ng-template #headerTemplate>
+            {{ 'PaymentChannel' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            {{ data.paymentChannel }}
+          </ng-template>
+        </e-column>
+
+        <!-- Reference No -->
+        <e-column field="referenceNo" width="150" [customAttributes]="customAttributes" headerTextAlign="Center" clipMode="EllipsisWithTooltip">
+          <ng-template #headerTemplate>
+            {{ 'ReferenceNumber' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            {{ data.referenceNo }}
+          </ng-template>
+        </e-column>
+
+        <!-- Install Amount -->
+        <e-column field="installAmount" width="120" textAlign="Right" headerTextAlign="Center" clipMode="EllipsisWithTooltip"
+          [customAttributes]="customAttributes">
+          <ng-template #headerTemplate>
+            {{ 'InstallAmount' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            <div class="text-right">
+              {{ data.installAmount | number:'1.2-2' }}
+            </div>
+          </ng-template>
+        </e-column>
+
+        <!-- Penalty Amount -->
+        <e-column field="penaltyAmount" width="120" textAlign="Right" headerTextAlign="Center" clipMode="EllipsisWithTooltip"
+          [customAttributes]="customAttributes">
+          <ng-template #headerTemplate>
+            {{ 'PenaltyAmount' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            <div class="text-right">
+              {{ data.penaltyAmount | number:'1.2-2' }}
+            </div>
+          </ng-template>
+        </e-column>
+
+        <!-- Other Fees Amount -->
+        <e-column field="otherFeesAmount" width="120" textAlign="Right" headerTextAlign="Center" clipMode="EllipsisWithTooltip"
+          [customAttributes]="customAttributes">
+          <ng-template #headerTemplate>
+            {{ 'OtherFeesAmount' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            <div class="text-right">
+              {{ data.otherFeesAmount | number:'1.2-2' }}
+            </div>
+          </ng-template>
+        </e-column>
+
+      </e-columns>
+
+      <ng-template #emptyRecordTemplate>
+        <div class='emptyRecordTemplate'>
+          <span>{{ 'EmptyRecord' | translate}}</span>
+        </div>
+      </ng-template>
+      </ejs-grid>
+  </div>
+</div>

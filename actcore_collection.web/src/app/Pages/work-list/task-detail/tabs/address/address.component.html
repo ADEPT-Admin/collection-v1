@@ -1,0 +1,84 @@
+<div class="row py-2">
+  <div class="col-12">
+    <ejs-grid #grid [dataSource]="list" [allowPaging]="true" [pageSettings]="pageSettings" [allowSorting]="true" (created)="dataBound($event)"
+      (actionBegin)="actionBegin($event)" gridLines="Both" [selectionSettings]="selectionOptions" [resizeSettings]="resizeSettings" [allowResizing]="true">
+
+      <e-columns>
+        <!-- Address Information -->
+        <e-column field="personType" width="150" [customAttributes]="customAttributes" clipMode="EllipsisWithTooltip" headerTextAlign="Center">
+          <ng-template #headerTemplate>
+            {{ 'PersonType' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            {{ data.personType }}
+          </ng-template>
+        </e-column>
+
+        <e-column field="addressOwner" width="150" [customAttributes]="customAttributes" clipMode="EllipsisWithTooltip" headerTextAlign="Center">
+          <ng-template #headerTemplate>
+            {{ 'CustomerName' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            {{ data.addressOwner }}
+          </ng-template>
+        </e-column>
+
+        <e-column field="addressType" width="120" [customAttributes]="customAttributes" clipMode="EllipsisWithTooltip" headerTextAlign="Center">
+          <ng-template #headerTemplate>
+            {{ 'AddressType' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            {{ data.addressType }}
+          </ng-template>
+        </e-column>
+
+        <e-column field="address" width="250" [customAttributes]="customAttributes" clipMode="EllipsisWithTooltip" headerTextAlign="Center">
+          <ng-template #headerTemplate>
+            {{ 'Address' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            {{ data.address }}
+          </ng-template>
+        </e-column>
+
+        <e-column field="isVerified" width="140" textAlign="Center" clipMode="EllipsisWithTooltip" [customAttributes]='customAttributes' headerTextAlign="Center">
+          <ng-template #headerTemplate>
+            {{ 'VerifiedAddress' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            <div class="text-center">
+              <i class="fa-solid" [class.fa-circle-check]="data.isVerified" [class.fa-circle-xmark]="!data.isVerified"
+                [style.color]="data.isVerified ? 'green' : 'red'">
+              </i>
+            </div>
+          </ng-template>
+        </e-column>
+
+        <e-column field="verifiedDate" width="140" textAlign="Center" [customAttributes]="customAttributes" clipMode="EllipsisWithTooltip" headerTextAlign="Center">
+          <ng-template #headerTemplate>
+            {{ 'VerifiedDate' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            {{ data.verifiedDate | localizedDate:'dd/MM/yyyy' }}
+          </ng-template>
+        </e-column>
+
+        <e-column field="addressRemark" width="200" [customAttributes]="customAttributes" clipMode="EllipsisWithTooltip" headerTextAlign="Center">
+          <ng-template #headerTemplate>
+            {{ 'Remark' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            {{ data.addressRemark }}
+          </ng-template>
+        </e-column>
+
+      </e-columns>
+
+      <ng-template #emptyRecordTemplate>
+        <div class='emptyRecordTemplate'>
+          <span>{{ 'EmptyRecord' | translate}}</span>
+        </div>
+      </ng-template>
+    </ejs-grid>
+</div>
+</div>

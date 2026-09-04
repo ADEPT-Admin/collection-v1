@@ -1,0 +1,51 @@
+
+
+
+
+
+<div class="app-wrapper">
+   <nav class="app-header navbar navbar-expand bg-body sticky-top">
+
+    <app-nav-bar></app-nav-bar>
+  </nav>
+
+  <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
+      <app-side-bar  [menus]="menu" ></app-side-bar>
+  </aside>
+
+
+  <main class="app-main">
+      <router-outlet></router-outlet>
+  </main>
+
+
+  <footer class="app-footer ">
+        <!--begin::To the end-->
+    <div class="float-end d-none d-sm-inline"></div>
+    <!--end::To the end-->
+    <!--begin::Copyright-->
+    <strong>
+      Copyright {{config}}
+      <a href="javascript:;" class="text-decoration-none">Adaptivate Corporation</a>.
+    </strong>
+    All rights reserved.
+    <!--end::Copyright-->
+  </footer>
+
+
+</div>
+
+
+<!-- <app-nav-bar (toggleSideBar)="toggleSideBar($event)"></app-nav-bar>
+
+<main class="d-flex flex-nowrap">
+  <app-side-bar class="sidebar" [showSideBar]="showSideBar"></app-side-bar>
+  <div class="" id="page-content-wrapper">
+    <div class="container-fluid">
+      <router-outlet />
+    </div>
+  </div>
+</main>
+
+
+ -->

@@ -1,0 +1,31 @@
+@if (item.isShow) {
+
+    <!-- If no children -->
+    @if (!item.children || item.children.length === 0) {
+    <li class="nav-item">
+        <a class="nav-link d-flex" [routerLink]="item.link" routerLinkActive="active">
+          <i class="nav-icon {{ item.icon }} mt-1"></i>
+          <p class="ms-2">{{ item.name | translate }}</p>
+        </a>
+    </li>
+    }
+
+    <!-- If has children -->
+    @else {
+      <li class="nav-item " routerLinkActive="menu-open" >
+        <a href="javascript:;" class="nav-link d-flex" routerLinkActive="active">
+          <i class="nav-icon {{ item.icon }} mt-1"></i>
+          <p class="ms-2">
+            {{ item.name | translate }}
+            <i class="nav-arrow fas fa-chevron-left"></i>
+          </p>
+        </a>
+
+        <ul class="nav nav-treeview">
+          <ng-container *ngFor="let child of item.children">
+            <app-sidebar-item [item]="child"></app-sidebar-item>
+          </ng-container>
+        </ul>
+      </li>
+    }
+}

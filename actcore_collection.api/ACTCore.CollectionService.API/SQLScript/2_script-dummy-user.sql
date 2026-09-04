@@ -1,0 +1,23 @@
+﻿-- insert dummy employee
+INSERT INTO EmployeeProfile (EmployeeId,UserName,PrefixId,FirstName,LastName,Email,DepartmentId,PositionId,Branch,SupervisorId,IsActive) 
+VALUES ('90000','ADMIN_A',1,'สมชาย','ใจดี',N'ADMIN_A@XYZ.com',5,6,N'Head Quarter',N'00000',1),
+('90001','ADMIN_B',1,'สมหญิง','รักษ์ดี',N'ADMIN_B@XYZ.com',5,6,N'Head Quarter',N'00000',1),
+('90002','U_NOPERM',1,'วิชัย','มั่นคง',N'U_NOPERM@XYZ.com',5,6,N'Head Quarter',N'00000',1),
+('90003','U_COLLECTOR_BUSY',1,'สุดา','เจริญสุข',N'U_COLLECTOR_BUSY@XYZ.com',5,6,N'Head Quarter',N'00000',1),
+('90004','U_SUPERVISOR',1,'ประยุทธ์','ชัยชนะ',N'U_SUPERVISOR@XYZ.com',5,6,N'Head Quarter',N'00000',1),
+('90005','U_LOCKED',1,'อรุณ','แสงทอง',N'U_LOCKED@XYZ.com',5,6,N'Head Quarter',N'00000',1),
+('90006','dummy6',1,'มาลี','บุญมี',N'dummy6@XYZ.com',5,6,N'Head Quarter',N'00000',1),
+('90007','dummy7',1,'ธนา','ศรีสุข',N'dummy7@XYZ.com',5,6,N'Head Quarter',N'00000',1),
+('90008','dummy8',1,'นิภา','วงศ์ดี',N'dummy8@XYZ.com',5,6,N'Head Quarter',N'00000',1),
+('90009','dummy9',1,'สุรชัย','ปัญญา',N'dummy9@XYZ.com',5,6,N'Head Quarter',N'00000',1),
+('90010','dummy10',1,'จิตรา','สวัสดี',N'dummy10@XYZ.com',5,6,N'Head Quarter',N'00000',1),
+('90011','dummy11',1,'ชัยวัฒน์','เจริญพร',N'dummy11@XYZ.com',5,6,N'Head Quarter',N'00000',1),
+('90012','dummy12',1,'พิมพ์ใจ','สุขใส',N'dummy12@XYZ.com',5,6,N'Head Quarter',N'00000',1),
+('90013','dummy13',1,'กฤษณะ','เทพบุตร',N'dummy13@XYZ.com',5,6,N'Head Quarter',N'00000',1),
+('90014','dummy14',1,'อัญชลี','ศิริวัฒน์',N'dummy14@XYZ.com',5,6,N'Head Quarter',N'00000',1),
+('90015','dummy15',1,'ธีระ','ภูมิใจ',N'dummy15@XYZ.com',5,6,N'Head Quarter',N'00000',1),
+('90016','dummy16',1,'นภา','แก้วมณี',N'dummy16@XYZ.com',5,6,N'Head Quarter',N'00000',1),
+('90017','dummy17',1,'ศักดิ์ชัย','อุดมสุข',N'dummy17@XYZ.com',5,6,N'Head Quarter',N'00000',1),
+('90018','dummy18',1,'ปิยะ','มงคล',N'dummy18@XYZ.com',5,6,N'Head Quarter',N'00000',1),
+('90019','dummy19',1,'รัตนา','ทองดี',N'dummy19@XYZ.com',5,6,N'Head Quarter',N'00000',1),
+('90020','dummy20',1,'วีระ','อภิชาติ',N'dummy20@XYZ.com',5,6,N'Head Quarter',N'00000',1);

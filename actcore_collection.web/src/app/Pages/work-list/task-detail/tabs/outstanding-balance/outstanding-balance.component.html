@@ -1,0 +1,100 @@
+<div class="row">
+
+  <div class="col-12 col-lg-3 mb-2">
+    <label  class="form-label bold d-block">{{ 'LoanAmount'| translate}}
+      <app-input-number  name="loanAmount"
+                        [(ngModel)]="detail.loanAmount"
+                        required
+                        #loanAmountModel="ngModel"
+                        [step]="1"
+                        [fractionDigits]="2"
+                        [readonly]="true"
+                        >
+      </app-input-number>
+    </label>
+  </div>
+
+  <div class="col-12 col-lg-3 mb-2">
+    <label class="form-label bold d-block">{{ 'OutstandingAmount'| translate}}
+      <app-input-number  name="outstandingAmount"
+                        [(ngModel)]="detail.outstandingAmount"
+                        required
+                        #outstandingAmountModel="ngModel"
+                        [step]="1"
+                        [fractionDigits]="2"
+                        [readonly]="true"
+                        >
+      </app-input-number>
+    </label>
+  </div>
+
+  <div class="col-12">
+    <ejs-grid #grid [dataSource]="list"
+                      [allowPaging]="true"
+                      [pageSettings]="pageSettings"
+                      [allowSorting]="true"
+                      gridLines="Both"
+                      (created)="dataBound($event)"
+                      [selectionSettings]="selectionOptions"
+                      [resizeSettings]="resizeSettings"
+                      [allowResizing]="true"
+              >
+        <e-columns>
+          <e-column field="rowIndex" headerText="#" width="60" [customAttributes]='customAttributes' textAlign="Center" clipMode="EllipsisWithTooltip">
+
+          </e-column>
+
+          <e-column field="overdueType" width="200" [customAttributes]='customAttributes' headerTextAlign="Center" clipMode="EllipsisWithTooltip">
+            <ng-template #headerTemplate >
+            {{ 'OverdueType' | translate }}
+          </ng-template></e-column>
+
+          <e-column field="overdueTerm" width="200" [customAttributes]='customAttributes' headerTextAlign="Center" clipMode="EllipsisWithTooltip">
+            <ng-template #headerTemplate >
+            {{ 'OverdueTerm' | translate }}
+          </ng-template></e-column>
+
+          <e-column field="overdueAmount" width="120"
+            [customAttributes]='customAttributes' textAlign="Right" headerTextAlign="Center" clipMode="EllipsisWithTooltip">
+            <ng-template #headerTemplate>
+              {{ 'OverdueAmount' | translate }}
+            </ng-template>
+            <ng-template #template let-data>
+              <div class="text-right">
+                {{data.overdueAmount | number:'1.2-2' }}
+              </div>
+            </ng-template>
+          </e-column>
+
+
+        </e-columns>
+
+        <e-aggregates>
+          <e-aggregate>
+            <e-columns>
+
+              <e-column field="overdueTerm" type="sum">
+                <ng-template #footerTemplate let-data><div class="text-end"><strong>{{ 'TotalAmount' | translate}}</strong></div></ng-template>
+              </e-column>
+
+              <e-column field="overdueAmount" type="sum">
+                <ng-template #footerTemplate let-data><div class="text-end"><strong>{{ detail.totalOverdues| number:'1.2-2' }}</strong></div></ng-template>
+              </e-column>
+
+
+            </e-columns>
+          </e-aggregate>
+        </e-aggregates>
+
+        <ng-template #emptyRecordTemplate>
+            <div class='emptyRecordTemplate'>
+                <span>{{ 'EmptyRecord' | translate}}</span>
+            </div>
+        </ng-template>
+
+
+
+    </ejs-grid>
+  </div>
+
+</div>

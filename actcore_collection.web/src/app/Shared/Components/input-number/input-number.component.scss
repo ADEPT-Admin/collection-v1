@@ -1,0 +1,12 @@
+.text-end {
+  padding-right: 8px;
+}
+
+:host ::ng-deep .input-group.is-invalid .form-control {
+  border-color: red !important;
+}
+
+:host ::ng-deep .input-group.is-invalid .btn {
+  border-color: red !important;
+}
+

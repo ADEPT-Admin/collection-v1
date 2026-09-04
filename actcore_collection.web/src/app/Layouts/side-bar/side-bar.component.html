@@ -1,0 +1,115 @@
+
+<div class="sidebar-brand">
+    <a href="javascript:;" class="brand-link">
+      <img src="assets/icons/iconLogin/ADEPT_logo2023_v1_style2.png" alt="Logo" class="brand-image opacity-75" />
+    </a>
+</div>
+
+
+<!-- Sidebar -->
+  <overlay-scrollbars [defer]="true">
+
+    <div class="sidebar-wrapper" >
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav sidebar-menu flex-column"
+                data-lte-toggle="treeview"
+                role="menu"
+                data-accordion="false" >
+
+                @for (item of menus; track item.name) {
+                  <ng-container
+                    [ngTemplateOutlet]="renderNode"
+                    [ngTemplateOutletContext]="{ $implicit: item }">
+                  </ng-container>
+                }
+
+
+
+          <!-- <ng-container *ngFor="let item of menus">
+
+
+              @if(item.children.length == 0){
+                @if(item.isShow == true){
+                <li  class="nav-item" >
+                  <a  class="nav-link d-flex " [routerLink]="item.link"  routerLinkActive="active" >
+                    <i class="nav-icon {{ item.icon }} mt-1"></i>
+                    <p class="ms-2"  >{{ item.name | translate}}</p>
+                  </a>
+                </li>
+                }
+              } @else {
+                @if(item.isShow == true){
+                <li class="nav-item " routerLinkActive="menu-open" >
+                  <a href="javascript:;" class="nav-link d-flex"  routerLinkActive="active"  >
+                    <i class="nav-icon {{ item.icon }}  mt-1"></i>
+                    <p class="ms-2" >{{ item.name | translate }}
+                      <i class="nav-arrow fas fa-chevron-left"></i>
+                    </p>
+                  </a>
+
+
+                    <ul class="nav nav-treeview" >
+                    <ng-container *ngFor="let sub of item.children">
+                      @if(sub.isShow == true){
+                        <li class="nav-item"  routerLinkActive="active">
+                          <a href="javascript:;" class="nav-link d-flex" [routerLink]="sub.link"  routerLinkActive="active" >
+                            <i class="nav-icon  {{ sub.icon }} mt-1"></i>
+                            <p class="ms-2" >{{sub.name | translate}}</p>
+                          </a>
+                        </li>
+                      }
+                    </ng-container>
+
+                  </ul>
+                </li>
+
+                }
+
+              }
+
+          </ng-container> -->
+
+        </ul>
+      </nav>
+
+      <!-- Recursive template -->
+      <ng-template #renderNode let-node>
+        <li *ngIf="node?.isShow" class="nav-item "  [class.menu-open]="isBranchActive(node)" [class.child-active]="isChildBranchActive(node)" >
+
+          <!-- LEAF NODE -->
+          <a *ngIf="!node?.children?.length" class="nav-link d-flex"
+            [routerLink]="node.link"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: false }">
+            <i class="nav-icon {{ node.icon }} mt-1"></i>
+            <p class="ms-2">{{ node.name }}</p>
+          </a>
+
+          <!-- BRANCH NODE -->
+            <a href="javascript:;" class="nav-link d-flex"
+              [class.active]="isActive(node)" *ngIf="node?.children?.length">
+              <i class="nav-icon {{ node.icon }} mt-1"></i>
+              <p class="ms-2">
+                {{ node.name }}
+                <i class="nav-arrow fas fa-chevron-left"></i>
+              </p>
+            </a>
+
+            <ul class="nav nav-treeview">
+              <ng-container *ngFor="let child of node.children">
+                <ng-container
+                  [ngTemplateOutlet]="renderNode"
+                  [ngTemplateOutletContext]="{ $implicit: child }">
+                </ng-container>
+              </ng-container>
+            </ul>
+        </li>
+      </ng-template>
+
+
+    </div>
+  </overlay-scrollbars>
+
+
+

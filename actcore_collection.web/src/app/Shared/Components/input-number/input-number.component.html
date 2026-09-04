@@ -1,0 +1,21 @@
+<div class="input-group input-group" [class.disabled]="disabled" [class.is-invalid]="invalid">
+   <input #inputEl
+         type="text"
+         class="form-control text-end"
+
+         (blur)="onBlur($event)"
+         [readonly]="readonly"
+         [disabled]="disabled"
+         [value]="rawValue"
+         [appDecimalInput]="fractionDigits != null ? 'float' : min != 0 ? 'int' : 'uint'"
+         [attr.name]="name"
+         [id]="id"
+         />
+
+  <div *ngIf="showButtons" class="btn-group-vertical">
+    <button class="btn btn-outline-secondary py-0" type="button"
+            (click)="increment()" [disabled]="disabled">▲</button>
+    <button class="btn btn-outline-secondary py-0" type="button"
+            (click)="decrement()" [disabled]="disabled">▼</button>
+  </div>
+</div>

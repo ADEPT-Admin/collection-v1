@@ -1,0 +1,42 @@
+::ng-deep .my-datetimepicker.input .e-input {
+  background-color: #ffffff !important;
+    width: 100%;
+}
+
+.w-select {
+  width: 100% !important;
+  flex-shrink: 0;
+}
+
+.w-datetime {
+  width: 100% !important;
+  min-width: 180px;
+  flex-shrink: 0;
+}
+
+ .w-input{
+  width: 100%;
+  flex-shrink: 0;
+ }
+
+.d-flex.flex-nowrap,
+.col.d-flex.flex-nowrap {
+  flex-wrap: nowrap !important;
+}
+
+.me-2 {
+  margin-right: 0.5rem !important;
+}
+.ms-2 {
+  margin-left: 0.5rem !important;
+}
+
+.no-spin::-webkit-outer-spin-button,
+.no-spin::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.no-spin {
+  -moz-appearance: textfield;
+}

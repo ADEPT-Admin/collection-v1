@@ -1,0 +1,225 @@
+@if (permission?.allowView) {
+<div class="app-content-header">
+  <div class="container-fluid">
+    <app-header [header]="header"></app-header>
+  </div>
+</div>
+<div class="app-content">
+  <div class="container-fluid p-0">
+
+    <form #myForm="ngForm">
+      <div class="contentBody">
+        <div class="card p-3">
+          <app-toolbar class="mb-2" [showButton]="actionListbtn" [dirty]="form?.dirty && (permission?.allowEdit)"
+            (clickBtnSave)="onSave()" (clickBtnBack)="doBack()" (clickBtnCancel)="doCancel()"></app-toolbar>
+
+          <div class="row">
+            <div class="col-12 col-lg-3 mb-2">
+              <label class="form-label bold d-block">
+                {{ 'UserGroup' | translate }}
+                <div class="e-float-input e-input mt-0">
+                  <app-select [(ngModel)]="detail.userGroupIds" name="userGroupName" [options]="userGroupslist" (valueChange)="onChange($event)"
+                    placeholder="{{ 'UserGroup' | translate }}" #userGroupCtrl="ngModel" required
+                    [invalid]="!detail.userGroupIds && userGroupCtrl.invalid && (userGroupCtrl.dirty || userGroupCtrl.touched)">
+                  </app-select>
+                </div>
+                <div class="text-danger mt-1"
+                  *ngIf="userGroupCtrl.invalid && (userGroupCtrl.dirty || userGroupCtrl.touched)">
+                  <div *ngIf="userGroupCtrl.errors?.['required']">
+                    {{ 'UserGroup' | translate }} {{ 'is required' | translate }}
+                  </div>
+                </div>
+              </label>
+            </div>
+
+            <div class="col-12 col-lg-3 mb-2">
+              <label class="form-label bold d-block">{{ 'EffectiveDate' | translate }}
+                <div class="d-flex flex-wrap gap-4">
+                  <app-calendar [(ngModel)]="detail.effectiveDate" name="effectiveDate" [format]="'dd/MM/yyyy'"
+                    [placeholder]="'EffectiveDate'" #effectiveDateCtrl="ngModel" [required]="true"
+                    [maxDate]="maxStartDate" (valueChange)="onStartDateChange($event)"
+                    [class.is-invalid]="effectiveDateCtrl.invalid && (effectiveDateCtrl.dirty || effectiveDateCtrl.touched)">
+                  </app-calendar>
+                </div>
+                <div class="text-danger mt-1"
+                  *ngIf="effectiveDateCtrl.invalid && (effectiveDateCtrl.dirty || effectiveDateCtrl.touched)">
+                  <div *ngIf="effectiveDateCtrl.errors?.['required']">
+                    {{ 'EffectiveDate' | translate }} {{ 'is required' | translate }}
+                  </div>
+                </div>
+              </label>
+            </div>
+
+            <div class="col-12 col-lg-3 mb-2">
+              <label class="form-label bold d-block">{{ 'ExpirationDate' | translate }}
+                <div class="d-flex flex-wrap gap-4">
+                  <app-calendar [(ngModel)]="detail.expireDate" name="expiryDate" [format]="'dd/MM/yyyy'"
+                    [minDate]="minEndDate" (valueChange)="onEndDateChange($event)"
+                    [placeholder]="'ExpirationDate'"></app-calendar>
+                </div>
+              </label>
+            </div>
+
+            <div class="col-12 col-lg-3 mb-2 bold">&nbsp;
+                <div class="d-flex flex-wrap gap-4">
+                  <div class="d-flex items-center gap-2">
+                    <div class="col-12 py-2">
+                      <label class="form-label d-block">
+                      <input class="form-check-input" type="checkbox" id="activeStatus" name="activeStatus"
+                        [(ngModel)]="detail.isActive" />
+                      &nbsp;<strong class="ml-2">{{ 'ActiveStatus' | translate }}</strong>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 col-lg-12 bold"> &nbsp;
+                <div class="d-flex flex-wrap gap-4">
+                  <div class="d-flex items-center gap-2">
+                    <div class="col-12">
+                      <label class="form-label d-block">
+                      <input class="form-check-input" type="checkbox" id="forcepassswordchange"
+                        name="forcepassswordchange" [(ngModel)]="detail.forceChangePassword" />
+                      &nbsp;<strong class="ml-2">{{ 'Force Passsword Change on First Login' | translate }}</strong>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+          <hr>
+
+          <div class="row">
+            <h4>{{ 'AddUsers' | translate }}</h4>
+            <div class="col d-flex py-3">
+              <button type="button" ejs-button class="ejs-button-left" cssClass="e-primary" iconCss="fa-solid fa-plus" (click)="Add()">{{ "Add" | translate }}</button>
+              <button type="button" ejs-button class="ejs-button-left" cssClass="e-primary" iconCss="fa-solid fa-trash" (click)="delete()">{{ "Remove" | translate }}</button>
+            </div>
+          </div>
+
+          <div class="row py-2">
+            <div>
+              <ejs-grid #grid [dataSource]="dataSource"
+                              [allowPaging]="false"
+                              [allowSorting]="true"
+                              gridLines="Both"
+                              [resizeSettings]="resizeSettings"
+                              [allowResizing]="true">
+                <e-columns>
+
+                  <e-column field="checked" width="30" textAlign="Center" [allowSorting]="false"
+                    [customAttributes]='customAttributes'>
+                    <ng-template #headerTemplate>
+                      <input type="checkbox" id="check-all" [checked]="selectAllChecked"
+                        [indeterminate]="isIndeterminate" (change)="toggleSelectAll($event)" />
+                    </ng-template>
+                    <ng-template #template let-data>
+                      <input type="checkbox" id="check-{{data.employeeid}}" [checked]="selectedIds.has(data.employeeid)"
+                        (change)="onRowCheckboxChange(data, $event)" />
+                    </ng-template>
+                  </e-column>
+
+                  <e-column field="username" width="100" [customAttributes]="customAttributes"
+                    clipMode="EllipsisWithTooltip" headerTextAlign="Center">
+                    <ng-template #headerTemplate>
+                      {{ 'UserName' | translate }}
+                    </ng-template>
+                    <ng-template #template let-data>
+                      {{ data.username }}
+                    </ng-template>
+                  </e-column>
+
+                  <e-column field="employeeid" width="120" [customAttributes]="customAttributes"
+                    clipMode="EllipsisWithTooltip" headerTextAlign="Center">
+                    <ng-template #headerTemplate>
+                      {{ 'EmployeeId' | translate }}
+                    </ng-template>
+                    <ng-template #template let-data>
+                      {{ data.employeeid }}
+                    </ng-template>
+                  </e-column>
+
+                  <e-column field="employeename" width="200" [customAttributes]="customAttributes"
+                    clipMode="EllipsisWithTooltip" headerTextAlign="Center">
+                    <ng-template #headerTemplate>
+                      {{ 'EmployeeName' | translate }}
+                    </ng-template>
+                    <ng-template #template let-data>
+                      {{ data.employeename }}
+                    </ng-template>
+                  </e-column>
+
+                  <e-column field="department" width="200" [customAttributes]="customAttributes"
+                    clipMode="EllipsisWithTooltip" headerTextAlign="Center">
+                    <ng-template #headerTemplate>
+                      {{ 'DepartmentName' | translate }}
+                    </ng-template>
+                    <ng-template #template let-data>
+                      {{ data.department }}
+                    </ng-template>
+                  </e-column>
+
+                  <e-column field="position" width="200" [customAttributes]="customAttributes"
+                    clipMode="EllipsisWithTooltip" headerTextAlign="Center">
+                    <ng-template #headerTemplate>
+                      {{ 'PositionName' | translate }}
+                    </ng-template>
+                    <ng-template #template let-data>
+                      {{ data.position }}
+                    </ng-template>
+                  </e-column>
+
+                  <e-column field="email" width="200" [customAttributes]="customAttributes"
+                    clipMode="EllipsisWithTooltip" headerTextAlign="Center">
+                    <ng-template #headerTemplate>
+                      {{ 'Email' | translate }}
+                    </ng-template>
+                    <ng-template #template let-data>
+                      {{ data.email }}
+                    </ng-template>
+                  </e-column>
+
+                  <e-column field="phone" width="120" [customAttributes]="customAttributes"
+                    clipMode="EllipsisWithTooltip" headerTextAlign="Center">
+                    <ng-template #headerTemplate>
+                      {{ 'PhoneNo' | translate }}
+                    </ng-template>
+                    <ng-template #template let-data>
+                      {{ data.phone }}
+                    </ng-template>
+                  </e-column>
+
+                  <e-column headerText="" textAlign="Center" [allowSorting]="false" width="50" freeze="Right"
+                    [customAttributes]='customAttributes'>
+                    <ng-template #template let-data>
+                      <button ejs-button cssClass="e-danger e-small" iconCss="fa-solid fa-trash-arrow-up"
+                        [disabled]="!permission.allowDelete" (click)="delete(data)">
+                      </button>
+
+                    </ng-template>
+                  </e-column>
+                </e-columns>
+                <ng-template #emptyRecordTemplate>
+                  <div class='emptyRecordTemplate'>
+                    <span>{{ 'EmptyRecord' | translate}}</span>
+                  </div>
+                </ng-template>
+              </ejs-grid>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+}
+
+
+@if (permission?.allowView === false) {
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <h2 class="text-muted">{{'No Permission' | translate}}</h2>
+</div>
+}

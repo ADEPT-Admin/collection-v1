@@ -1,0 +1,118 @@
+<div class="row">
+  <div class="col-12">
+     <ejs-grid #grid [dataSource]="list"
+                      [allowPaging]="true"
+                      [pageSettings]="pageSettings"
+                      [allowSorting]="true"
+                      gridLines="Both"
+                      (created)="dataBound($event)"
+                      (actionBegin)="actionBegin($event)"
+                      [selectionSettings]="selectionOptions"
+                      [resizeSettings]="resizeSettings"
+                      [allowResizing]="true"
+              >
+        <e-columns>
+
+
+          <e-column field="followupDate" width="160" [customAttributes]='customAttributes' clipMode="EllipsisWithTooltip" headerTextAlign="Center">
+            <ng-template #headerTemplate >
+              {{ 'FollowupDate' | translate }}
+            </ng-template>
+            <ng-template #template let-item>
+              <div class="text-center">
+                {{item.followupDate | localizedDate:'dd/MM/yyyy HH:mm:ss' }}
+              </div>
+            </ng-template>
+          </e-column>
+
+          <e-column field="followupAction" width="120" [customAttributes]='customAttributes' clipMode="EllipsisWithTooltip" headerTextAlign="Center">
+            <ng-template #headerTemplate >
+            {{ 'FollowupAction' | translate }}
+          </ng-template></e-column>
+
+          <e-column field="followupResult" width="180"
+            [customAttributes]='customAttributes' textAlign="Left" headerTextAlign="Center" clipMode="EllipsisWithTooltip">
+            <ng-template #headerTemplate>
+              {{ 'FollowupResult' | translate }}
+            </ng-template>
+
+          </e-column>
+
+          <e-column field="contractPersonFullName" width="180"
+            [customAttributes]='customAttributes' textAlign="Left" headerTextAlign="Center" clipMode="EllipsisWithTooltip">
+            <ng-template #headerTemplate>
+              {{ 'ContactPerson' | translate }}
+            </ng-template>
+
+          </e-column>
+
+          <e-column field="contractPhoneNumber" width="180"
+            [customAttributes]='customAttributes' textAlign="Left" headerTextAlign="Center" clipMode="EllipsisWithTooltip">
+            <ng-template #headerTemplate>
+              {{ 'PhoneNumber' | translate }}
+            </ng-template>
+
+          </e-column>
+
+          <e-column field="nextFollowupDate" width="180"
+            [customAttributes]='customAttributes' textAlign="Left" headerTextAlign="Center" clipMode="EllipsisWithTooltip">
+            <ng-template #headerTemplate>
+              {{ 'NextFollowupDate' | translate }}
+            </ng-template>
+
+            <ng-template #template let-item>
+              <div class="text-center">
+                {{item.nextFollowupDate | localizedDate:'dd/MM/yyyy HH:mm:ss' }}
+              </div>
+            </ng-template>
+
+          </e-column>
+
+          <e-column field="promiseToPayDate" width="180"
+            [customAttributes]='customAttributes' textAlign="Left" headerTextAlign="Center" clipMode="EllipsisWithTooltip">
+            <ng-template #headerTemplate>
+              {{ 'PromiseToPayDate' | translate }}
+            </ng-template>
+
+
+            <ng-template #template let-item>
+              <div class="text-center">
+                {{item.promiseToPayDate | localizedDate:'dd/MM/yyyy HH:mm:ss' }}
+              </div>
+            </ng-template>
+
+          </e-column>
+
+          <e-column field="collectionRemark" width="180"
+            [customAttributes]='customAttributes' textAlign="Left" headerTextAlign="Center" clipMode="EllipsisWithTooltip">
+            <ng-template #headerTemplate>
+              {{ 'CollectionRemark' | translate }}
+            </ng-template>
+
+          </e-column>
+
+          <e-column field="updatedBy" width="180"
+            [customAttributes]='customAttributes' textAlign="Left" headerTextAlign="Center" clipMode="EllipsisWithTooltip">
+            <ng-template #headerTemplate>
+              {{ 'CollectorUpdateBy' | translate }}
+            </ng-template>
+
+          </e-column>
+
+
+
+        </e-columns>
+
+
+
+        <ng-template #emptyRecordTemplate>
+            <div class='emptyRecordTemplate'>
+                <span>{{ 'EmptyRecord' | translate}}</span>
+            </div>
+        </ng-template>
+
+
+
+    </ejs-grid>
+  </div>
+</div>

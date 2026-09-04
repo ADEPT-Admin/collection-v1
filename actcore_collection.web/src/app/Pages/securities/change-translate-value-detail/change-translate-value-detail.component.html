@@ -1,0 +1,67 @@
+@if (permission?.allowView) {
+<div class="app-content-header">
+  <div class="container-fluid">
+    <app-header [header]="header"></app-header>
+  </div>
+  <div class="app-content">
+    <div class="container-fluid p-0">
+      <form #myForm="ngForm">
+        <div class="card p-3">
+          <app-toolbar class="mb-2" [showButton]="actionListbtn" [dirty]="form?.dirty && permission?.allowEdit"
+            (clickBtnBack)="doBack()" (clickBtnSave)="doSave()" (clickBtnCancel)="doCancel()"></app-toolbar>
+          <div class="row">
+            <div class="col-12 col-lg-6 mb-2">
+              <label class="form-label bold d-block">
+                {{ 'Key' | translate }}
+                <input class="form-control" #Key type="text" tabindex="0" name="key" id="key"
+                  placeholder="{{ 'Key' | translate }}" [(ngModel)]="key" [disabled]="true">
+              </label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 col-lg-6 mb-2">
+              <label class="form-label bold d-block">{{ 'EN' | translate}}
+                <input class="form-control" #EN type="text" tabindex="0" name="en" id="en"
+                  placeholder="{{ 'EN' | translate }}" [(ngModel)]="detail.value.en">
+              </label>
+            </div>
+
+            <div class="col-12 col-lg-6 mb-2">
+              <label class="form-label bold d-block">{{ 'EN' | translate}} ({{ 'DefaultValue' | translate }})
+                <input class="form-control" #DefaultValueEN type="text" tabindex="0" name="DefaultValueen"
+                  [disabled]="true" id="DefaultValueen" placeholder="{{ 'EN' | translate }}"
+                  [(ngModel)]="detail.defaultValue.en">
+              </label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 col-lg-6 mb-2">
+              <label class="form-label bold d-block">{{ 'TH' | translate}}
+                <input class="form-control" #TH type="text" tabindex="0" name="th" id="th"
+                  placeholder="{{ 'TH' | translate }}" [(ngModel)]="detail.value.th">
+              </label>
+            </div>
+
+            <div class="col-12 col-lg-6 mb-2">
+              <label class="form-label bold d-block">{{ 'TH' | translate}} ({{ 'DefaultValue' | translate }})
+                <input class="form-control" #DefaultValueTH type="text" tabindex="0" name="DefaultValueth"
+                  [disabled]="true" id="DefaultValueth" placeholder="{{ 'TH' | translate }}"
+                  [(ngModel)]="detail.defaultValue.th">
+              </label>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+}
+
+@if (permission?.allowView === false) {
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <h2 class="text-muted">{{'No Permission' | translate}}</h2>
+</div>
+}

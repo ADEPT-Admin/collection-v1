@@ -1,0 +1,165 @@
+@if(permission?.allowView == true){
+  <div class="app-content-header">
+  <div class="container-fluid">
+    <app-header [header]="header"></app-header>
+  </div>
+</div>
+<div class="app-content">
+  <div class="container-fluid p-0">
+    <form #myForm="ngForm">
+      <div class="contentBody">
+        <div class="card p-3">
+          <app-toolbar class="mb-2" [showButton]="actionListbtn" [dirty]="form?.dirty && (permission?.allowEdit || permission?.allowNew)"
+            (clickBtnSave)="onSave()" (clickBtnBack)="doBack()" (clickBtnCancel)="doCancel()"
+            (clickBtnDelete)="doDel()"></app-toolbar>
+
+          <div class="row">
+            <div class="col-12 col-lg-3 mb-2">
+              <label  class="form-label bold d-block">
+                {{ 'CollectorId' | translate }}
+                   <input class="form-control" type="text" name="collectorId" id="collectorId" autocomplete="collectorId" [(ngModel)]="detail.collectorId"
+                  #collectorIdCtrl="ngModel" placeholder="{{ 'CollectorId' | translate }}" readonly
+                  [class.is-invalid]="collectorIdCtrl.invalid && collectorIdCtrl.touched">
+              </label>
+
+            </div>
+
+            <div class="col-12 col-lg-3 mb-2">
+              <label  class="form-label bold d-block">
+                {{ 'EmployeeName' | translate }}
+                   <input class="form-control" type="text" name="employeeName" id="employeeName" autocomplete="employeeName" [(ngModel)]="detail.employeeName"
+                  #userNameCtrl="ngModel" placeholder="{{ 'EmployeeName' | translate }}" readonly
+                  [class.is-invalid]="!detail.userName && userNameCtrl.invalid && userNameCtrl.touched">
+              </label>
+            </div>
+
+             <div class="col-12 col-lg-3 mb-2">
+              <label  class="form-label bold d-block">
+                {{ 'ColRoleName' | translate }}
+              <div class="e-float-input e-input mt-0">
+                <app-select [(ngModel)]="selectCollectorRole" name="colRoleName" [options]="dataCollectorRole"
+                  placeholder="{{ 'ColRoleName' | translate }}" #colRoleNameCtrl="ngModel" required
+                  [invalid]="colRoleNameCtrl.invalid && (colRoleNameCtrl.dirty || colRoleNameCtrl.touched)">
+                </app-select>
+              </div>
+              <div class="text-danger mt-1"
+                *ngIf="colRoleNameCtrl.invalid && (colRoleNameCtrl.dirty || colRoleNameCtrl.touched)">
+                <div *ngIf="colRoleNameCtrl.errors?.['required']">
+                  {{ 'ColRoleName' | translate }} {{ 'is required' | translate }}
+                </div>
+              </div>
+              </label>
+            </div>
+
+            <div class="col-12 col-lg-3 mb-2 bold">&nbsp;
+                <div class="d-flex flex-wrap gap-4">
+                  <div class="d-flex items-center gap-2">
+                    <div class="col-12 py-2">
+                      <label class="form-label  d-block">
+                      <input class="form-check-input" type="checkbox" id="activeStatus" name="activeStatus"
+                        [(ngModel)]="detail.isActive" />
+                      &nbsp;<strong class="ml-2">{{ 'ActiveStatus' | translate }}</strong>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-3 mb-2">
+              <label  class="form-label bold d-block">
+                {{ 'Email' | translate }}
+                   <input class="form-control" type="text" name="email" id="email" autocomplete="email" [(ngModel)]="detail.email"
+                  #emailCtrl="ngModel" placeholder="{{ 'Email' | translate }}" readonly
+                  [class.is-invalid]="emailCtrl.invalid && emailCtrl.touched">
+              </label>
+
+            </div>
+
+            <div class="col-12 col-lg-3 mb-2">
+              <label  class="form-label bold d-block">
+                {{ 'PhoneNo' | translate }}
+                   <input class="form-control" type="text" name="phoneNo" id="phoneNo" autocomplete="phoneNo" [(ngModel)]="detail.phoneNo"
+                  #phoneNoCtrl="ngModel" placeholder="{{ 'PhoneNo' | translate }}" readonly
+                  [class.is-invalid]="phoneNoCtrl.invalid && phoneNoCtrl.touched">
+              </label>
+
+            </div>
+
+          </div>
+          <hr>
+          <div class="row">
+            <h4>{{ 'TeamAssignment' | translate }}</h4>
+          </div>
+           <app-filter-select [criteria]="criteria" (search)="onFilterSearch($event)"></app-filter-select>
+        <div class="row py-2">
+          <div class="contentBody-grid">
+            <ejs-grid #grid *ngIf="gridHeader?.length"
+                      [dataSource]="dataSource"
+                      [allowPaging]="true"
+                      [pageSettings]="pageSettings"
+                      [allowSorting]="true"
+                      gridLines="Both"
+                      [selectionSettings]="selectionOptions"
+                      (actionBegin)="actionBegin($event)"
+                      (created)="dataBound($event)"
+                      [resizeSettings]="resizeSettings"
+                      [allowResizing]="true"
+                      >
+              <e-columns>
+                <ng-container *ngFor="let col of gridHeader">
+                  <e-column [field]="col.key | lowercaseFirst" [customAttributes]='customAttributes' [textAlign]="getTextAlign(col.type)" clipMode='EllipsisWithTooltip'
+                    [headerTextAlign]="'Center'" [width]="col.columnWidth || 0">
+
+                    <ng-template #headerTemplate>
+                        {{ col.key | translate}}
+                    </ng-template>
+
+                    <ng-template *ngIf="col.type === 'DateTime'" #template let-data>
+                        {{ data[col.key | lowercaseFirst] | localizedDate: (col.dateFormat || 'dd/MM/yyyy HH:mm:ss') }}
+                    </ng-template>
+
+                    <ng-template *ngIf="col.type === 'Date'" #template let-data>
+                        {{ data[col.key | lowercaseFirst] | localizedDate: (col.dateFormat || 'dd/MM/yyyy') }}
+                    </ng-template>
+
+                    <ng-template *ngIf="col.type === 'Enum'" #template let-data>
+                      <div [innerHTML]="data[col.key | lowercaseFirst] | translate | safeHtml"></div>
+                    </ng-template>
+
+                    <ng-template *ngIf="col.type === 'Integer'" #template let-data>
+                        {{ data[col.key | lowercaseFirst]}}
+                    </ng-template>
+
+                    <ng-template *ngIf="col.type === 'Decimal'" #template let-data>
+                        {{ data[col.key | lowercaseFirst] | number:'1.2-2' }}
+                    </ng-template>
+
+                    <ng-template *ngIf="col.type === 'String'" #template let-data>
+                        {{ data[col.key | lowercaseFirst] }}
+                    </ng-template>
+
+                  </e-column>
+                </ng-container>
+
+              </e-columns>
+
+              <ng-template #emptyRecordTemplate>
+                  <div class='emptyRecordTemplate'>
+                      <span>{{ 'EmptyRecord' | translate}}</span>
+                  </div>
+              </ng-template>
+            </ejs-grid>
+          </div>
+        </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+}
+@if(permission?.allowView == false){
+  <div class="d-flex justify-content-center align-items-center vh-100">
+    <h2 class="text-muted">{{'No Permission' | translate}}</h2>
+  </div>
+}
+

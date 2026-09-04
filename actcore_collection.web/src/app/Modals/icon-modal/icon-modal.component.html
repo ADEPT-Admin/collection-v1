@@ -1,0 +1,79 @@
+<div class="app-content">
+    <div class="container-fluid p-0">
+
+        <!-- Grid -->
+        <div class="row py-2">
+          <div class="contentBody">
+
+            <ejs-grid
+              #grid
+              [dataSource]="icons"
+              [allowPaging]="true"
+              [pageSettings]="pageSettings"
+              [allowSorting]="false"
+              gridLines="Both"
+              [selectionSettings]="selectionOptions"
+              (rowSelected)='rowSelectedclick($event)'
+              (rowDeselected)='rowSelectedclick($event)'
+              (recordDoubleClick)="doubleClick($event)"
+              (created)="dataBound($event)"
+              [resizeSettings]="resizeSettings"
+              [allowResizing]="true"
+            >
+              <e-columns>
+                <e-column field="name"
+                 width="120" [customAttributes]='customAttributes' headerTextAlign="Center">
+                  <ng-template #headerTemplate>
+                    {{ 'IconName' | translate }}
+                  </ng-template>
+                </e-column>
+
+
+
+                <e-column field="display"  width="180" [customAttributes]='customAttributes' headerTextAlign="Center">
+                  <ng-template #headerTemplate>
+                    {{ 'IconDisplay' | translate }}
+                  </ng-template>
+
+                  <ng-template #template let-data>
+                    <div class="text-center">
+                      <i class="{{data.code}}" ></i>
+                    </div>
+                  </ng-template>
+
+
+                </e-column>
+              </e-columns>
+
+              <ng-template #emptyRecordTemplate>
+                  <div class='emptyRecordTemplate'>
+                      <span>{{ 'EmptyRecord' | translate}}</span>
+                  </div>
+              </ng-template>
+
+
+            </ejs-grid>
+          </div>
+        </div>
+
+
+    </div>
+  </div>
+
+
+<!-- Footer -->
+<div modal-footer class="modal-footer border-top pt-2">
+  <button
+    ejs-button
+    cssClass="e-primary"
+    content="{{ 'OK' | translate }}"
+    (click)="closeWithData()"
+  ></button>
+  &nbsp;
+  <button
+    ejs-button
+    cssClass="e-secondary"
+    content="{{ 'Close' | translate }}"
+    (click)="close()"
+  ></button>
+</div>

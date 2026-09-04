@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col d-flex">
+    @if(showButton?.new?.show == true){
+      <button type="button" ejs-button class="ejs-button-left" cssClass="e-primary" iconCss="fa-solid fa-plus"
+        [disabled]="showButton.new.disabled" (click)="clickButtonNew()">{{ "New" | translate }}</button>
+    }
+    @if(showButton?.save?.show == true){
+      <button type="button" ejs-button class="ejs-button-left" cssClass="e-primary" iconCss="fa-solid fa-floppy-disk"
+        [disabled]='showButton.save.disabled' (onClick)="clickButtonSave()" appDebounceClick [debounceTime]="1000" >{{ 'Save' | translate }}</button>
+    }
+    @if(showButton?.delete?.show == true){
+    <button type="button" ejs-button class="ejs-button-left" cssClass="e-primary" iconCss="fa-solid fa-trash"
+      [disabled]='showButton.delete.disabled' (click)="clickButtonDelete()">{{ "Delete" | translate }}</button>
+    }
+    <div class="ms-auto d-flex">
+      @if(showButton?.back?.show == true){
+        <button type="button" ejs-button class="ejs-button-right" cssClass="e-primary" iconCss="fas fa-backward"
+          [disabled]="showButton.back.disabled" (click)="clickButtonBack()">{{ "Back" | translate }}</button>
+      }
+      @if(showButton?.cancel?.show == true){
+        <button type="button" ejs-button class="ejs-button-right" cssClass="e-primary" iconCss="fas fa-times"
+          [disabled]='showButton.cancel.disabled' (click)="clickButtonCancel()">{{ "Cancel" | translate }}</button>
+      }
+    </div>
+  </div>
+</div>
+<hr/>

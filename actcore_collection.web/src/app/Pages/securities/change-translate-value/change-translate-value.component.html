@@ -1,0 +1,90 @@
+@if (permission?.allowView) {
+<div class="app-content-header">
+  <div class="container-fluid">
+    <app-header [header]="header"></app-header>
+  </div>
+
+  <div class="app-content">
+    <div class="container-fluid p-0">
+      <div class="card p-3">
+
+        <app-filter-select [criteria]="criteria" (search)="onFilterSearch($event)"></app-filter-select>
+
+        <div class="row py-2">
+          <div class="contentBody">
+            <ejs-grid #grid [dataSource]="dataSource" [allowPaging]="true" [pageSettings]="pageSettings"
+              [allowSorting]="true" gridLines="Both" [selectionSettings]="selectionOptions"
+              (actionBegin)="actionBegin($event)" (recordDoubleClick)="doubleClick($event)"
+              (created)="dataBound($event)"[resizeSettings]="resizeSettings" [allowResizing]="true">
+              <e-columns>
+                <ng-container *ngFor="let col of gridHeader">
+                  <e-column [field]="col.key | lowercaseFirst" [customAttributes]='customAttributes' [textAlign]="getTextAlign(col.type)" clipMode='EllipsisWithTooltip'
+                    [headerTextAlign]="'Center'" [width]="col.columnWidth || 0">
+
+                    <ng-template #headerTemplate>
+                        {{ col.key | translate}}
+                    </ng-template>
+
+                    <ng-template *ngIf="col.type === 'DateTime'" #template let-data>
+                        {{ data[col.key | lowercaseFirst] | localizedDate: (col.dateFormat || 'dd/MM/yyyy HH:mm:ss') }}
+                    </ng-template>
+
+                    <ng-template *ngIf="col.type === 'Date'" #template let-data>
+                        {{ data[col.key | lowercaseFirst] | localizedDate: (col.dateFormat || 'dd/MM/yyyy') }}
+                    </ng-template>
+
+                    <ng-template *ngIf="col.type === 'Enum'" #template let-data>
+                      <div [innerHTML]="data[col.key | lowercaseFirst] | translate | safeHtml"></div>
+                    </ng-template>
+
+                    <ng-template *ngIf="col.type === 'Integer'" #template let-data>
+                        {{ data[col.key | lowercaseFirst]}}
+                    </ng-template>
+
+                    <ng-template *ngIf="col.type === 'Decimal'" #template let-data>
+                        {{ data[col.key | lowercaseFirst] | number:'1.2-2' }}
+                    </ng-template>
+
+                    <ng-template *ngIf="col.type === 'String'" #template let-data>
+                        {{ data[col.key | lowercaseFirst] }}
+                    </ng-template>
+                  </e-column>
+                </ng-container>
+
+                <e-column headerText="" textAlign="Center" [allowSorting]="false" width="120" freeze="Right"
+                  [customAttributes]='customAttributes'>
+                  <ng-template #template let-data>
+                    <button ejs-button cssClass="e-primary e-small"
+                      [iconCss]="permission.allowEdit ? 'fa-solid fa-pen-to-square' : 'fa-solid fa-eye'"
+                      (click)="edit(data)">
+                    </button>&nbsp;
+
+
+                      <button ejs-button cssClass="e-primary e-small"
+                      [iconCss]="'fa-solid fa-repeat'"
+                      (click)="reset(data)">{{ 'Reset' | translate }}
+                    </button>
+                  </ng-template>
+                </e-column>
+              </e-columns>
+              <ng-template #emptyRecordTemplate>
+                <div class='emptyRecordTemplate'>
+                  <span>{{ 'EmptyRecord' | translate}}</span>
+                </div>
+              </ng-template>
+            </ejs-grid>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+}
+
+
+@if (permission?.allowView === false) {
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <h2 class="text-muted">{{'No Permission' | translate}}</h2>
+</div>
+}

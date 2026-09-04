@@ -1,0 +1,251 @@
+@if (permission?.allowView) {
+<div class="app-content-header">
+  <div class="container-fluid">
+    <app-header [header]="header"></app-header>
+  </div>
+</div>
+<div class="app-content">
+  <div class="container-fluid p-0">
+
+    <form #myForm="ngForm">
+      <div class="contentBody">
+        <div class="card p-3">
+          <div class="row">
+            <div class="col d-flex">
+
+              <button *ngIf="actionListbtn?.save" type="button" ejs-button class="ejs-button-left" cssClass="e-primary"
+                iconCss="fa-solid fa-floppy-disk"
+                [disabled]="!form?.dirty || !(permission?.allowEdit || detail.isLockUser)" (click)="onSave()"
+                appDebounceClick>
+                {{ 'Save' | translate }}
+              </button>
+
+              <button *ngIf="actionListbtn?.delete" type="button" ejs-button class="ejs-button-left"
+                cssClass="e-primary" iconCss="fa-solid fa-trash"
+                [disabled]="!permission?.allowDelete || detail.isLockUser" (click)="doDel()">
+                {{ "Delete" | translate }}
+              </button>
+
+              <button type="button" ejs-button class="ejs-button-left" cssClass="e-primary"
+                iconCss="fa-solid fa-lock-open" (click)="unlockUser()" [disabled]="!detail.isLockUser">
+                {{ "UnlockUser" | translate }}
+              </button>
+
+              <div class="ms-auto d-flex">
+
+                <button type="button" ejs-button class="ejs-button-right" cssClass="e-primary"
+                  iconCss="fas fa-backward" (click)="doBack()">
+                  {{ "Back" | translate }}
+                </button>
+
+                <button *ngIf="actionListbtn?.cancel" type="button" ejs-button class="ejs-button-right"
+                  cssClass="e-primary" iconCss="fas fa-times" [disabled]="!form?.dirty" (click)="doCancel()">
+                  {{ "Cancel" | translate }}
+                </button>
+
+              </div>
+            </div>
+          </div>
+          <hr/>
+
+          <div class="row">
+
+            <div class="col-12 col-lg-3 mb-2">
+              <label class="form-label bold d-block">
+                {{ 'UserName' | translate }}
+                @if (detail.isLockUser) {<i class="fa-solid fa-lock"></i>}
+
+                <input class="form-control" type="text" name="userName" id="userName" autocomplete="userName"
+                  [(ngModel)]="detail.userName" #userNameCtrl="ngModel" placeholder="{{ 'UserName' | translate }}"
+                  readonly [class.is-invalid]="!detail.userName && userNameCtrl.invalid && userNameCtrl.touched">
+              </label>
+
+              @if (detail.isLockUser) {
+              <div class="mt-n2">
+                <strong>
+                  <small class="text-danger">{{ 'User Locked' | translate}}</small>
+                </strong>
+              </div>
+            }
+            </div>
+
+            <div class="col-12 col-lg-3 mb-2">
+              <label class="form-label bold d-block">
+                {{ 'EmployeeId' | translate }}
+                <input class="form-control" type="text" name="employeeId" id="employeeId" autocomplete="employeeId"
+                  [(ngModel)]="detail.employeeId" #employeeIdCtrl="ngModel" placeholder="{{ 'EmployeeId' | translate }}"
+                  readonly [class.is-invalid]="!detail.employeeId && employeeIdCtrl.invalid && employeeIdCtrl.touched">
+              </label>
+            </div>
+
+
+            <div class="col-12 col-lg-3 mb-2">
+              <label class="form-label bold d-block">
+                {{ 'EmployeeName' | translate }}
+                <input class="form-control" type="text" name="employeeName" id="employeeName"
+                  autocomplete="employeeName" [(ngModel)]="detailEmployee.employeeName" #employeeNameCtrl="ngModel"
+                  placeholder="{{ 'EmployeeName' | translate }}" readonly
+                  [class.is-invalid]="!detailEmployee.employeeName && employeeNameCtrl.invalid && employeeNameCtrl.touched">
+              </label>
+            </div>
+            <div class="col-12 col-lg-3 mb-2">
+              <label class="form-label bold d-block">
+                {{ 'UserGroup' | translate }}
+
+                <div class="e-float-input e-input mt-0">
+                  <app-select [(ngModel)]="detail.userGroupIds" name="userGroupName" [options]="userGroupslist"
+                    placeholder="{{ 'UserGroup' | translate }}" #userGroupCtrl="ngModel" required
+                    (valueChange)="onChange($event)"
+                    [invalid]="!detail.userGroupIds && userGroupCtrl.invalid && (userGroupCtrl.dirty || userGroupCtrl.touched)">
+                  </app-select>
+                </div>
+                <div class="text-danger mt-1"
+                  *ngIf="userGroupCtrl.invalid && (userGroupCtrl.dirty || userGroupCtrl.touched)">
+                  <div *ngIf="userGroupCtrl.errors?.['required']">
+                    {{ 'UserGroup' | translate }} {{ 'is required' | translate }}
+                  </div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-12 col-lg-3 mb-2">
+              <label class="form-label bold d-block">{{'Department' | translate }}
+                <input class="form-control" #Department type="text" tabindex="0" name="department" id="department"
+                  readonly placeholder="{{ 'Department' | translate }}" [(ngModel)]="detailEmployee.department">
+              </label>
+            </div>
+
+
+            <div class="col-12 col-lg-3 mb-2">
+              <label class="form-label bold d-block">{{'Position' | translate }}
+                <input class="form-control" #Position type="text" tabindex="0" name="position" id="position" readonly
+                  placeholder="{{ 'Position' | translate }}" [(ngModel)]="detailEmployee.position">
+              </label>
+            </div>
+
+            <div class="col-12 col-lg-3 mb-2">
+              <label class="form-label bold d-block">{{'Email' | translate }}
+                <input class="form-control" #Email type="text" tabindex="0" name="email" id="email" autocomplete="email"
+                  readonly placeholder="{{ 'email' | translate }}" [(ngModel)]="detailEmployee.email">
+              </label>
+            </div>
+
+            <div class="col-12 col-lg-3 mb-2">
+              <label class="form-label bold d-block">{{'PhoneNumber' | translate }}
+                <input class="form-control" #PhoneNumber type="text" tabindex="0" name="phoneNo" id="phoneNo" readonly
+                  placeholder="{{ 'PhoneNumber' | translate }}" [(ngModel)]="detailEmployee.phoneNo">
+              </label>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-12 col-lg-3 mb-2">
+              <label class="form-label bold d-block">{{ 'EffectiveDate' | translate }}
+                <div class="d-flex flex-wrap gap-4">
+                  <app-calendar [(ngModel)]="detail.effectiveDate" name="effectiveDate" [format]="'dd/MM/yyyy'"
+                    [placeholder]="'EffectiveDate'" #effectiveDateCtrl="ngModel" [required]="true"
+                    [maxDate]="maxStartDate" (valueChange)="onStartDateChange($event)"
+                    [class.is-invalid]="effectiveDateCtrl.invalid && (effectiveDateCtrl.dirty || effectiveDateCtrl.touched)">
+                  </app-calendar>
+                </div>
+                <div class="text-danger mt-1"
+                  *ngIf="effectiveDateCtrl.invalid && (effectiveDateCtrl.dirty || effectiveDateCtrl.touched)">
+                  <div *ngIf="effectiveDateCtrl.errors?.['required']">
+                    {{ 'EffectiveDate' | translate }} {{ 'is required' | translate }}
+                  </div>
+                </div>
+              </label>
+            </div>
+
+
+            <div class="col-12 col-lg-3 mb-2">
+              <label class="form-label bold d-block">{{ 'ExpirationDate' | translate }}
+                <div class="d-flex flex-wrap gap-4">
+                  <app-calendar [(ngModel)]="detail.expireDate" name="expiryDate" [format]="'dd/MM/yyyy'"
+                    [minDate]="minEndDate" (valueChange)="onEndDateChange($event)"
+                    [placeholder]="'ExpirationDate'"></app-calendar>
+                </div>
+              </label>
+            </div>
+
+            <div class="col-12 col-lg-3 mb-2">&nbsp;
+              <div class="d-flex flex-wrap gap-4">
+                <div class="d-flex items-center gap-2">
+                  <div class="col-12 py-2">
+                    <label class="form-label bold d-block">
+                      <input class="form-check-input" type="checkbox" id="activeStatus" name="activeStatus"
+                        [(ngModel)]="detail.isActive" />
+                      &nbsp;<strong class="ml-2">{{ 'ActiveStatus' | translate }}</strong>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" *ngIf="id !== 'new'">
+            <div class="col-12 col-lg-4 mb-2 mt-2">
+              <div class="d-flex flex-wrap gap-4">
+                <div class="d-flex items-center gap-2">
+                  <button ejs-button cssClass="e-primary" [disabled]="!permission.allowEdit || detail.isLockUser"
+                    (click)="resetPassword()">
+                    {{ 'ResetPassword' | translate }}
+                  </button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-2 mt-2">
+            <div class="col-12">
+              <strong>{{'AccessRequirements' | translate }}</strong>
+            </div>
+          </div>
+          <hr>
+
+          <div class="row">
+            <div class="col-12 col-lg-3 mb-2">
+              <label class="form-label bold d-block">{{'LastModifiedBy' | translate }}
+                <input class="form-control" #LastModifiedBy type="text" tabindex="0" name="LastModifiedBy"
+                  id="LastModifiedBy" placeholder="{{ 'LastModifiedBy' | translate }}" [(ngModel)]="detail.updatedBy"
+                  readonly>
+              </label>
+            </div>
+
+            <div class="col-12 col-lg-3 mb-2">
+              <label class="form-label bold d-block">{{ 'LastModifiedDate'| translate}}
+                <input class="form-control" type="text" name="lastModifiedDate" placeholder="{{ 'LastModifiedDate' | translate }}"
+                  [value]="detail.updatedDate | date: 'dd/MM/yyyy HH:mm:ss'" readonly>
+              </label>
+            </div>
+
+            <div class="col-12 col-lg-3 mb-2">
+              <label class="form-label bold d-block">{{'LastLoginDate' | translate }}
+                <input class="form-control" #LastLoginDate type="text" tabindex="0" name="LastLoginDate"
+                  id="LastLoginDate" placeholder="{{ 'LastLoginDate' | translate }}" [(ngModel)]="detail.lastSignOnDate"
+                  readonly>
+              </label>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </form>
+
+
+  </div>
+</div>
+}
+
+
+@if (permission?.allowView === false) {
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <h2 class="text-muted">{{'No Permission' | translate}}</h2>
+</div>
+}

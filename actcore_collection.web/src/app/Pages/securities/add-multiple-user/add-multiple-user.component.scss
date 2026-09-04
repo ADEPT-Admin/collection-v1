@@ -1,0 +1,19 @@
+.contentBody {
+  height: auto;
+}
+
+
+.my-datetimepicker {
+  width: 100%; /* หรือ 500px */
+}
+
+
+::ng-deep .my-datetimepicker.input .e-input {
+  background-color: #ffffff !important; /* ขาว */
+}
+
+// .sidebar-expand-lg.layout-fixed .app-main {
+//     flex: 1 1 auto;
+//     overflow: hidden !important;;
+//   }
+

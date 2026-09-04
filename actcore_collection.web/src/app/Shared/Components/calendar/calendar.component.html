@@ -1,0 +1,133 @@
+<div class="input-group thai-dtp calendar-wrapper" #wrapper [class.readonly]="readonly" [class.disabled]="disabled">
+
+  @if (enableMark) {
+    <input
+    class="form-control"
+    [readonly]="readonly"
+    [value]="displayValue"
+    [mask]="dateMask"
+    [dropSpecialCharacters]="false"
+    placeholder="{{  placeholder | translate }}"
+    (focus)="onFocus()"
+    (blur)="onBlur($event)"
+    name="inputCalendar"
+    [placeHolderCharacter]="'_'"
+    [showMaskTyped]="isFocused"
+    [disabled]="disabled"
+    autocomplete="off"
+  />
+  }
+
+  @if (!enableMark){
+    <input
+    class="form-control"
+    readonly
+    [value]="displayValue"
+
+
+    placeholder="{{  placeholder | translate }}"
+
+    name="calendar"
+  />
+  }
+  <span class="input-group-text clearBtn" *ngIf="displayValue && (!readonly && !disabled)" (click)="clear()">
+    <i class="fa-solid fa-xmark pointer "></i>
+  </span>
+  <span class="input-group-text calendarBtn " (click)="toggle($event)">
+    <i class="fa-regular fa-calendar pointer"></i>
+  </span>
+
+  <div class="dropdown-menu show calendar-popup" *ngIf="open" [class.top]="openUpwards"  [class.bottom]="!openUpwards">
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-2">
+
+      <i class="fa-solid fa-angle-left pointer" (click)="prevMonth()" [class.disabled]="!canGoPrev()"></i>
+
+      <!-- Month -->
+      <select
+        class="form-select form-select-sm ms-2 me-1 text-center"
+        [(ngModel)]="month">
+        <option
+          *ngFor="let m of monthOptions; let i = index"
+          [ngValue]="i">
+          {{ m }}
+        </option>
+      </select>
+
+      <!-- Year -->
+      <select
+        class="form-select form-select-sm ms-1 me-2 text-center"
+        [(ngModel)]="year">
+        <option *ngFor="let y of years" [ngValue]="y">
+          {{ currentLang === 'th' ? y + 543 : y }}
+        </option>
+      </select>
+
+      <i class="fa-solid fa-angle-right pointer" (click)="nextMonth()" [class.disabled]="!canGoNext()"></i>
+
+    </div>
+
+    <!-- Weekdays -->
+    <div class="week">
+      <span *ngFor="let w of weekdays">{{ w }}</span>
+    </div>
+
+    <!-- Calendar -->
+    <div class="days">
+      <button
+        *ngFor="let d of calendarDays"
+        class="btn btn-sm day"
+        [disabled]="d === null"
+        [class.btn-primary]="d && isSelected(d)"
+        [class.btn-outline-secondary]="d && !isSelected(d)"
+        (click)="d && selectDate(d)"
+        [disabled]="!d || !isDateSelectable(d)"
+        [class.disabled]="d && !isDateSelectable(d)"
+        [class.invisible]="!d"
+        type="button"
+        >
+        {{ d || '' }}
+      </button>
+    </div>
+    <!-- Time -->
+    <div *ngIf="enableTime" class="time border-top mt-2 pt-2">
+      <select
+        class="form-select form-select-sm"
+        [(ngModel)]="hour"
+        (change)="updateTime()">
+        <option *ngFor="let h of hours" [value]="h">{{ pad(h) }}</option>
+      </select>
+
+      :
+      <select
+        class="form-select form-select-sm"
+        [(ngModel)]="minute"
+        (change)="updateTime()">
+        <option *ngFor="let m of minutes" [value]="m">{{ pad(m) }}</option>
+      </select>
+    </div>
+
+    <div class="calendar-footer d-flex justify-content-between  mt-2 text-center">
+
+      <button
+        *ngIf="showToday"
+        class="btn btn-sm btn-outline-primary"
+        type="button"
+        (click)="selectToday()"
+        [disabled]="!isTodayEnabled()">
+        {{ 'Today' | translate }}
+      </button>
+
+      <button
+        class="btn btn-sm btn-outline-secondary"
+        type="button"
+        (click)="clear()" >
+        {{ 'Clear' | translate }}
+
+      </button>
+
+    </div>
+
+
+  </div>
+</div>

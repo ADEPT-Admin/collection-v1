@@ -1,0 +1,71 @@
+@ACTCore.CollectionService.API_HostAddress = https://localhost:7002
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImFkbWluIiwicm9sZSI6IiIsImp0aSI6IkpUSTI1NTYzOThjLTJkZTktNDc0OS05YjgyLTExMTQwNzc0ZGEzNiIsInN1YiI6ImFkbWluIiwibmJmIjoxNzUwMjM1NTUxLCJleHAiOjE3NTA4NDAzNTEsImlhdCI6MTc1MDIzNTU1MSwiaXNzIjoiaHR0cHM6Ly9hdXRoLmFkYXB0aXZhdGUuY29tIiwiYXVkIjoiaHR0cHM6Ly9hcGkuYWRhcHRpdmF0ZS5jb20ifQ.aj-kptt5sOfwx4Bd7K-gTDpjgHZWyx2tD3kGh2L9Vx4
+
+POST {{ACTCore.CollectionService.API_HostAddress}}/api/v1/AreaCode/getlist
+Authorization: Bearer {{token}}
+Accept: application/json
+
+###
+
+##### ColWorkGroup #####
+### Get List
+POST {{ACTCore.CollectionService.API_HostAddress}}/api/v1/ColWorkGroup/getlist
+Authorization: Bearer {{token}}
+Accept: application/json
+###
+
+### Search
+POST {{ACTCore.CollectionService.API_HostAddress}}/api/v1/ColWorkGroup/search
+Authorization: Bearer {{token}}
+Accept: application/json
+Content-Type: application/json
+
+{
+  "searchBy": "workgroupname",
+  "searchValue": "ขาดทุน"
+}
+###
+
+### Get By Id
+POST {{ACTCore.CollectionService.API_HostAddress}}/api/v1/ColWorkGroup/getbyid
+Authorization: Bearer {{token}}
+Accept: application/json
+Content-Type: application/json
+
+{
+  "workGroupId": 4
+}
+###
+
+### Create
+POST {{ACTCore.CollectionService.API_HostAddress}}/api/v1/ColWorkGroup/create
+Authorization: Bearer {{token}}
+Accept: application/json
+Content-Type: application/json
+{
+  "workGroupCode": "WG001",
+  "workGroupName": "กลุ่มงานทดสอบ",
+  "isActive": true
+}
+###
+### Update
+POST {{ACTCore.CollectionService.API_HostAddress}}/api/v1/ColWorkGroup/update
+Authorization: Bearer {{token}}
+Accept: application/json
+Content-Type: application/json
+{
+  "workGroupId": 4,
+  "workGroupCode": "WG001xxx",
+  "workGroupName": "กลุ่มงานทดสอบแก้ไข",
+  "isActive": false
+}
+###
+### Delete
+POST {{ACTCore.CollectionService.API_HostAddress}}/api/v1/ColWorkGroup/delete
+Authorization: Bearer {{token}}
+Accept: application/json
+Content-Type: application/json
+{
+  "workGroupId": 4
+}
+###

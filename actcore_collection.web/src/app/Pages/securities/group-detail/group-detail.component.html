@@ -1,0 +1,291 @@
+<div *ngIf="permission?.allowView; else noPermission">
+  <div class="app-content-header">
+    <div class="container-fluid">
+      <app-header [header]="header"></app-header>
+    </div>
+  </div>
+  <div class="app-content">
+      <div class="container-fluid p-0">
+        <form #myForm="ngForm">
+          <div class="contentBody">
+            <div class="card p-3">
+              <app-toolbar
+                class="mb-2"
+                [showButton]="actionListbtn"
+                [dirty]="form?.dirty"
+                (clickBtnNew)="doNew()"
+                (clickBtnSave)="doSave()"
+                (clickBtnDelete)="doDel()"
+                (clickBtnCancel)="doCancel()"
+                (clickBtnBack)="doBack()"
+
+
+              ></app-toolbar>
+
+              <div class="row">
+              <div class="col-12 col-lg-4 mb-2">
+                <label class="form-label bold d-block">{{ 'UserGroupCode' | translate }}
+                <div class="e-float-input e-input mt-0">
+                  <input class="form-control" type="text" name="userGroupCode" id="userGroupCode" [(ngModel)]="detail.userGroupCode"
+                    #userGroupCodeCtrl="ngModel" placeholder="{{ 'UserGroupCode' | translate }}" required appPasswordBtn
+                    [class.is-invalid]="!detail.userGroupCode && userGroupCodeCtrl.invalid && userGroupCodeCtrl.touched">
+                </div>
+                <div class="text-danger mt-1"
+                  *ngIf="userGroupCodeCtrl.invalid && (userGroupCodeCtrl.dirty || userGroupCodeCtrl.touched)">
+                  <div *ngIf="userGroupCodeCtrl.errors?.['required']">
+                    {{ 'UserGroupCode' | translate }}  {{ 'is required' | translate }}
+                  </div>
+                </div>
+                </label>
+              </div>
+
+                <div class="col-12 col-lg-4 mb-2">
+                  <label class="form-label bold d-block"> {{ 'UserGroupName' | translate }}
+                  <div class="e-float-input e-input mt-0">
+                    <input class="form-control" type="text" name="userGroupName" id="userGroupName" [(ngModel)]="detail.userGroupName"
+                      #userGroupNameCtrl="ngModel" placeholder="{{ 'UserGroupName' | translate }}" required appPasswordBtn
+                      [class.is-invalid]="!detail.userGroupName && userGroupNameCtrl.invalid && userGroupNameCtrl.touched">
+                  </div>
+                  <div class="text-danger mt-1"
+                    *ngIf="userGroupNameCtrl.invalid && (userGroupNameCtrl.dirty || userGroupNameCtrl.touched)">
+                    <div *ngIf="userGroupNameCtrl.errors?.['required']">
+                      {{ 'UserGroupName' | translate }} {{ 'is required' | translate }}
+                    </div>
+                  </div>
+                  </label>
+                </div>
+
+                <div class="col-12 col-lg-4 mb-2 bold">
+                  {{ 'Status' | translate}}
+                  <div class="d-flex flex-wrap gap-4">
+                    <div class="d-flex items-center gap-2">
+                      <div class="col-12 py-2">
+                        <label class="form-label d-block">
+                          <input class="form-check-input" type="checkbox" id="isActive" name="isActive" [(ngModel)]="detail.isActive" />
+                          &nbsp;<strong class="ml-2">{{ 'Active' | translate }}</strong>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12 col-lg-12 mb-2">
+                  <label  class="form-label bold d-block">{{'Description' | translate }}
+                  <textarea name="description" class="form-control w-80" id="description" [(ngModel)]="detail.description"></textarea>
+                  </label>
+                </div>
+              </div>
+
+
+              <div class="row mb-2">
+                <div class="col-12">
+                  <strong>{{ 'Permission' | translate}}</strong>
+                </div>
+              </div>
+
+              <div class="row mb-3"  >
+                <div class="col-12">
+
+                  <ejs-treegrid
+                    [dataSource]="menuPermission"
+                    childMapping="children"
+                    [treeColumnIndex]="0"
+                    [allowSelection]="false"
+                    [allowSorting]="false"
+                    [allowPaging]="false"
+                    [allowFiltering]="false"
+                    (rowDataBound)="onRowDataBound($event)"
+                    #treegrid
+                  >
+                    <e-columns>
+                      <!-- Permission/Menu column -->
+
+                      <e-column  width="250" [customAttributes]='customAttributes'>
+
+                        <ng-template #headerTemplate>
+                          {{ 'Menu / Permission' | translate }}
+                        </ng-template>
+
+
+                        <ng-template #template let-data>
+                          <span
+                            [ngClass]="{
+                              'font-bold bg-gray-200 block px-2 py-1': data.itemLevel === 1
+                            }"
+                          >
+                            {{ data.itemName[lang] }}
+                          </span>
+                        </ng-template>
+                      </e-column>
+
+
+                      <e-column  textAlign="Center" width="120" [customAttributes]='customAttributes'>
+
+
+                        <ng-template #headerTemplate>
+                          {{ 'AllowAccess' | translate }}
+                        </ng-template>
+
+                        <ng-template #template let-data>
+
+                          <ng-container *ngIf="data.children?.length">
+                            <input type="checkbox"
+                                  [checked]="isAllChecked(data.children, 'allowAccess', data)"
+                                  [indeterminate]="isIndeterminate(data.children, 'allowAccess', data)"
+                                  (change)="toggleChildren(data, 'allowAccess', $event)"
+                                  name="checkall-access-{{data.itemId}}"
+                                  id="checkall-access-{{data.itemId}}"
+                                  [disabled]="disableCheckAll"
+                                  />
+                          </ng-container>
+
+                          <!-- <ng-container *ngIf="data.itemLevel !== 1 || !data.children?.length"> -->
+                          <ng-container *ngIf="!data.children?.length">
+
+                            <input type="checkbox" [(ngModel)]="data.allowAccess" name="allowAccess-{{ data.itemId }}" id="allowAccess-{{ data.itemId }}" (change)="onCheckboxChange(data, 'allowAccess' , $event)"  />
+                          </ng-container>
+                        </ng-template>
+                      </e-column>
+
+
+                      <e-column  textAlign="Center" width="120" [customAttributes]='customAttributes'>
+
+
+                        <ng-template #headerTemplate>
+                          {{ 'View' | translate }}
+                        </ng-template>
+
+                        <ng-template #template let-data>
+
+                          <ng-container *ngIf="data.children?.length">
+                            <input type="checkbox"
+                                  [checked]="isAllChecked(data.children, 'allowView', data)"
+                                  [indeterminate]="isIndeterminate(data.children, 'allowView', data)"
+                                  (change)="toggleChildren(data, 'allowView', $event)"
+                                  name="checkall-view-{{data.itemId}}"
+                                  id="checkall-view-{{data.itemId}}"
+                                  [disabled]="disableCheckAll"
+                                  />
+                          </ng-container>
+
+                          <!-- <ng-container *ngIf="data.itemLevel !== 1 || !data.children?.length"> -->
+                          <ng-container *ngIf="!data.children?.length">
+
+                            <input type="checkbox" [(ngModel)]="data.allowView" name="allowView-{{ data.itemId }}" id="allowView-{{ data.itemId }}" (change)="onCheckboxChange(data, 'allowView' , $event)"  [disabled]="!data.allowAccess" />
+
+
+                          </ng-container>
+                        </ng-template>
+                      </e-column>
+
+                      <!-- Allow New -->
+                      <e-column  textAlign="Center" width="120" [customAttributes]='customAttributes'>
+
+                        <ng-template #headerTemplate>
+                          {{ 'New' | translate }}
+                        </ng-template>
+
+
+                        <ng-template #template let-data>
+
+                          <ng-container *ngIf="data.children?.length">
+                            <input type="checkbox"
+                                  [checked]="isAllChecked(data.children  , 'allowNew', data )"
+                                  [indeterminate]="isIndeterminate(data.children, 'allowNew' , data )"
+                                  (change)="toggleChildren(data, 'allowNew', $event)"
+                                  name="checkall-new-{{data.itemId}}"
+                                  id="checkall-new-{{data.itemId}}"
+                                  [disabled]="disableCheckAll"
+                                  />
+                          </ng-container>
+
+
+                          <!-- <ng-container *ngIf="data.itemLevel !== 1 || !data.children?.length"> -->
+                          <ng-container *ngIf="!data.children?.length">
+                            <input type="checkbox" [(ngModel)]="data.allowNew" name="allowNew-{{ data.itemId }}" id="allowNew-{{ data.itemId }}" (change)="onCheckboxChange(data, 'allowNew' , $event)" [disabled]="!data.allowAccess" />
+                          </ng-container>
+                        </ng-template>
+                      </e-column>
+
+                      <!-- Allow Save -->
+                      <e-column  textAlign="Center" width="120" [customAttributes]='customAttributes'>
+
+                        <ng-template #headerTemplate>
+                          {{ 'Edit' | translate }}
+                        </ng-template>
+
+                        <ng-template #template let-data>
+
+                          <ng-container *ngIf="data.children?.length">
+                            <input type="checkbox"
+                                  [checked]="isAllChecked(data.children, 'allowEdit', data)"
+                                  [indeterminate]="isIndeterminate(data.children, 'allowEdit', data)"
+                                  (change)="toggleChildren(data, 'allowEdit', $event)"
+                                  name="checkall-edit-{{data.itemId}}"
+                                  id="checkall-edit-{{data.itemId}}"
+                                  [disabled]="disableCheckAll"
+                                  />
+                          </ng-container>
+
+
+                          <!-- <ng-container *ngIf="data.itemLevel !== 1 || !data.children?.length"> -->
+                          <ng-container *ngIf="!data.children?.length">
+
+                            <input type="checkbox" [(ngModel)]="data.allowEdit" name="allowEdit-{{ data.itemId }}" id="allowEdit-{{ data.itemId }}" (change)="onCheckboxChange(data, 'allowEdit' , $event)" [disabled]="!data.allowAccess" />
+                          </ng-container>
+                        </ng-template>
+                      </e-column>
+
+                      <!-- Allow Delete -->
+                      <e-column  textAlign="Center" width="120" [customAttributes]='customAttributes'>
+
+                        <ng-template #headerTemplate>
+                          {{ 'Delete' | translate }}
+                        </ng-template>
+
+
+                        <ng-template #template let-data>
+
+                          <ng-container *ngIf="data.children?.length">
+                            <input type="checkbox"
+                                  [checked]="isAllChecked(data.children, 'allowDelete', data)"
+                                  [indeterminate]="isIndeterminate(data.children, 'allowDelete', data)"
+                                  (change)="toggleChildren(data, 'allowDelete', $event)"
+                                  name="checkall-delete-{{data.itemId}}"
+                                  id="checkall-delete-{{data.itemId}}"
+                                  [disabled]="disableCheckAll"
+                                  />
+                          </ng-container>
+
+
+                          <!-- <ng-container *ngIf="data.itemLevel !== 1 || !data.children?.length"> -->
+                          <ng-container *ngIf="!data.children?.length">
+
+                            <input type="checkbox" [(ngModel)]="data.allowDelete" name="allowDelete-{{ data.itemId }}" id="allowDelete-{{ data.itemId }}" (change)="onCheckboxChange(data, 'allowDelete', $event)" [disabled]="!data.allowAccess" />
+
+                          </ng-container>
+                        </ng-template>
+                      </e-column>
+
+
+
+                    </e-columns>
+                  </ejs-treegrid>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+  </div>
+</div>
+
+
+<ng-template #noPermission>
+  <div class="d-flex justify-content-center align-items-center vh-100">
+    <h2 class="text-muted">{{'No Permission' | translate}}</h2>
+  </div>
+</ng-template>

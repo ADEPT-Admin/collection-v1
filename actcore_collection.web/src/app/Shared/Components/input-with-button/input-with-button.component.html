@@ -1,0 +1,49 @@
+<div class="input-group" [class.disabled]="disabled" [class.is-invalid]="invalid">
+
+  @if (!displayHtml) {
+    <input
+      #input
+      type="text"
+      class="form-control"
+      [placeholder]="placeholder"
+      [value]="value"
+      [readonly]="true"
+      (input)="onInputChange(input.value)"
+      [attr.name]="name"
+      [id]="id"
+      [disabled]="disabled"
+    >
+  }
+  @if (displayHtml) {
+    <div class="form-control">
+      @if(value){
+        <span [innerHTML]="value | safeHtml" ></span>
+      }
+
+      @else {
+        <span class="text-placeholder">{{ placeholder }}</span>
+      }
+
+    </div>
+  }
+
+  @if(value && displayHtml){
+    <button style="width: 38px;"
+      type="button"
+      class="btn btn-outline-secondary"
+      (click)="onClearClick()"
+      [disabled]="disabled">
+      <i [class]="'fa-solid fa-xmark'"></i>
+    </button>
+  }
+
+
+  <button style="width: 38px;"
+    type="button"
+    class="btn btn-outline-secondary"
+    (click)="onButtonClick()"
+    [disabled]="disabled">
+    <i [class]="icon"></i>
+  </button>
+</div>
+

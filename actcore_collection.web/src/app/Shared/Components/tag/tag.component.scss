@@ -1,0 +1,18 @@
+.app-tag {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 4px;
+  color: #fff;
+
+  &.tag-default { background-color: #6c757d; }
+  &.tag-success { background-color: #28a745; }
+  &.tag-info    { background-color: #17a2b8; }
+  &.tag-warning { background-color: #ffc107; color: #212529; }
+  &.tag-danger  { background-color: #dc3545; }
+
+  &.tag-rounded {
+    border-radius: 999px;
+  }
+}

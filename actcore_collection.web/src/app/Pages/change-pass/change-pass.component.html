@@ -1,0 +1,93 @@
+<div class="container-fluid px-2">
+  <div class="card matCard-login setCssLogin p-3">
+   <div class="p-2">
+       <div class="row justify-content-between">
+         <div class="col-4 text-align-left">
+           <img width="80" height="80" src="assets/icons/iconLogin/a_3dlogo_and_Name_600x600_2.png" alt="">
+         </div>
+         <div class="col-3"></div>
+         <div class="col-5 col4-textstyle-login" style="text-align: -webkit-right;">
+           <div class="lang text-start">
+            <small for="lang" class="form-label">{{ 'Language' | translate }}</small>
+             <select class="form-select"  (change)="dropdownLanguage_OnChange($event)">
+              @for(item of dropdownLanguage; track $index){
+                <option value="{{ item.value }}" [selected]="item.value == currentLang">{{ item.text}}</option>
+              }
+
+            </select>
+
+           </div>
+         </div>
+       </div>
+       <div class="row">
+         <div class="col-12">
+           <div class="positiontext-login">
+             <img  height="30" src="assets/icons/iconLogin/ADEPT_logo2023_v1_style2.png" alt="">
+           </div>
+         </div>
+       </div>
+       <div class="row justify-content-between">
+         <div class="col-4 text-align-right-margin-topLoggin">
+           <img width="250" height="250" src="assets/icons/iconLogin/Circuit-board-tree_left.png" alt="">
+         </div>
+         <div class="col-4 mt-4">
+           <div class="font-size-text-align-centerLoggin">Collection Management</div>
+           <form #myForm="ngForm" (submit)="changePass()">
+
+
+
+             <small for="userName" class="form-label">{{ 'UserID' | translate }}</small>
+
+             <div class="e-float-input e-input mt-0 mb-1">
+               <input class="form-control" #Username type="text" tabindex="0" name="userName" id="userName" [readOnly]="true" placeholder="{{ 'UserID' | translate }}" [(ngModel)]="userName"  >
+             </div>
+
+             <small for="password" class="form-label">{{ 'Password' | translate }}</small>
+
+             <div class="e-float-input e-input mt-0">
+               <input class="form-control" appPasswordBtn appPasswordCheck type="password" #pwInput #pw="ngModel" name="password" id="password" placeholder="{{ 'Password' | translate }}" required [(ngModel)]="password" [class.is-invalid]="((pw.invalid || pw.errors?.invalidPassword || pw.errors?.serverError )&& (pw.touched || myForm.submitted))" >
+             </div>
+
+              <div class="py-2"  *ngIf="pw.errors?.invalidPassword">
+                <small style="color:red">❌ {{ pw.errors?.invalidPassword }}</small>
+              </div>
+              <div class="py-2" *ngIf="pw.errors?.serverError">
+                <small style="color:red">❌ {{ pw.errors?.serverError }}</small>
+              </div>
+
+            <small for="confirmPassword" class="form-label">{{ 'Confirm Password' | translate }}</small>
+
+             <div class="e-float-input e-input mt-0">
+               <input class="form-control" appPasswordBtn type="password" #confirmPw="ngModel" name="confirmPassword" id="confirmPassword" placeholder="{{ 'Confirm Password' | translate }}" [(ngModel)]="confirmPassword" required
+               [class.is-invalid]="(myForm.submitted || confirmPw.touched)  &&  confirmPw.invalid" appConfirmPasswordValidator>
+             </div>
+
+              <div *ngIf="(myForm.submitted || confirmPw.touched)  &&  confirmPw.errors?.['passwordMismatch']" >
+                <small style="color:red">❌ {{ 'Passwords do not match.' | translate }}</small>
+              </div>
+
+
+
+             <div class="h-8"></div>
+             <div class="row">
+              <div class="col-12 text-center">
+                <button type="button" class="btn btn-primary btn-login"  appDebounceClick [debounceTime]="1000" (onClick)="changePass()">{{'Change Password' | translate}}</button>
+              </div>
+             </div>
+           </form>
+         </div>
+         <div class="col-4">
+           <div class="text-align-left marginIcon">
+             <img width="250" height="250" src="assets/icons/iconLogin/Circuit-board-tree_right.png" alt="">
+           </div>
+         </div>
+         <div class="text-set">
+           <div class="text-adept5">{{config}}</div>
+         </div>
+       </div>
+     </div>
+
+  </div>
+ </div>
+
+

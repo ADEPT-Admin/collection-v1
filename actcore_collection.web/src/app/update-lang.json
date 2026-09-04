@@ -1,0 +1,2104 @@
+[
+  {
+    "key": "Product",
+    "value": {
+      "en": "ADEPT5.0",
+      "th": "ADEPT5.0"
+    }
+  },  {
+    "key": "Help",
+    "value": {
+      "en": "Help",
+      "th": "ช่วยเหลือ"
+    }
+  },  {
+    "key": "About",
+    "value": {
+      "en": "About",
+      "th": "เกี่ยวกับ"
+    }
+  },
+  {
+    "key": "ID",
+    "value": {
+      "en": "ID",
+      "th": "รหัส"
+    }
+  },
+  {
+    "key": "Email",
+    "value": {
+      "en": "Email",
+      "th": "อีเมล"
+    }
+  },
+  {
+    "key": "Employee",
+    "value": {
+      "en": "Employee",
+      "th": "พนักงาน"
+    }
+  },
+  {
+    "key": "EmployeeId",
+    "value": {
+      "en": "Employee ID",
+      "th": "รหัสพนักงาน"
+    }
+  },
+  {
+    "key": "EmployeeName",
+    "value": {
+      "en": "Employee Name",
+      "th": "ชื่อพนักงาน"
+    }
+  },
+  {
+    "key": "Search",
+    "value": {
+      "en": "Search",
+      "th": "ค้นหา"
+    }
+  },
+  {
+    "key": "Status",
+    "value": {
+      "en": "Status",
+      "th": "สถานะ"
+    }
+  },
+  {
+    "key": "UpdatedBy",
+    "value": {
+      "en": "Updated By",
+      "th": "แก้ไขโดย"
+    }
+  },
+  {
+    "key": "UpdatedDate",
+    "value": {
+      "en": "Updated Date",
+      "th": "วันที่แก้ไข"
+    }
+  },
+  {
+    "key": "Language",
+    "value": {
+      "en": "Language",
+      "th": "ภาษา"
+    }
+  },
+  {
+    "key": "Login",
+    "value": {
+      "en": "Login",
+      "th": "เข้าสู่ระบบ"
+    }
+  },
+  {
+    "key": "UserID",
+    "value": {
+      "en": "User ID",
+      "th": "รหัสผู้ใช้"
+    }
+  },
+  {
+    "key": "Password",
+    "value": {
+      "en": "Password",
+      "th": "รหัสผ่าน"
+    }
+  },
+  {
+    "key": "Success",
+    "value": {
+      "en": "Success",
+      "th": "สำเร็จ"
+    }
+  },
+  {
+    "key": "Error",
+    "value": {
+      "en": "Error",
+      "th": "เกิดข้อผิดพลาด"
+    }
+  },
+  {
+    "key": "Save Success",
+    "value": {
+      "en": "Save Success",
+      "th": "บันทึกข้อมูลสำเร็จ"
+    }
+  },
+  {
+    "key": "DialogCancel",
+    "value": {
+      "en": "All unsaved data will be lost. Do you want to continue?",
+      "th": "ข้อมูลที่ยังไม่ได้บันทึกทั้งหมดจะหายไป ต้องการดำเนินการต่อหรือไม่"
+    }
+  },
+  {
+    "key": "DialogDelete",
+    "value": {
+      "en": "Please confirm to delete",
+      "th": "กรุณายืนยันการลบ"
+    }
+  },
+  {
+    "key": "Confirm",
+    "value": {
+      "en": "Confirm",
+      "th": "การยืนยัน"
+    }
+  },
+  {
+    "key": "Warning",
+    "value": {
+      "en": "Warning",
+      "th": "คำเตือน"
+    }
+  },
+  {
+    "key": "Delete Success",
+    "value": {
+      "en": "Delete Success",
+      "th": "ลบสำเร็จ"
+    }
+  },
+  {
+    "key": "Delete Failed",
+    "value": {
+      "en": "Delete Failed",
+      "th": "ลบไม่สำเร็จ"
+    }
+  },
+  {
+    "key": "SearchKeyword",
+    "value": {
+      "en": "Search Keyword",
+      "th": "ค้นหา คีเวิร์ด"
+    }
+  },
+  {
+    "key": "New",
+    "value": {
+      "en": "New",
+      "th": "สร้าง"
+    }
+  },
+  {
+    "key": "Edit",
+    "value": {
+      "en": "Edit",
+      "th": "แก้ไข"
+    }
+  },
+  {
+    "key": "Save",
+    "value": {
+      "en": "Save",
+      "th": "บันทึก"
+    }
+  },
+  {
+    "key": "Print",
+    "value": {
+      "en": "Print",
+      "th": "พิมพ์"
+    }
+  },
+  {
+    "key": "Delete",
+    "value": {
+      "en": "Delete",
+      "th": "ลบ"
+    }
+  },
+  {
+    "key": "Cancel",
+    "value": {
+      "en": "Cancel",
+      "th": "ยกเลิก"
+    }
+  },
+  {
+    "key": "Back",
+    "value": {
+      "en": "Back",
+      "th": "กลับ"
+    }
+  },
+  {
+    "key": "Clear",
+    "value": {
+      "en": "Clear",
+      "th": "ล้างค่า"
+    }
+  },
+  {
+    "key": "Refresh",
+    "value": {
+      "en": "Refresh",
+      "th": "โหลดใหม่"
+    }
+  },
+  {
+    "key": "UserGroupID",
+    "value": {
+      "en": "UserGroup ID",
+      "th": "รหัสกลุ่มผู้ใช้งาน"
+    }
+  },
+  {
+    "key": "UserGroupCode",
+    "value": {
+      "en": "User Group Code",
+      "th": "รหัสกลุ่มผู้ใช้งาน"
+    }
+  },
+  {
+    "key": "UserGroupName",
+    "value": {
+      "en": "User Group Name",
+      "th": "ชื่อกลุ่มผู้ใช้งาน"
+    }
+  },
+  {
+    "key": "UserGroups",
+    "value": {
+      "en": "User Groups",
+      "th": "กลุ่มผู้ใช้งาน"
+    }
+  },
+  {
+    "key": "UserGroup",
+    "value": {
+      "en": "User Group",
+      "th": "กลุ่มผู้ใช้งาน"
+    }
+  },
+  {
+    "key": "NoDataFound",
+    "value": {
+      "en": "No Data Found",
+      "th": "ไม่พบข้อมูล"
+    }
+  },
+  {
+    "key": "User",
+    "value": {
+      "en": "User",
+      "th": "ผู้ใช้"
+    }
+  },
+  {
+    "key": "OK",
+    "value": {
+      "en": "OK",
+      "th": "ตกลง"
+    }
+  },
+  {
+    "key": "ConfirmSaveChangeDialog",
+    "value": {
+      "en": "You have unsaved changes. Press Cancel to go back and save these changes, or OK to lose these changes.",
+      "th": "คุณมีการเปลี่ยนแปลงที่ไม่ได้บันทึก,กดยกเลิกเพื่อย้อนกลับและบันทึกการเปลี่ยนแปลงเหล่านี้,หรือตกลงละทิ้งการเปลี่ยนแปลง"
+    }
+  },
+  {
+    "key": "User Group",
+    "value": {
+      "en": "User Group",
+      "th": "กลุ่มผู้ใช้งาน"
+    }
+  },
+  {
+    "key": "Users",
+    "value": {
+      "en": "Users",
+      "th": "ผู้ใช้งาน"
+    }
+  },
+  {
+    "key": "System Parameter",
+    "value": {
+      "en": "System Parameter",
+      "th": "พารามิเตอร์ของระบบ"
+    }
+  },
+  {
+    "key": "Change Password",
+    "value": {
+      "en": "Change Password",
+      "th": "เปลี่ยนรหัสผ่าน"
+    }
+  },
+  {
+    "key": "Confirm Password",
+    "value": {
+      "en": "Confirm Password",
+      "th": "ยืนยันรหัสผ่าน"
+    }
+  },
+  {
+    "key": "Password invalid",
+    "value": {
+      "en": "Password invalid",
+      "th": "รหัสผ่านไม่ผ่านเกณฑ์"
+    }
+  },
+  {
+    "key": "Server error, please try again",
+    "value": {
+      "en": "Server error, please try again",
+      "th": "ไม่สามารถเชื่อมต่อกับเซิฟเวอร์ได้"
+    }
+  },
+  {
+    "key": "Passwords do not match.",
+    "value": {
+      "en": "Passwords do not match.",
+      "th": "รหัสผ่านไม่ตรงกัน"
+    }
+  },
+  {
+    "key": "Change Password Success.",
+    "value": {
+      "en": "Change Password Success.",
+      "th": "เปลี่ยนรหัสผ่านเรียบร้อย"
+    }
+  },
+  {
+    "key": "Current Password",
+    "value": {
+      "en": "Current Password",
+      "th": "รหัสผ่านปัจจุบัน"
+    }
+  },
+  {
+    "key": "New Password",
+    "value": {
+      "en": "New Password",
+      "th": "รหัสผ่านใหม่"
+    }
+  },
+  {
+    "key": "Confirm New Password",
+    "value": {
+      "en": "Confirm New Password",
+      "th": "ยืนยันรหัสผ่านใหม่"
+    }
+  },
+  {
+    "key": "PasswordMismatch",
+    "value": {
+      "en": "New Password must match Confirm Password",
+      "th": "รหัสผ่านใหม่ต้องตรงกับยืนยันรหัสผ่านใหม่"
+    }
+  },
+  {
+    "key": "Current password is required",
+    "value": {
+      "en": "Current password is required",
+      "th": "กรุณากรอกรหัสผ่านปัจจุบัน"
+    }
+  },
+  {
+    "key": "New Password is required",
+    "value": {
+      "en": "New Password is required",
+      "th": "กรุณากรอกรหัสผ่านใหม่"
+    }
+  },
+  {
+    "key": "Confirm new Password is required",
+    "value": {
+      "en": "Confirm new Password is required",
+      "th": "กรุณากรอกยืนยันรหัสผ่านใหม่"
+    }
+  },
+  {
+    "key": "System",
+    "value": {
+      "en": "System",
+      "th": "ระบบ"
+    }
+  },
+  {
+    "key": "Permission",
+    "value": {
+      "en": "Permission",
+      "th": "สิทธิ์"
+    }
+  },
+  {
+    "key": "Menu / Permission",
+    "value": {
+      "en": "Menu / Permission",
+      "th": "เมนู / สิทธิ์"
+    }
+  },
+  {
+    "key": "View",
+    "value": {
+      "en": "View",
+      "th": "การเข้าถึง"
+    }
+  },
+  {
+    "key": "Description",
+    "value": {
+      "en": "Description",
+      "th": "รายละเอียด"
+    }
+  },
+  {
+    "key": "IsActive",
+    "value": {
+      "en": "Active",
+      "th": "การใช้งาน"
+    }
+  },
+  {
+    "key": "User & Security",
+    "value": {
+      "en": "User & Security",
+      "th": "ผู้ใช้งานและความปลอดภัย"
+    }
+  },
+  {
+    "key": "Active",
+    "value": {
+      "en": "Active",
+      "th": "ใช้งาน"
+    }
+  },
+  {
+    "key": "Action",
+    "value": {
+      "en": "Action",
+      "th": "การกระทำ"
+    }
+  },{
+    "key": "Select Filter",
+    "value": {
+      "en": "Select Filter",
+      "th": "เลือกตัวกรองข้อมูลค้นหา"
+    }
+  },{
+    "key": "pagerDropDown",
+    "value": {
+      "en": "Items per page",
+      "th": "จำนวนต่อหน้า"
+    }
+  },{
+    "key": "currentPageInfo",
+    "value": {
+      "en": "{0} of {1} pages",
+      "th": "{0} จาก {1} หน้า"
+    }
+  },{
+    "key": "totalItemsInfo",
+    "value": {
+      "en": "({0} items)",
+      "th": "({0} รายการ)"
+    }
+  },{
+    "key": "totalItemInfo",
+    "value": {
+      "en": "({0} item)",
+      "th": "({0} รายการ)"
+    }
+  },{
+    "key": "EmptyRecord",
+    "value": {
+      "en": "No records to display",
+      "th": "ไม่พบรายการ"
+    }
+  },{
+    "key": "Logout",
+    "value": {
+      "en": "Logout",
+      "th": "ออกจากระบบ"
+    }
+  },{
+    "key": "ContractNo",
+    "value": {
+      "en": "Contract No",
+      "th": "เลขที่สัญญา"
+    }
+  },
+  {
+    "key": "CustomerName",
+    "value": {
+      "en": "Customer Name",
+      "th": "ชื่อลูกค้า"
+    }
+  },
+  {
+    "key": "ProductType",
+    "value": {
+      "en": "Product Type",
+      "th": "ประเภทสินทรัพย์"
+    }
+  },
+  {
+    "key": "ContractStatus",
+    "value": {
+      "en": "Contract Status",
+      "th": "สถานะสัญญา"
+    }
+  },
+  {
+    "key": "Bucket",
+    "value": {
+      "en": "Bucket",
+      "th": "งวดค้างชำระ"
+    }
+  },
+  {
+    "key": "PaymentDueDate",
+    "value": {
+      "en": "Payment Due Date",
+      "th": "วันกำหนดชำระ"
+    }
+  },
+  {
+    "key": "DueDate",
+    "value": {
+      "en": "Due Date",
+      "th": "วันครบกำหนดชำระ"
+    }
+  },
+  {
+    "key": "DayPastDue",
+    "value": {
+      "en": "Day Past Due",
+      "th": "จำนวนวันค้างชำระ"
+    }
+  },
+  {
+    "key": "OverdueAmount",
+    "value": {
+      "en": "Overdue Amount",
+      "th": "ยอดค้างชำระ"
+    }
+  },
+  {
+    "key": "OutstandingAmount",
+    "value": {
+      "en": "Outstanding Amount",
+      "th": "ยอดหนี้คงเหลือ"
+    }
+  },
+  {
+    "key": "RegionArea",
+    "value": {
+      "en": "Region / Area",
+      "th": "พื้นที่"
+    }
+  },
+  {
+    "key": "CollectorName",
+    "value": {
+      "en": "Collector Name",
+      "th": "เจ้าหน้าที่ติดตามหนี้"
+    }
+  },
+  {
+    "key": "ReassignFrom",
+    "value": {
+      "en": "Reassign From",
+      "th": "โอนงานจาก"
+    }
+  },
+  {
+    "key": "ReassignDate",
+    "value": {
+      "en": "Reassign Date",
+      "th": "วันที่มอบหมาย"
+    }
+  },
+  {
+    "key": "DueActionDate",
+    "value": {
+      "en": "Due Action Date",
+      "th": "วันที่ครบกำหนดติดตาม"
+    }
+  },
+  {
+    "key": "FollowupStatus",
+    "value": {
+      "en": "Followup Status",
+      "th": "สถานะการติดตาม"
+    }
+  },
+  {
+    "key": "LastFollowupDate",
+    "value": {
+      "en": "Last Followup Date",
+      "th": "วันที่ติดตามล่าสุด"
+    }
+  },
+  {
+    "key": "Remark",
+    "value": {
+      "en": "Remark",
+      "th": "หมายเหตุ"
+    }
+  },
+  {
+    "key": "is required",
+    "value": {
+      "en": "is required",
+      "th": "ต้องระบุ"
+    }
+  },
+  {
+    "key": "My Worklist",
+    "value": {
+      "en": "My Worklist",
+      "th": "รายการงานของฉัน"
+    }
+  },
+  {
+    "key": "Worklist Management",
+    "value": {
+      "en": "Worklist Management",
+      "th": "รายการงาน"
+    }
+  },
+  {
+    "key": "FullName",
+    "value": {
+      "en": "Full Name",
+      "th": "ชื่อ-นามสกุล"
+    }
+  },
+  {
+    "key": "IDCard",
+    "value": {
+      "en": "National ID",
+      "th": "บัตรประชาชน"
+    }
+  },
+  {
+    "key": "PrimaryPhoneNumber",
+    "value": {
+      "en": "Primary Phone Number",
+      "th": "เบอร์โทรศัพท์หลัก"
+    }
+  },
+  {
+    "key": "SecondaryPhoneNumber",
+    "value": {
+      "en": "Secondary Phone Number",
+      "th": "เบอร์โทรสำรอง"
+    }
+  },
+  {
+    "key": "ContractDescription",
+    "value": {
+      "en": "Contract Description",
+      "th": "รายละเอียดสัญญา"
+    }
+  },
+  {
+    "key": "OutstandingBalance",
+    "value": {
+      "en": "Outstanding Balance",
+      "th": "ยอดหนี้คงเหลือ"
+    }
+  },
+  {
+    "key": "CollectionNote",
+    "value": {
+      "en": "Collection Note",
+      "th": "ประวัติการติดตาม"
+    }
+  },
+  {
+    "key": "PaymentHistory",
+    "value": {
+      "en": "Payment History",
+      "th": "ประวัติการชำระเงิน"
+    }
+  },
+  {
+    "key": "Address",
+    "value": {
+      "en": "Address",
+      "th": "ที่อยู่"
+    }
+  },
+  {
+    "key": "ContractPhone",
+    "value": {
+      "en": "Contract Phone",
+      "th": "เบอร์โทร"
+    }
+  },
+  {
+    "key": "ApplicantAndGuarantor",
+    "value": {
+      "en": "Applicant And Guarantor",
+      "th": "รายละเอียดผู้กู้/ผู้ค้ำ"
+    }
+  },
+  {
+    "key": "CollectionNoteRecord",
+    "value": {
+      "en": "Collection Note Record",
+      "th": "บันทึกการติดตาม"
+    }
+  },
+  {
+    "key": "FollowupAction",
+    "value": {
+      "en": "Followup Action",
+      "th": "ขั้นตอน"
+    }
+  },
+  {
+    "key": "ContactPerson",
+    "value": {
+      "en": "Contact Person",
+      "th": "ผู้ติดต่อ"
+    }
+  },
+  {
+    "key": "ContactPhone",
+    "value": {
+      "en": "Contact Phone",
+      "th": "เบอร์โทร"
+    }
+  },
+  {
+    "key": "FollowupResult",
+    "value": {
+      "en": "Followup Result",
+      "th": "ผลการติดตาม"
+    }
+  },
+  {
+    "key": "NextFollowupDate",
+    "value": {
+      "en": "Next Followup Date",
+      "th": "วันที่นัดติดตาม"
+    }
+  },
+  {
+    "key": "PromiseToPayAmount",
+    "value": {
+      "en": "Promise To Pay Amount",
+      "th": "ยอดสัญญาชำระ"
+    }
+  },
+  {
+    "key": "AssignmentDate",
+    "value": {
+      "en": "Assignment Date",
+      "th": "วันที่มอบหมาย"
+    }
+  },
+  {
+    "key": "Select...",
+    "value": {
+      "en": "Select...",
+      "th": "เลือก..."
+    }
+  },
+  {
+    "key": "ContractStartDate",
+    "value": {
+      "en": "Contract Start Date",
+      "th": "วันที่เริ่มทำสัญญา"
+    }
+  },
+  {
+    "key": "ContractEndDate",
+    "value": {
+      "en": "Contract End Date",
+      "th": "วันที่สิ้นสุดสัญญา"
+    }
+  },
+  {
+    "key": "LoanAmount",
+    "value": {
+      "en": "Loan Amount",
+      "th": "ยอดเงินกู้"
+    }
+  },
+  {
+    "key": "ContractTerm",
+    "value": {
+      "en": "Term",
+      "th": "จำนวนงวด"
+    }
+  },
+  {
+    "key": "InterestRate",
+    "value": {
+      "en": "Interest Rate",
+      "th": "อัตราดอกเบี้ย"
+    }
+  },
+  {
+    "key": "InterestRateType",
+    "value": {
+      "en": "Interest Rate Type",
+      "th": "ประเภทอัตราดอกเบี้ย"
+    }
+  },
+  {
+    "key": "ContractDueDay",
+    "value": {
+      "en": "Due Day",
+      "th": "รอบวันที่ชำระ"
+    }
+  },
+  {
+    "key": "AssetInfo",
+    "value": {
+      "en": "Asset Information",
+      "th": "รายละเอียดสินทรัพย์"
+    }
+  },
+  {
+    "key": "AssetGroup",
+    "value": {
+      "en": "Asset Group",
+      "th": "กลุ่มทรัพย์สิน"
+    }
+  },
+  {
+    "key": "AssetType",
+    "value": {
+      "en": "Asset Type",
+      "th": "ประเภทสินทรัพย์"
+    }
+  },
+  {
+    "key": "AssetDescription",
+    "value": {
+      "en": "Description",
+      "th": "คำอธิบาย"
+    }
+  },
+  {
+    "key": "AssetPrice",
+    "value": {
+      "en": "Asset Price",
+      "th": "ราคาทรัพย์สิน"
+    }
+  },
+  {
+    "key": "Brand",
+    "value": {
+      "en": "Brand",
+      "th": "ยี่ห้อ"
+    }
+  },
+  {
+    "key": "Model",
+    "value": {
+      "en": "Model",
+      "th": "รุ่น"
+    }
+  },
+  {
+    "key": "Series",
+    "value": {
+      "en": "Series",
+      "th": "รุ่นย่อย"
+    }
+  },
+  {
+    "key": "Year",
+    "value": {
+      "en": "Year",
+      "th": "ปี"
+    }
+  },
+  {
+    "key": "EngineNo",
+    "value": {
+      "en": "Engine Number",
+      "th": "เลขเครื่อง"
+    }
+  },
+  {
+    "key": "ChassisNo",
+    "value": {
+      "en": "Chassis Number",
+      "th": "เลขตัวถัง"
+    }
+  },
+  {
+    "key": "PlateNo",
+    "value": {
+      "en": "Plate Number",
+      "th": "หมายเลขทะเบียน"
+    }
+  },
+  {
+    "key": "TotalAmount",
+    "value": {
+      "en": "Total Amount",
+      "th": "ยอดรวม"
+    }
+
+  },
+  {
+    "key": "OverdueType",
+    "value": {
+      "en": "Overdue Type",
+      "th": "ประเภทการค้างชำระ"
+    }
+
+  },{
+    "key": "OverdueTerm",
+    "value": {
+      "en": "Overdue Term",
+      "th": "จำนวนงวดค้างชำระ"
+    }
+
+  },
+  {
+    "key": "FollowupDate",
+    "value": {
+      "en": "Followup Date",
+      "th": "วันที่ติดตาม"
+    }
+
+  },
+  {
+    "key": "CollectionRemark",
+    "value": {
+      "en": "Remark",
+      "th": "หมายเหตุ"
+    }
+
+  },
+  {
+    "key": "CollectorUpdateBy",
+    "value": {
+      "en": "Updated By",
+      "th": "เจ้าหน้าที่ติดตามหนี้"
+    }
+  },{
+
+    "key": "ExpiryDate",
+    "value": {
+      "en": "Expiry Date",
+      "th": "วันที่หมดอายุ"
+    }
+
+  },
+  {
+
+    "key": "LastLoginDate",
+    "value": {
+      "en": "Last Login Date",
+      "th": "วันที่เข้าใช้งานล่าสุด"
+    }
+
+  },{
+    "key": "UserName",
+    "value": {
+      "en": "Username",
+      "th": "ชื่อผู้ใช้งาน"
+    }
+
+  },{
+    "key" : "PhoneNumber",
+    "value": {
+      "en": "Phone Number",
+      "th": "เบอร์โทรศัพท์"
+    }
+  },
+  {
+    "key" : "ResetPassword",
+    "value": {
+      "en": "Reset Password",
+      "th": "รีเซตรหัสผ่าน"
+    }
+  },
+  {
+    "key" : "UnlockUser",
+    "value": {
+      "en": "Unlock User",
+      "th": "ปลดล็อกผู้ใช้งาน"
+    }
+  },
+  {
+    "key" : "AccessRequirements",
+    "value": {
+      "en": "Access Requirements",
+      "th": "การเข้าใช้ระบบ"
+    }
+  },
+  {
+    "key" : "AccountStatus",
+    "value": {
+      "en": "Account Status",
+      "th": "สถานะการใช้งาน"
+    }
+  },
+  {
+    "key" : "Changepasswordafter",
+    "value": {
+      "en": "Force Password Change on First Login",
+      "th": "เปลี่ยนรหัสใหม่หลังจากเข้าใช้งานครั้งแรก"
+    }
+  },
+  {
+    "key" : "IsLocked",
+    "value": {
+      "en": "Is Locked",
+      "th": "ถูกล็อค "
+    }
+  },
+  {
+    "key" : "EffectiveDate",
+    "value": {
+      "en": "Effective Date",
+      "th": "วันที่เริ่มใช้งาน "
+    }
+  },
+  {
+    "key" : "ExpirationDate",
+    "value": {
+      "en": "Expiration Date",
+      "th": "วันที่หมดอายุ "
+    }
+  },
+  {
+    "key" : "LastModifiedBy",
+    "value": {
+      "en": "Last Modified By",
+      "th": "ผู้แก้ไขล่าสุด"
+    }
+  },
+  {
+    "key" : "LastModifiedDate",
+    "value": {
+      "en": "Last Modified Date",
+      "th": "วันที่แก้ไขล่าสุด "
+    }
+  },{
+    "key" : "No Permission",
+    "value": {
+      "en": "No Permission",
+      "th": "ไม่มีสิทธิ์เข้าใช้ "
+    }
+
+  },
+  {
+  "key": "ParameterCategory",
+  "value": {
+    "en": "Category",
+    "th": "หมวดพารามิเตอร์"
+  }
+},
+{
+  "key": "ParameterName",
+  "value": {
+    "en": "Name",
+    "th": "ชื่อพารามิเตอร์"
+  }
+},
+{
+  "key": "ParameterValue",
+  "value": {
+    "en": "Value",
+    "th": "ค่า"
+  }
+},
+{
+  "key": "Contract Term",
+  "value": {
+    "en": "Contract Term",
+    "th": "จำนวนงวด"
+  }
+},
+{
+  "key": "Payment Received Term",
+  "value": {
+    "en": "Payment Received Term",
+    "th": "งวดที่ชำระแล้ว"
+  }
+},
+{
+  "key": "Payment Received Amount",
+  "value": {
+    "en": "Payment Received Amount",
+    "th": "ยอดที่ชำระแล้ว"
+  }
+},
+{
+  "key": "PaymentDate",
+  "value": {
+    "en": "Payment Date",
+    "th": "วันที่ชำระ"
+  }
+},
+{
+  "key": "PaymentAmount",
+  "value": {
+    "en": "Payment Amount",
+    "th": "จำนวนเงินที่ชำระ"
+  }
+},
+{
+  "key": "PaymentChannel",
+  "value": {
+    "en": "Payment Channel",
+    "th": "ช่องทางการชำระ"
+  }
+},
+{
+  "key": "ReferenceNumber",
+  "value": {
+    "en": "Reference No",
+    "th": "เลขที่อ้างอิง"
+  }
+},
+{
+  "key": "InstallAmount",
+  "value": {
+    "en": "Install Amount",
+    "th": "ค่างวด"
+  }
+},
+{
+  "key": "PenaltyAmount",
+  "value": {
+    "en": "Penalty Amount",
+    "th": "ค่าปรับ"
+  }
+},
+{
+  "key": "PersonType",
+  "value": {
+    "en": "Person Type",
+    "th": "ประเภทบุคคล"
+  }
+},
+{
+  "key": "AddressType",
+  "value": {
+    "en": "Address Type",
+    "th": "ประเภทที่อยู่"
+  }
+},
+{
+  "key": "VerifiedAddress",
+  "value": {
+    "en": "Verified Address",
+    "th": "ยืนยันความถูกต้อง"
+  }
+},
+{
+  "key": "VerifiedDate",
+  "value": {
+    "en": "Verified Date",
+    "th": "วันที่ยืนยัน"
+  }
+},
+{
+  "key": "PhoneType",
+  "value": {
+    "en": "Phone Type",
+    "th": "ประเภทเบอร์โทร"
+  }
+},
+{
+  "key": "VerifiedPhoneNumber",
+  "value": {
+    "en": "Verified Phone Number",
+    "th": "สถานะเบอร์"
+  }
+},
+{
+  "key": "BorrowerDetails",
+  "value": {
+    "en": "Borrower Details",
+    "th": "รายละเอียดผู้กู้"
+  }
+},
+{
+  "key": "DateOfBirth",
+  "value": {
+    "en": "Date of Birth",
+    "th": "วันเกิด"
+  }
+},
+{
+  "key": "Age",
+  "value": {
+    "en": "Age",
+    "th": "อายุ"
+  }
+},
+{
+  "key": "Gender",
+  "value": {
+    "en": "Gender",
+    "th": "เพศ"
+  }
+},
+{
+  "key": "MaritalStatus",
+  "value": {
+    "en": "Marital Status",
+    "th": "สถานภาพ"
+  }
+},
+{
+  "key": "Occupation",
+  "value": {
+    "en": "Occupation",
+    "th": "อาชีพ"
+  }
+},
+{
+  "key": "Income",
+  "value": {
+    "en": "Income",
+    "th": "รายได้"
+  }
+},
+{
+  "key": "WorkPlace",
+  "value": {
+    "en": "Work Place",
+    "th": "สถานที่ทำงาน"
+  }
+},
+{
+  "key": "GuarantorDetails",
+  "value": {
+    "en": "Guarantor Details",
+    "th": "รายละเอียดผู้ค้ำ"
+  }
+},{
+  "key" : "No results found",
+  "value": {
+    "en": "No results found",
+    "th": "ไม่พบรายการ"
+  }
+},{
+  "key" : "Relation",
+  "value": {
+    "en": "Relationship",
+    "th": "ความสัมพันธ์"
+  }
+},
+{
+  "key" : "Close",
+  "value": {
+    "en": "Close",
+    "th": "ปิด"
+  }
+},
+{
+  "key" : "Contracts",
+  "value": {
+    "en": "Contracts",
+    "th": "สัญญา"
+  }
+},
+{
+  "key" : "TaskLists",
+  "value": {
+    "en": "Task Lists",
+    "th": "รายการงาน"
+  }
+}
+,
+{
+  "key" : "TaskDetail",
+  "value": {
+    "en": "Task Detail",
+    "th": "รายละเอียดงาน"
+  }
+},{
+  "key" : "CollectorTeam",
+  "value": {
+    "en": "Collector Team",
+    "th": "ทีมเจ้าหน้าที่ติดตาม"
+  }
+},{
+  "key" : "CollectorManagement",
+  "value": {
+    "en": "Collector Management",
+    "th": "จัดการเจ้าหน้าที่ติดตาม"
+  }
+},{
+  "key" : "ColTeamCode",
+  "value": {
+    "en": "Team Code",
+    "th": "รหัสทีม"
+  }
+},{
+  "key" : "ColTeamName",
+  "value": {
+    "en": "Team Name",
+    "th": "ชื่อทีม"
+  }
+},{
+  "key" : "Supervisor",
+  "value": {
+    "en": "Supervisor",
+    "th": "หัวหน้าทีม"
+  }
+},
+{
+  "key" : "Capacity",
+  "value": {
+    "en": "Capacity",
+    "th": "ความสามารถในการรองรับงาน"
+  }
+},
+{
+  "key" : "AreaCode",
+  "value": {
+    "en": "Region / Area",
+    "th": "พื้นที่"
+  }
+},
+{
+  "key" : "ReassignFromName",
+  "value": {
+    "en": "Reassign From",
+    "th": "โอนงานจาก"
+  }
+},
+{
+    "key" : "PhoneNo",
+    "value": {
+      "en": "Phone Number",
+      "th": "เบอร์โทรศัพท์"
+    }
+  },
+  {
+    "key" : "Date",
+    "value": {
+      "en": "Date",
+      "th": "วันที่"
+    }
+  },
+{
+    "key" : "StartDate",
+    "value": {
+      "en": "Start Date",
+      "th": "วันที่เริ่ม"
+    }
+  },
+  {
+    "key" : "EndDate",
+    "value": {
+      "en": "End Date",
+      "th": "วันที่สิ้นสุด"
+    }
+  },
+  {
+    "key" : "between",
+    "value": {
+      "en": "between",
+      "th": "ระหว่าง"
+    }
+  },
+  {
+  "key": "CollectorId",
+  "value": {
+    "en": "Collector ID",
+    "th": "รหัสเจ้าหน้าที่ติดตาม"
+  }
+},
+{
+    "key" : "TeamFrom",
+    "value": {
+      "en": "Team From",
+      "th": "โอนงานจากทีม"
+    }
+},
+{
+    "key" : "ReassignTo",
+    "value": {
+      "en": "Reassign To",
+      "th": "โอนงานถึง"
+    }
+},
+
+{
+    "key" : "TeamTo",
+    "value": {
+      "en": "Team To",
+      "th": "โอนงานถึงทีม"
+    }
+},
+{
+    "key" : "RequestedDate",
+    "value": {
+      "en": "Requested Date",
+      "th": "วันที่ร้องขอ"
+    }
+},
+{
+    "key" : "Reason",
+    "value": {
+      "en": "Reason",
+      "th": "เหตุผลการโอน"
+    }
+},
+{
+  "key": "Approve",
+  "value": {
+    "en": "Approve",
+    "th": "อนุมัติ"
+  }
+},
+{
+  "key": "Reject",
+  "value": {
+    "en": "Reject",
+    "th": "ไม่อนุมัติ"
+  }
+},
+{
+  "key": "SelectTask",
+  "value": {
+    "en": "Please select Task",
+    "th": "กรุณาเลือก Task"
+  }
+},
+{
+  "key": "Approve Reassignment",
+  "value": {
+    "en": "Approve Reassignment",
+    "th": "อนุมัติการโอนงาน"
+  }
+},
+  {
+    "key": "ApproveReassignment",
+    "value": {
+      "en": "Approve Reassignment ?",
+      "th": "อนุมัติการโอนงานหรือไม่ ?"
+    }
+  },
+
+    {
+    "key": "RejectReassignment",
+    "value": {
+      "en": "Reject Reassignment ?",
+      "th": "ไม่อนุมัติการโอนงาน ?"
+    }
+  },
+  {
+    "key": "SpecifyReason",
+    "value": {
+      "en": "Please specify the reason",
+      "th": "กรุณาระบุเหตุผล"
+    }
+  },
+{
+  "key": "ColRoleName",
+  "value": {
+    "en": "Collector Role",
+    "th": "บทบาทเจ้าหน้าที่ติดตาม"
+  }
+},
+{
+  "key": "Key",
+  "value": {
+    "en": "Key",
+    "th": "รหัส"
+  }
+},
+{
+  "key": "DefaultValue",
+  "value": {
+    "en": "Default Value",
+    "th": "ค่าเริ่มต้น"
+  }
+},
+{
+  "key": "Value",
+  "value": {
+    "en": "Value",
+    "th": "ค่า"
+  }
+},
+{
+    "key": "DialogReset",
+    "value": {
+      "en": "Do you want to reset the selected value?",
+      "th": "ต้องการรีเซ็ตค่าที่เลือกหรือไม่?"
+    }
+  },
+    {
+    "key": "Reset Success",
+    "value": {
+      "en": "Reset Success",
+      "th": "รีเซ็ตข้อมูลสำเร็จ"
+    }
+  },
+  {
+    "key": "Reset",
+    "value": {
+      "en": "Reset",
+      "th": "รีเซ็ต"
+    }
+  },
+  {
+
+    "key" : "ToolTip",
+    "value": {
+      "en": "ToolTip",
+      "th": "คำอธิบายเพิ่มเติม"
+    }
+  },
+{
+    "key" : "ItemLevel",
+    "value": {
+      "en": "Level",
+      "th": "ระดับ"
+    }
+  },
+{
+    "key" : "RouteName",
+    "value": {
+      "en": "Route Name",
+      "th": "ชื่อเส้นทาง"
+    }
+  },
+{
+    "key" : "ItemName",
+    "value": {
+      "en": "Item Name",
+      "th": "ชื่อรายการ"
+    }
+  },
+{
+    "key" : "ParentID",
+    "value": {
+      "en": "Parent ID",
+      "th": "รหัส Parent"
+    }
+  },
+  {
+    "key" : "MenuName",
+    "value": {
+      "en": "Menu Name",
+      "th": "ชื่อ เมนู"
+    }
+  },
+  {
+    "key" : "Icon",
+    "value": {
+      "en": "Icon",
+      "th": "ไอคอน"
+    }
+  },
+{
+    "key" : "IconName",
+    "value": {
+      "en": "Icon Name",
+      "th": "ชื่อ ไอคอน"
+    }
+  },
+{
+    "key" : "IconDisplay",
+    "value": {
+      "en": "Icon Display",
+      "th": "การแสดง ไอคอน"
+    }
+  },
+{
+    "key" : "SelectIcon",
+    "value": {
+      "en": "Select Icon",
+      "th": "เลือก ไอคอน"
+    }
+  },
+  {
+    "key" : "ItemId",
+    "value": {
+      "en": "item ID",
+      "th": "รหัสรายการ"
+    }
+  },
+  {
+    "key": "IsSystem",
+    "value": {
+      "en": "System",
+      "th": "ระบบ"
+    }
+  },
+    {
+    "key": "AssignDate",
+    "value": {
+      "en": "Assign Date",
+      "th": "วันที่มอบหมายงาน"
+    }
+  },
+  {
+    "key": "CollectorEmpId",
+    "value": {
+      "en": "Collector ID",
+      "th": "รหัสเจ้าหน้าที่ติดตาม"
+    }
+  },
+  {
+    "key": "CollectorEmpName",
+    "value": {
+      "en": "Collector Name",
+      "th": "ชื่อเจ้าหน้าที่ติดตาม"
+    }
+  },
+  {
+    "key": "TeamSupervisor",
+    "value": {
+      "en": "Team Supervisor",
+      "th": "หัวหน้าทีม"
+    }
+  },
+  {
+    "key": "AllowAccess",
+    "value": {
+      "en": "Access",
+      "th": "การเข้าถึง"
+    }
+  },
+  {
+
+    "key": "ContactName",
+    "value": {
+        "en": "Contact Name",
+        "th": "ชื่อผู้ติดต่อ"
+      }
+  },
+  {
+    "key": "CanNotConnectServer",
+    "value": {
+      "en": "Server error, please try again",
+      "th": "ไม่สามารถเชื่อมต่อกับเซิฟเวอร์ได้"
+    }
+  },
+    {
+    "key": "DepartmentName",
+    "value": {
+      "en": "Department",
+      "th": "แผนก"
+    }
+  },
+    {
+    "key": "PositionName",
+    "value": {
+  	"en": "Position",
+      	"th": "ตำแหน่งงาน"
+    }
+  },
+  {
+    "key": "SelectTeam",
+    "value": {
+      "en": "Select Team",
+      "th": "เลือกทีม"
+    }
+  },
+  {
+    "key": "Reassign",
+    "value": {
+      "en": "Reassign",
+      "th": "โอนงาน"
+    }
+  },
+    {
+    "key": "ConfirmReassignment",
+    "value": {
+      "en": "Confirm Reassignment",
+      "th": "ยืนยันการโอนงาน"
+    }
+  },
+  {
+    "key": "ConfirmReassign",
+    "value": {
+      "en": "Confirm Reassign",
+      "th": "ยืนยันการโอนงาน"
+    }
+  },
+    {
+    "key": "Specifyreassign",
+    "value": {
+      "en": "Do you want to reassign the selected task(s)?",
+      "th": "คุณต้องการโอนงานที่เลือกหรือไม่?"
+    }
+  },
+    {
+    "key": "Pleaseprovidereason",
+    "value": {
+      "en": "Please provide a reason for this action.",
+      "th": "กรุณาระบุเหตุผลในการดำเนินการ"
+    }
+  },
+    {
+    "key": "SelectCollector",
+    "value": {
+      "en": "Select Collector",
+      "th": "เลือกพนักงาน"
+    }
+  },
+  {
+    "key": "PleaseSelectTask",
+    "value": {
+      "en": "Please Select Task!",
+      "th": "กรุณาเลือกงานที่ต้องการโอน"
+    }
+  },
+  {
+    "key": "PleaseSelectCollector",
+    "value": {
+      "en": "Please Select Collector!",
+      "th": "กรุณาเลือกเจ้าหน้าที่ต้องการโอน"
+    }
+  },
+    {
+    "key": "IsMyTeam",
+    "value": {
+      "en": "My Team",
+      "th": "ทีมตัวเอง"
+    }
+  },
+    {
+    "key": "OtherTeam",
+    "value": {
+      "en": "Other Team",
+      "th": "ทีมอื่น"
+    }
+  },
+    {
+    "key": "IsSupervisor",
+    "value": {
+      "en": "Supervisor",
+      "th": "หัวหน้าทีม"
+    }
+  },
+    {
+    "key": "ExpireDate",
+    "value": {
+  	"en": "Expiration Date",
+      	"th": "วันที่หมดอายุ"
+    }
+  },
+
+    {
+    "key": "LastSignOnDate",
+    "value": {
+      "en": "Last Login Date",
+      "th": "วันที่เข้าใช้งานล่าสุด"
+    }
+  },
+    {
+    "key": "LastChangePasswordDate",
+    "value": {
+      "en": "Last Change Password Date",
+      "th": "วันที่เปลี่ยนรหัสล่าสุด"
+    }
+  },
+  {
+    "key": "Collector",
+    "value": {
+      "en": "Collector",
+      "th": "เจ้าหน้าที่ติดตาม"
+    }
+  },
+    {
+    "key": "SupervisorName",
+    "value": {
+      "en": "Supervisor Name",
+      "th": "ชื่อผู้จัดการ"
+    }
+  },
+    {
+    "key": "WorkStatus",
+    "value": {
+      "en": "Work Status",
+      "th": "สถานะงาน"
+    }
+  },
+    {
+    "key": "LastUpdated",
+    "value": {
+      "en": "Last Updated",
+      "th": "วันที่อัปเดตล่าสุด"
+    }
+  },
+    {
+    "key": "Confirmation",
+    "value": {
+      "en": "Confirmation",
+      "th": "การยืนยัน"
+    }
+  },
+    {
+    "key": "Are you sure you want to log out?",
+    "value": {
+      "en": "Are you sure you want to log out?",
+      "th": "คุณแน่ใจหรือไม่ว่าต้องการออกจากระบบ?"
+    }
+  },
+  {
+    "key": "Today",
+    "value": {
+      "en": "Today",
+      "th": "วันนี้"
+    }
+  },
+      {
+    "key": "ItemNameEn",
+    "value": {
+      "en": "Menu Name (En)",
+      "th": "ชื่อเมนู (En)"
+    }
+  },
+  {
+    "key": "ItemNameTh",
+    "value": {
+      "en": "Menu Name (Th)",
+      "th": "ชื่อเมนู (Th)"
+    }
+  },
+  {
+    "key": "ItemOrder",
+    "value": {
+      "en": "ItemOrder",
+      "th": "ลำดับ"
+    }
+  },
+  {
+    "key": "ValueEn",
+    "value": {
+      "en": "Value (En)",
+      "th": "ค่า (En)"
+    }
+  },
+  {
+    "key": "ValueTh",
+    "value": {
+      "en": "Value (Th)",
+      "th": "ค่า (Th)"
+    }
+  },
+    {
+    "key": "User Locked",
+    "value": {
+      "en": "User Locked",
+      "th": "ผู้ใช้ถูกล็อค"
+    }
+  },
+    {
+    "key": "Force Passsword Change on First Login",
+    "value": {
+      "en": "Force Passsword Change on First Login",
+      "th": "บังคับเปลี่ยนรหัสผ่านเมื่อเข้าสู่ระบบครั้งแรก"
+    }
+  },
+    {
+    "key": "CollectorCapacity",
+    "value": {
+      "en": "Collector Capacity",
+      "th": "ปริมาณรับงานของเจ้าหน้าที่ติดตาม"
+    }
+  },
+  {
+    "key": "AddCollector",
+    "value": {
+      "en": "Add Collector",
+      "th": "เพิ่ม เจ้าหน้าที่ติดตาม"
+    }
+  },
+  {
+    "key": "RemoveCollector",
+    "value": {
+      "en": "Remove Collector",
+      "th": "ลบ เจ้าหน้าที่ติดตาม"
+    }
+  },
+  {
+  "key" : "TeamCapacity",
+  "value": {
+    "en": "Team Capacity",
+    "th": "ปริมาณรองรับงานของทีม"
+  }
+},
+{
+    "key": "PleaseSelectUser",
+    "value": {
+      "en": "Please select User",
+      "th": "กรุณาเลือกผู้ใช้"
+    }
+    },
+    {
+    "key": "PromiseToPayDate",
+    "value": {
+      "en": "Promise to Pay Date",
+      "th": "วันที่สัญญาชำระ"
+    }
+  },
+    {
+    "key": "ReassignBy",
+    "value": {
+      "en": "Reassign By",
+      "th": "โอนงานโดย"
+    }
+  },
+  {
+    "key": "ContractPersonFullName",
+    "value": {
+      "en": "Contract Person",
+      "th": "ผู้ติดต่อ"
+    }
+  },
+  {
+    "key": "ContractPhoneNumber",
+    "value": {
+      "en": "Contract Phone",
+      "th": "เบอร์โทร"
+    }
+  },
+      {
+    "key": "Add",
+    "value": {
+      "en": "Add",
+      "th": "เพิ่ม"
+    }
+  },
+  {
+    "key": "Remove",
+    "value": {
+      "en": "Remove",
+      "th": "เอาออก"
+    }
+  },
+  {
+    "key": "AddUsers",
+    "value": {
+      "en": "Add Users",
+      "th": "เพิ่มผู้ใช้งาน"
+    }
+  },
+  {
+    "key": "ActiveStatus",
+    "value": {
+      "en": "Active Status",
+      "th": "สถานะการใช้งาน"
+    }
+  },
+    {
+    "key": "CollectorTeamAssignment",
+    "value": {
+      "en": "Collector Team Assignment",
+      "th": "การมอบหมายงานให้ทีมเจ้าหน้าที่ติดตาม"
+    }
+  },
+  {
+    "key": "TeamAssignment",
+    "value": {
+      "en": "Team Assignment",
+      "th": "การมอบหมายทีม"
+    }
+  },
+  {
+    "key": "RegisterProvince",
+    "value": {
+      "en": "RegisterProvince",
+      "th": "จังหวัดที่จดทะเบียน"
+    }
+  },
+    {
+    "key": "Term",
+    "value": {
+      "en": "Term",
+      "th": "งวดที่"
+    }
+  },
+  {
+    "key": "OtherFeesAmount",
+    "value": {
+      "en": "OtherFeesAmount",
+      "th": "ค่าทวงถาม"
+    }
+  },
+  {
+    "key": "PaymentAmountDetails",
+    "value": {
+      "en": "Payment Amount Details",
+      "th": "รายละเอียดยอดเงินที่ต้องชำระ"
+    }
+  },
+    {
+    "key": "OverdueTermNo",
+    "value": {
+      "en": "OverdueTerm No",
+      "th": "งวดที่"
+    }
+  },
+      {
+    "key": "Total",
+    "value": {
+      "en": "Total",
+      "th": "รวม"
+    }
+  },
+  {
+    "key": "Overview",
+    "value": {
+      "en": "Overview",
+      "th": "ภาพรวม"
+    }
+  },
+  {
+    "key": "ContractInformation",
+    "value": {
+      "en": "Contract Information ",
+      "th": "ข้อมูลสัญญา"
+    }
+  },
+    {
+    "key": "PaymentAmounts",
+    "value": {
+      "en": "Payment Amount",
+      "th": "ยอดเงินที่ต้องชำระ"
+    }
+  },
+   {
+    "key": "LastPaymentDate",
+    "value": {
+      "en": "LastPaymentDate",
+      "th": "วันที่ชำระล่าสุด"
+    }
+  },
+  {
+    "key": "Type",
+    "value": {
+      "en": "Type",
+      "th": "ประเภท"
+    }
+  },
+  {
+    "key": "Amount",
+    "value": {
+      "en": "Amount ",
+      "th": "ยอดเงิน"
+    }
+  },
+  {
+    "key": "No",
+    "value": {
+      "en": "No.",
+      "th": "ลำดับ"
+    }
+  }
+]

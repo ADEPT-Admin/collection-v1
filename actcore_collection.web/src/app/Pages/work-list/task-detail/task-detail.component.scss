@@ -1,0 +1,18 @@
+.contentBody{
+  max-height: calc(100vh - 170px);
+  height: calc(100vh - 196px);
+
+}
+
+
+.custom-top-position {
+  /* ย้าย popup ขึ้นด้านบน */
+  transform-origin: bottom center !important;
+  margin-bottom: 40px !important;
+  top: auto !important;
+  bottom: 100% !important;
+}
+
+::ng-deep .my-datetimepicker .e-input {
+  background-color: #ffffff !important; /* ขาว */
+}

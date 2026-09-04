@@ -1,0 +1,25 @@
+<div class="tabs-header">
+  <div
+    *ngFor="let tab of tabs; let i = index"
+    (click)="selectTab(i)"
+    [class.active]="tab.active"
+    class="tab-header-item">
+
+    <ng-container *ngIf="tab.headerTpl; else defaultHeader">
+      <ng-container *ngTemplateOutlet="tab.headerTpl"></ng-container>
+    </ng-container>
+    <ng-template #defaultHeader>{{ tab.title }}</ng-template>
+  </div>
+</div>
+
+<div class="tabs-body">
+  <ng-container *ngFor="let tab of tabs">
+    <!-- container always exists, only hide/show -->
+    <ng-container *ngIf="tab.active || tab.loaded">
+      <!-- load template based on lazy flag -->
+      <ng-container *ngIf="tab.active || (!tab.lazy && tab.loaded)">
+        <ng-container *ngTemplateOutlet="tab.content"></ng-container>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</div>

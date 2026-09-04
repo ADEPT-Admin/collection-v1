@@ -1,0 +1,84 @@
+<div class="row py-2">
+  <div class="col-12">
+    <ejs-grid #grid [dataSource]="list" [allowPaging]="true" [pageSettings]="pageSettings" [allowSorting]="true" (created)="dataBound($event)"
+      (actionBegin)="actionBegin($event)" gridLines="Both" [selectionSettings]="selectionOptions"[resizeSettings]="resizeSettings" [allowResizing]="true">
+
+      <e-columns>
+        <!-- Phone Information -->
+        <e-column field="personType" width="150" [customAttributes]="customAttributes" headerTextAlign="Center" clipMode="EllipsisWithTooltip">
+          <ng-template #headerTemplate>
+            {{ 'PersonType' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            {{ data.personType }}
+          </ng-template>
+        </e-column>
+
+        <e-column field="phoneOwner" width="150" [customAttributes]="customAttributes" headerTextAlign="Center" clipMode="EllipsisWithTooltip">
+          <ng-template #headerTemplate>
+            {{ 'ContactName' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            {{ data.phoneOwner }}
+          </ng-template>
+        </e-column>
+
+        <e-column field="phoneType" width="120" [customAttributes]="customAttributes" headerTextAlign="Center" clipMode="EllipsisWithTooltip">
+          <ng-template #headerTemplate>
+            {{ 'PhoneType' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            {{ data.phoneType }}
+          </ng-template>
+        </e-column>
+
+        <e-column field="phoneNo" width="150" [customAttributes]="customAttributes" headerTextAlign="Center" clipMode="EllipsisWithTooltip">
+          <ng-template #headerTemplate>
+            {{ 'PhoneNumber' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            {{ data.phoneNo }}
+          </ng-template>
+        </e-column>
+
+        <e-column field="isVerified" width="140" textAlign="Center" [customAttributes]='customAttributes' headerTextAlign="Center" clipMode="EllipsisWithTooltip">
+          <ng-template #headerTemplate>
+            {{ 'VerifiedPhoneNumber' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            <div class="text-center">
+              <i class="fa-solid" [class.fa-circle-check]="data.isVerified" [class.fa-circle-xmark]="!data.isVerified"
+                [style.color]="data.isVerified ? 'green' : 'red'">
+              </i>
+            </div>
+          </ng-template>
+        </e-column>
+
+        <e-column field="verifiedDate" width="140" textAlign="Center" [customAttributes]="customAttributes" headerTextAlign="Center" clipMode="EllipsisWithTooltip">
+          <ng-template #headerTemplate>
+            {{ 'VerifiedDate' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            {{ data.verifiedDate | localizedDate:'dd/MM/yyyy' }}
+          </ng-template>
+        </e-column>
+
+        <e-column field="phoneRemark" width="200" [customAttributes]="customAttributes" headerTextAlign="Center" clipMode="EllipsisWithTooltip">
+          <ng-template #headerTemplate>
+            {{ 'Remark' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            {{ data.phoneRemark }}
+          </ng-template>
+        </e-column>
+
+      </e-columns>
+
+    <ng-template #emptyRecordTemplate>
+        <div class='emptyRecordTemplate'>
+          <span>{{ 'EmptyRecord' | translate}}</span>
+        </div>
+      </ng-template>
+    </ejs-grid>
+</div>
+</div>

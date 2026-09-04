@@ -1,0 +1,184 @@
+<div class="row">
+  <div class="col-12">
+    <h5>{{ 'ContractDescription' | translate }}</h5>
+    <hr>
+  </div>
+  <div class="col-12 col-lg-3 mb-2">
+    <label  class="form-label bold d-block">{{ 'ContractStartDate'| translate}}
+      <app-calendar [(ngModel)]="detail.contractStartDate" name="contractStartDate" [format]="'dd/MM/yyyy HH:mm:ss'" [placeholder]="'ContractStartDate'" [disabled]="true"></app-calendar>
+    </label>
+  </div>
+
+  <div class="col-12 col-lg-3 mb-2">
+    <label  class="form-label bold d-block">{{ 'ContractEndDate'| translate}}
+      <app-calendar [(ngModel)]="detail.contractEndDate" name="contractEndDate" [format]="'dd/MM/yyyy HH:mm:ss'" [placeholder]="'ContractEndDate'" [disabled]="true"></app-calendar>
+    </label>
+  </div>
+
+
+  <div class="col-12 col-lg-3 mb-2">
+    <label  class="form-label bold d-block">{{ 'LoanAmount'| translate}}
+    <app-input-number  name="loanAmount"
+                      [(ngModel)]="detail.loanAmount"
+                      required
+                      #loanAmountModel="ngModel"
+                      [step]="1"
+                      [fractionDigits]="2" [readonly]="true"
+                      >
+    </app-input-number>
+    </label>
+  </div>
+
+  <div class="col-12 col-lg-3 mb-2">
+    <label  class="form-label bold d-block">{{ 'InstallAmount'| translate}}
+    <app-input-number  name="installAmount"
+                      [(ngModel)]="detail.installAmount"
+                      required
+                      #installAmountModel="ngModel"
+                      [step]="1"
+                      [fractionDigits]="2" [readonly]="true"
+                      >
+    </app-input-number>
+    </label>
+  </div>
+
+  <div class="col-12 col-lg-3 mb-2">
+    <label class="form-label bold d-block">{{ 'ContractTerm'| translate}}
+      <app-input-number  name="contractTerm"
+                        [(ngModel)]="detail.contractTerm"
+                        required
+                        #contractTermModel="ngModel"
+                        [step]="1"
+                        [readonly]="true"
+                        >
+      </app-input-number>
+    </label>
+  </div>
+
+  <div class="col-12 col-lg-3 mb-2">
+    <label  class="form-label bold d-block">{{ 'InterestRate'| translate}}
+      <app-input-number  name="interestRate"
+                        [(ngModel)]="detail.interestRate"
+                        required
+                        #interestRateModel="ngModel"
+                        [step]="1"
+                        [fractionDigits]="2"
+                        [readonly]="true"
+                        >
+      </app-input-number>
+    </label>
+  </div>
+
+  <div class="col-12 col-lg-3 mb-2">
+    <label  class="form-label bold d-block">{{ 'InterestRateType'| translate}}
+
+      <input autocomplete="off"  type="text" class="form-control w-80" id="interestRateType" name="interestRateType" placeholder="" [(ngModel)]="detail.interestRateType" required #interestRateTypeModel="ngModel"  [readonly]="true"  >
+    </label>
+  </div>
+
+   <div class="col-12 col-lg-3 mb-2">
+    <label  class="form-label bold d-block">{{ 'ContractDueDay'| translate}}
+      <app-input-number  name="contractDueDay"
+                        [(ngModel)]="detail.contractDueDay"
+                        required
+                        #contractDueDayModel="ngModel"
+                        [step]="1"
+                        [readonly]="true"
+                        >
+      </app-input-number>
+    </label>
+  </div>
+
+
+  <div class="col-12">
+    <hr>
+    <h5>{{ 'AssetInfo' | translate }}</h5>
+    <hr>
+  </div>
+
+
+  <div class="col-12 col-lg-3 mb-2">
+    <label  class="form-label bold d-block">{{ 'AssetGroup'| translate}}
+
+      <input autocomplete="off"  type="text" class="form-control w-80" id="assetGroup" name="assetGroup" placeholder="" [(ngModel)]="detail.assetGroup" required #assetGroupModel="ngModel"  [readonly]="true" >
+    </label>
+  </div>
+  <div class="col-12 col-lg-3 mb-2">
+    <label  class="form-label bold d-block">{{ 'AssetType'| translate}}
+
+      <input autocomplete="off"  type="text" class="form-control w-80" id="assetType" name="assetType" placeholder="" [(ngModel)]="detail.assetType" required #assetTypeModel="ngModel" [readonly]="true"  >
+    </label>
+  </div>
+
+  <div class="col-12 col-lg-3 mb-2">
+    <label class="form-label bold d-block">{{ 'AssetDescription'| translate}}
+
+      <input autocomplete="off"  type="text" class="form-control w-80" id="assetDescription" name="assetDescription" placeholder="" [(ngModel)]="detail.assetDescription" required #assetDescriptionModel="ngModel" [readonly]="true"  >
+    </label>
+  </div>
+
+  <div class="col-12 col-lg-3 mb-2">
+    <label  class="form-label bold d-block">{{ 'AssetPrice'| translate}}
+      <app-input-number  name="assetPrice"
+                        [(ngModel)]="detail.assetPrice"
+                        required
+                        #assetPriceModel="ngModel"
+                        [step]="1"
+                        [fractionDigits]="2"
+                        [readonly]="true"
+                        >
+      </app-input-number>
+    </label>
+  </div>
+  <div class="col-12 col-lg-3 mb-2">
+    <label  class="form-label bold d-block">{{ 'Brand'| translate}}
+
+      <input autocomplete="off"  type="text" class="form-control w-80" id="brand" name="brand" placeholder="" [(ngModel)]="detail.brand" required #brandModel="ngModel" [readonly]="true"  >
+    </label>
+  </div>
+
+  <div class="col-12 col-lg-3 mb-2">
+    <label  class="form-label bold d-block">{{ 'Model'| translate}}
+
+      <input autocomplete="off"  type="text" class="form-control w-80" id="model" name="model" placeholder="" [(ngModel)]="detail.model" required #modelModel="ngModel" [readonly]="true"  >
+    </label>
+  </div>
+
+  <div class="col-12 col-lg-3 mb-2">
+    <label  class="form-label bold d-block">{{ 'Series'| translate}}
+
+      <input autocomplete="off"  type="text" class="form-control w-80" id="series" name="series" placeholder="" [(ngModel)]="detail.series" required #seriesModel="ngModel" [readonly]="true"  >
+    </label>
+  </div>
+
+  <div class="col-12 col-lg-3 mb-2">
+    <label class="form-label bold d-block">{{ 'Year'| translate}}
+
+      <input autocomplete="off"  type="text" class="form-control w-80" id="year" name="year" placeholder="" [(ngModel)]="detail.year" required #yearModel="ngModel" [readonly]="true"  >
+    </label>
+  </div>
+
+
+  <div class="col-12 col-lg-3 mb-2">
+    <label class="form-label bold d-block">{{ 'EngineNo'| translate}}
+
+      <input autocomplete="off"  type="text" class="form-control w-80" id="engineNo" name="engineNo" placeholder="" [(ngModel)]="detail.engineNo" required #engineNoModel="ngModel" [readonly]="true" >
+    </label>
+  </div>
+
+  <div class="col-12 col-lg-3 mb-2">
+    <label  class="form-label bold d-block">{{ 'ChassisNo'| translate}}
+      <input autocomplete="off"  type="text" class="form-control w-80" id="chassisNo" name="chassisNo" placeholder="" [(ngModel)]="detail.chassisNo" required #chassisNoModel="ngModel" [readonly]="true"  >
+    </label>
+  </div>
+
+  <div class="col-12 col-lg-3 mb-2">
+    <label  class="form-label bold d-block">{{ 'PlateNo'| translate}}
+
+      <input autocomplete="off"  type="text" class="form-control w-80" id="plateNo" name="plateNo" placeholder="" [(ngModel)]="detail.plateNo" required #plateNoModel="ngModel" [readonly]="true"  >
+    </label>
+  </div>
+
+</div>
+
+

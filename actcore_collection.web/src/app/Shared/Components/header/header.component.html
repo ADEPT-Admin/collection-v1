@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h3 class="mb-0">{{ header?.menu.itemName[lang] }} <ng-container *ngIf="header?.menu?.other != null">{{ header?.menu?.other[lang]  }}</ng-container></h3>
+    <ol class="breadcrumb float-sm-start">
+      @for (item of header?.path; track item.menuId) {
+        <li class="breadcrumb-item active" aria-current="page">
+          @if (item.canLink == true){
+
+            <a href="javascript:;" (click)="navigate(item)" >{{ item.itemName[lang] }}</a>
+
+          }
+          @else{
+            {{ item.itemName[lang] }}
+
+          }
+        </li>
+      }
+    </ol>
+  </div>
+
+</div>

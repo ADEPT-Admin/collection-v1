@@ -1,0 +1,283 @@
+
+<form #myForm="ngForm" (ngSubmit)="applySearch()">
+  <div id="searchBody" class="collapse show">
+      <div class="row d-flex align-items-start m-0">
+        <div class="col-sm-auto mb-2 col-12  ps-0 d-flex align-items-center flex-nowrap">
+          <app-select
+            [(ngModel)]="selectFilter"
+            id="selectFilter"
+            [options]="criteria"
+            name="selectFilter"
+            placeholder="{{ 'Select Filter' | translate }}"
+            (valueChange)="setFilter($event)"
+            class="me-2 w-select"
+          ></app-select>
+        </div>
+
+          @if (inputType.toLowerCase() === 'datetime') {
+
+
+            <div class="col-sm-auto mb-2 col-12 d-flex ps-0 align-items-center flex-nowrap">
+              <app-select
+                [(ngModel)]="selectedOperator"
+                id="select"
+                [options]="operatorList"
+                name="selectedOperator"
+                placeholder="{{ 'Select Operator' | translate }}"
+                (valueChange)="setFilteroperator($event)"
+                class="me-2 w-select"
+              ></app-select>
+            </div>
+            @if (selectedOperator !== 'between') {
+            <div class="col-sm-auto mb-2 col-12 d-flex ps-0 align-items-center flex-nowrap">
+                <!-- <ejs-datetimepicker
+                  name="Date"
+                  format="dd/MM/yyyy HH:mm"
+                  class="my-datetimepicker input me-2 w-datetime"
+                  [allowEdit]="true"
+                  step="1"
+                  placeholder="{{ 'Date' | translate }}"
+                  [(ngModel)]="startDate"
+                  timeFormat="HH:mm"
+                  [class.disabled-timepicker]="!startDate"
+                  [enableMask]="true"
+                  [maskPlaceholder]="maskPlaceholderValue"
+
+                ></ejs-datetimepicker> -->
+
+                <app-calendar [(ngModel)]="startDate" name="Date" [format]="'dd/MM/yyyy HH:mm:ss'" [enableMark]="true"   [placeholder]="'Date'"></app-calendar>
+
+            </div>
+            }
+            @else {
+            <div class="col-sm-auto mb-2 col-12 d-flex ps-0 align-items-center flex-nowrap">
+              <!-- <ejs-datetimepicker
+                name="startDate"
+                timeFormat="HH:mm"
+                [enableMask]="true"
+                [maskPlaceholder]="maskPlaceholderValue"
+                #startDateObj
+                format="dd/MM/yyyy HH:mm:ss"
+                class="my-datetimepicker input me-2 w-datetime"
+                [allowEdit]="true"
+                step="1"
+                placeholder="{{ 'StartDate' | translate }}"
+                [(ngModel)]="startDate"
+                #startDateCtrl="ngModel"
+                appDateRangeInputValidator="endDate"
+                [min]="null"
+                [max]="maxStartDate"
+                (change)="onStartDateChange($event?.value)"
+                (cleared)="clearedDate($event , 'startDate')"
+                [class.is-invalid]="startDateCtrl.invalid && (startDateCtrl.touched || startDateCtrl.dirty)"
+                [class.disabled-timepicker]="!startDate"
+
+                >
+              </ejs-datetimepicker> -->
+              <app-calendar
+                  [(ngModel)]="startDate"
+                  name="startDate"
+                  [format]="'dd/MM/yyyy HH:mm:ss'"
+                  [enableMark]="true"
+                  [placeholder]="'StartDate'"
+                  #startDateObj
+                  [maxDate]="maxStartDate"
+                  #startDateCtrl="ngModel"
+                  appDateRangeInputValidator="endDate"
+                  [class.is-invalid]="startDateCtrl?.invalid && (startDateCtrl.touched || startDateCtrl.dirty)"
+                  (cleared)="clearedDate($event , 'startDate')"
+                  (valueChange)="onStartDateChange($event)"
+              >
+              </app-calendar>
+            </div>
+            <div class="col-sm-auto mb-2 col-12 d-flex ps-0 align-items-center flex-nowrap">
+              <!-- <ejs-datetimepicker
+                name="endDate"
+                timeFormat="HH:mm"
+                [enableMask]="true"
+                step="1"
+                [maskPlaceholder]="maskPlaceholderValue"
+                #endDateObj
+                format="dd/MM/yyyy HH:mm:ss"
+                class="my-datetimepicker input me-2 w-datetime"
+                [allowEdit]="true"
+                placeholder="{{ 'EndDate' | translate }}"
+                [(ngModel)]="endDate"
+                #endDateCtrl="ngModel"
+                appDateRangeInputValidator="startDate"
+                [min]="minEndDate"
+                (change)="onEndDateChange($event?.value)"
+                (cleared)="clearedDate($event , 'endDate' )"
+
+                [class.is-invalid]="endDateCtrl.invalid && (endDateCtrl.touched || endDateCtrl.dirty)"
+
+                [class.disabled-timepicker]="!endDate"
+                >
+              </ejs-datetimepicker> -->
+
+              <app-calendar
+                  [(ngModel)]="endDate"
+                  name="endDate"
+                  [format]="'dd/MM/yyyy HH:mm:ss'"
+                  [enableMark]="true"
+                  [placeholder]="'EndDate'"
+                  #endDateObj
+                  [minDate]="minEndDate"
+                  #endDateCtrl="ngModel"
+                  appDateRangeInputValidator="startDate"
+                  [class.is-invalid]="endDateCtrl?.invalid && (endDateCtrl.touched || endDateCtrl.dirty)"
+                  (cleared)="clearedDate($event , 'endDate')"
+                  (valueChange)="onEndDateChange($event)"
+              >
+              </app-calendar>
+
+            </div>
+            }
+          }
+
+
+          @else if (inputType.toLowerCase() === 'date') {
+            <div class="col-sm-auto mb-2 col-12 d-flex ps-0 align-items-center flex-nowrap">
+              <app-select
+                [(ngModel)]="selectedOperator"
+                id="select"
+                [options]="operatorList"
+                name="selectedOperator"
+                placeholder="{{ 'Select Operator' | translate }}"
+                (valueChange)="setFilteroperator($event)"
+                class="me-2 w-select"
+              ></app-select>
+            </div>
+            @if (selectedOperator !== 'between') {
+            <div class="col-sm-auto mb-2 col-12 d-flex ps-0 align-items-center flex-nowrap">
+                <app-calendar [(ngModel)]="startDate" name="Date" [format]="'dd/MM/yyyy'" [enableMark]="true"   [placeholder]="'Date'"></app-calendar>
+            </div>
+            }
+            @else {
+            <div class="col-sm-auto mb-2 col-12 d-flex ps-0 align-items-center flex-nowrap">
+              <app-calendar
+                  [(ngModel)]="startDate"
+                  name="startDate"
+                  [format]="'dd/MM/yyyy'"
+                  [enableMark]="true"
+                  [placeholder]="'StartDate'"
+                  #startDateObj
+                  [maxDate]="maxStartDate"
+                  #startDateCtrl="ngModel"
+                  appDateRangeInputValidator="endDate"
+                  [class.is-invalid]="startDateCtrl?.invalid && (startDateCtrl.touched || startDateCtrl.dirty)"
+                  (cleared)="clearedDate($event , 'startDate')"
+                  (valueChange)="onStartDateChange($event)"
+              >
+              </app-calendar>
+            </div>
+            <div class="col-sm-auto mb-2 col-12 d-flex ps-0 align-items-center flex-nowrap">
+              <app-calendar
+                  [(ngModel)]="endDate"
+                  name="endDate"
+                  [format]="'dd/MM/yyyy'"
+                  [enableMark]="true"
+                  [placeholder]="'EndDate'"
+                  #endDateObj
+                  [minDate]="minEndDate"
+                  #endDateCtrl="ngModel"
+                  appDateRangeInputValidator="startDate"
+                  [class.is-invalid]="endDateCtrl?.invalid && (endDateCtrl.touched || endDateCtrl.dirty)"
+                  (cleared)="clearedDate($event , 'endDate')"
+                  (valueChange)="onEndDateChange($event)"
+              >
+              </app-calendar>
+
+            </div>
+            }
+          }
+
+          @else if (inputType.toLowerCase() === 'decimal') {
+          <div class="col-sm-auto mb-2 col-12 d-flex ps-0 align-items-center flex-nowrap">
+            <app-select
+              [(ngModel)]="selectedOperator"
+              id="select"
+              [options]="operatorList"
+              name="selectedOperatorNum"
+              placeholder="{{ 'Select' | translate }}"
+              (valueChange)="setFilteroperator($event)"
+              class="w-select"></app-select>
+          </div>
+          <div class="col-sm-auto mb-2 col-12 d-flex ps-0 align-items-center flex-nowrap">
+            <app-input-number
+              name="Searchnum"
+              id="SearchKeyword"
+              [(ngModel)]="searchVal"
+              (ngModelChange)="onSearchValChange($event)"
+              [step]="1"
+              [fractionDigits]="2"
+              class=" w-datetime">
+            </app-input-number>
+          </div>
+          }
+
+          @else if (inputType.toLowerCase() === 'integer') {
+          <div class="col-sm-auto mb-2 col-12 d-flex ps-0 align-items-center flex-nowrap">
+            <app-select
+              [(ngModel)]="selectedOperator"
+              id="select"
+              [options]="operatorList"
+              name="selectedOperatorNum"
+              placeholder="{{ 'Select' | translate }}"
+              (valueChange)="setFilteroperator($event)"
+              class="w-select"
+            ></app-select>
+          </div>
+          <div class="col-sm-auto mb-2 col-12 d-flex ps-0 align-items-center flex-nowrap">
+
+          <input type="number" class="form-control w-datetime no-spin text-end"
+                 name="Searchnum"
+                 id="SearchKeyword"
+                 [(ngModel)]="searchVal"
+                 (ngModelChange)="onSearchValChange($event)"
+                 (keypress)="numberOnly($event)"
+                 step="1"
+                 min="0"
+                 />
+          </div>
+          }
+          @else if (inputType.toLowerCase() === 'enum') {
+          <div class="col-sm-auto mb-2 col-12 d-flex ps-0 align-items-center flex-nowrap">
+            <app-select
+              [(ngModel)]="selectedEnumValue"
+              id="selectEnum"
+              [options]="eNumList"
+              name="selectedOperatorEnum"
+              placeholder="{{ 'Select...' | translate }}"
+              (valueChange)="changeEnumValue($event)"
+              class=" w-select"
+            ></app-select>
+          </div>
+          }
+          @else {
+          <div class="col-sm-auto mb-2 col-12 d-flex ps-0 align-items-center flex-nowrap">
+            <input
+              id="SearchKeyword"
+              class="form-control w-input"
+              [ngModel]="searchVal"
+              name="Search"
+              (ngModelChange)="onSearchValChange($event)"
+              placeholder="{{ 'SearchKeyword' | translate }}"
+            />
+          </div>
+
+          }
+          <div class="col-sm-auto mb-2 col-12 d-flex ps-0 align-items-center flex-nowrap">
+            <button
+              type="submit"
+              class="btn btn-primary flex-shrink-0"
+              appDebounceClick
+              (onClick)="applySearch()">
+              <i class="fas fa-search"></i>
+              {{ 'Search' | translate }}
+            </button>
+          </div>
+
+      </div>
+  </div>
+</form>

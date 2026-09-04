@@ -1,0 +1,67 @@
+<div class="container-fluid px-2">
+  <div class="card matCard-login setCssLogin p-3">
+   <div class="p-2">
+       <div class="row justify-content-between">
+         <div class="col-4 text-align-left">
+           <img width="80" height="80" src="assets/icons/iconLogin/a_3dlogo_and_Name_600x600_2.png" alt="">
+         </div>
+         <div class="col-3"></div>
+         <div class="col-5 col4-textstyle-login" style="text-align: -webkit-right;">
+           <div class="lang text-start">
+
+            <app-select name="langSelection" id="langSelection" class="langSelection" [icon]="'fa-solid fa-earth-americas'" [(ngModel)]="dataLanguage" [options]="dropdownLanguage" [showfilter]="false" [allowNull]="false" placeholder="{{ 'Select Filter' | translate }}" (valueChange)="dropdownLanguage_OnChange($event)"></app-select>
+
+           </div>
+         </div>
+       </div>
+       <div class="row">
+         <div class="col-12">
+           <div class="positiontext-login">
+             <img  height="30" src="assets/icons/iconLogin/ADEPT_logo2023_v1_style2.png" alt="">
+           </div>
+         </div>
+       </div>
+       <div class="row justify-content-between">
+         <div class="col-4 text-align-right-margin-topLoggin">
+           <img width="250" height="250" src="assets/icons/iconLogin/Circuit-board-tree_left.png" alt="">
+         </div>
+         <div class="col-4 mt-4">
+           <div class="font-size-text-align-centerLoggin">Collection Management</div>
+           <form #myForm="ngForm" (submit)="login()">
+
+            <label for="userName" class="form-label bold d-block">{{ 'UserID' | translate }}&nbsp;
+
+             <div class="e-float-input e-input mt-0 mb-1">
+               <input class="form-control" #Username type="text" tabindex="0" name="userName" id="userName" placeholder="{{ 'UserID' | translate }}" [(ngModel)]="userName" autocomplete="userName" >
+             </div>
+             </label>
+
+             <label for="password" class="form-label bold">{{ 'Password' | translate }}&nbsp;
+
+             <div class="e-float-input e-input mt-0">
+               <input class="form-control" appPasswordBtn type="password" #pw name="password" id="password" placeholder="{{ 'Password' | translate }}" [(ngModel)]="password"  autocomplete="current-password" >
+             </div>
+             </label>
+             <div class="h-8"></div>
+             <div class="row">
+              <div class="col-12 text-center">
+                <button type="button" #btn  appDebounceClick [debounceTime]="1000" (onClick)="login()" class="btn btn-primary btn-login">{{'Login' | translate}}</button>
+              </div>
+             </div>
+           </form>
+         </div>
+         <div class="col-4">
+           <div class="text-align-left marginIcon">
+             <img width="250" height="250" src="assets/icons/iconLogin/Circuit-board-tree_right.png" alt="">
+           </div>
+         </div>
+         <div class="text-set">
+           <div class="text-adept5">{{config}}</div>
+         </div>
+       </div>
+     </div>
+
+  </div>
+ </div>
+
+

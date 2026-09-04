@@ -1,0 +1,13 @@
+.sidebar-brand{
+  background-color: #fff;
+}
+
+
+.sidebar-menu .menu-open > .nav-link .nav-arrow{
+  transform: translateY(-50%) rotate(-90deg);
+}
+
+
+.sidebar-wrapper .sidebar-menu > .nav-item.menu-open > .nav-link{
+  background-color: #0d6efd;
+}

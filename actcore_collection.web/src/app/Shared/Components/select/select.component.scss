@@ -1,0 +1,138 @@
+.select-container {
+  position: relative;
+  width: 100%;
+  min-width: 150px;
+}
+
+
+.select-display .select-placeholder {
+  color: #999;
+}
+
+.select-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin: 2px 0;
+  max-height: 165px;
+  overflow-y: auto;
+  z-index: 1000;
+  list-style: none;
+  padding: 0;
+  font-weight: normal;
+}
+
+.select-dropdown li {
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.select-dropdown li:hover {
+  background: #f0f0f0;
+}
+
+.select-dropdown li.selected {
+  background: #007ad9;
+  color: white;
+}
+
+.disabled {
+  // opacity: 0.6;
+  pointer-events: none;
+  .select-display {
+    background-color: #e9ecef !important;
+
+  }
+}
+
+
+
+
+.select-display {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 6px 10px;
+  background: white;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+  width: 100%;          /* กำหนดความกว้าง (ปรับได้ตามต้องการ) */
+  min-width: 150px;
+  font-weight: normal;
+}
+
+// .select-display span {
+//   flex: auto;               /* กินพื้นที่เหลือ */
+//   overflow: hidden;      /* ซ่อนข้อความเกิน */
+//   text-overflow: ellipsis; /* ใช้ ... */
+//   white-space: nowrap;   /* ไม่ให้ตัดบรรทัด */
+//   display: block;
+// }
+
+.select-display > span:first-child {
+  flex: 1;                 /* take all remaining space */
+  white-space: nowrap;     /* keep text on one line */
+  overflow: hidden;        /* clip overflow */
+  text-overflow: ellipsis; /* show "..." */
+}
+
+.select-display .arrow {
+  flex-shrink: 0;          /* don’t shrink the arrow */
+  margin-left: 8px;        /* small spacing */
+}
+
+.select-dropdown li {
+  padding: 6px 10px;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: start;
+}
+
+.arrow{
+  text-align: end;
+}
+
+.select-dropdown.open-upwards {
+  bottom: 100%;   /* flip ขึ้นบน */
+  top: auto;
+  margin-bottom: 2px;
+}
+
+
+.select-display .ellipsis {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%;   /* respects parent width */
+}
+
+
+.select-container.readonly{
+  pointer-events: none;
+  cursor: default;
+  .select-display{
+    background-color: #e3edfc;
+  }
+}
+
+.select-container.is-invalid .select-display {
+  border-color: red !important;
+}
+
+.select-container.is-invalid .select-display .ellipsis {
+  color: #dc3545 !important;
+}
+
+.select-container.is-invalid .select-placeholder {
+  color: #dc3545 !important;
+  opacity: 1;
+}

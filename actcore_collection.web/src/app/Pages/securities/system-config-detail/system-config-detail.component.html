@@ -1,0 +1,72 @@
+@if(permission?.allowView){
+<div class="app-content-header">
+  <div class="container-fluid">
+      <app-header [header]="header"></app-header>
+  </div>
+</div>
+<div class="app-content">
+  <div class="container-fluid p-0">
+    <form #myForm="ngForm">
+    <div class="card p-3">
+      <app-toolbar
+        class="mb-2"
+        [showButton]="actionListbtn"
+        [dirty]="form?.dirty && permission?.allowEdit"
+        (clickBtnBack)="doBack()"
+        (clickBtnSave)="doSave()"
+        (clickBtnCancel)="doCancel()"
+      ></app-toolbar>
+      <div class="row">
+
+        <div class="col-12 col-lg-4 mb-2">
+          <label class="form-label bold d-block">{{ 'ParameterCategory' | translate}}
+            <input class="form-control" #ParameterCategory type="text" tabindex="0" name="parameterCategory"
+            id="parameterCategory" placeholder="{{ 'ParameterCategory' | translate }}" [(ngModel)]="detail.parameterCategory" [disabled]="true">
+            </label>
+        </div>
+
+        <div class="col-12 col-lg-4 mb-2">
+          <label class="form-label bold d-block">{{ 'ParameterName' | translate}}
+          <input class="form-control" #ParameterName type="text" tabindex="0" name="parameterName"
+            id="parameterName" placeholder="{{ 'ParameterName' | translate }}" [(ngModel)]="detail.parameterName" [disabled]="true">
+            </label>
+        </div>
+
+        <div class="col-12 col-lg-4 mb-2 bold">
+          {{ 'System' | translate}}
+          <div class="col-12 py-2">
+            <label class="form-label d-block">
+              <input class="form-check-input" type="checkbox" id="System" name="isSystem" [(ngModel)]="detail.isSystem"
+                [disabled]="true">
+            </label>
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-12 mb-2">
+          <label class="form-label bold d-block">{{ 'Description' | translate}}
+          <textarea rows="3" class="form-control" #Description type="text" tabindex="0" name="description"
+            id="description" placeholder="{{ 'Description' | translate }}" [(ngModel)]="detail.description" [disabled]="true">
+          </textarea>
+          </label>
+        </div>
+
+        <div class="col-12 col-lg-4 mb-2">
+          <label class="form-label bold d-block">{{ 'ParameterValue' | translate}}
+          <input class="form-control" #ParameterName type="text" tabindex="0" name="value"
+            id="value" placeholder="{{ 'ParameterValue' | translate }}" [(ngModel)]="detail.parameterValue" [disabled]="detail.isSystem">
+          </label>
+        </div>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+}
+
+
+@if (permission?.allowView === false) {
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <h2 class="text-muted">{{'No Permission' | translate}}</h2>
+  </div>
+}
+

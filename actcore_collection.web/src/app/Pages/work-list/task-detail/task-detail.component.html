@@ -1,0 +1,178 @@
+
+@if (permission?.allowView) {
+<div class="app-content-header">
+  <div class="container-fluid">
+      <app-header [header]="header"></app-header>
+
+  </div>
+</div>
+
+<div class="app-content">
+  <div class="contentBody">
+
+    <app-toolbar class="mb-2" *ngIf="actionListbtn !== null" [showButton]="actionListbtn"
+      [dirty]="form?.dirty"
+      (clickBtnBack)="doBack()"
+    ></app-toolbar>
+
+
+    <div class="container-fluid">
+        <div class="card mb-3 overflow-hidden">
+          <app-tabs>
+            <app-tab>
+              <ng-template #tabHeader>
+                {{ 'Overview' | translate}}
+              </ng-template>
+              <ng-template #tabContent>
+                <app-overview #overviewTab [key]="id"></app-overview>
+              </ng-template>
+            </app-tab>
+            <app-tab>
+              <ng-template #tabHeader>
+                {{ 'PaymentHistory' | translate}}
+              </ng-template>
+              <ng-template #tabContent>
+                <app-payment-history #paymentHistoryTab [key]="contractHeader.contractNo"></app-payment-history>
+              </ng-template>
+            </app-tab>
+
+            <app-tab>
+              <ng-template #tabHeader>
+                {{ 'CollectionNote' | translate}}
+              </ng-template>
+              <ng-template #tabContent>
+                <app-collection-note #collectionNoteTab [key]="contractHeader.contractNo"></app-collection-note>
+              </ng-template>
+            </app-tab>
+
+             <app-tab>
+              <ng-template #tabHeader>
+                {{ 'ContractInformation' | translate}}
+              </ng-template>
+              <ng-template #tabContent>
+                <app-contract-information  #contractInformationComponentTab [contractID]="contractHeader.contractNo"></app-contract-information>
+              </ng-template>
+            </app-tab>
+          </app-tabs>
+        </div>
+
+        <form #myForm="ngForm">
+          <div class="card mb-3">
+            <div class="card-header">
+              <strong>{{ 'CollectionNoteRecord' | translate}}</strong>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-12 col-lg-3 mb-2">
+                  <label  class="form-label bold d-block">{{ 'FollowupAction'| translate}}
+                  <app-select [options]="followupActionList" [(ngModel)]="collectionNote.followupAction" name="followupAction"
+                    (ngModelChange)="onFollowupActionChange($event)" required #followupActionModel="ngModel"
+                    [invalid]="followupActionModel.invalid && (followupActionModel.dirty || followupActionModel.touched)">
+                  </app-select>
+                  <div *ngIf="followupActionModel.invalid && (followupActionModel.dirty || followupActionModel.touched)"
+                    class="text-danger small">
+                    {{ 'FollowupAction' | translate }}  {{ 'is required' | translate }}
+                  </div>
+                  </label>
+                </div>
+
+                <div class="col-12 col-lg-3 mb-2">
+                  <label class="form-label bold d-block">{{ 'ContactPerson'| translate}}
+                  <app-select [options]="detailLookUppersons" [(ngModel)]="collectionNote.contactPerson" name="contactPerson"
+                    (ngModelChange)="onContactPersonChange($event)" required #contactPersonModel="ngModel"
+                    [invalid]="contactPersonModel.invalid && (contactPersonModel.dirty || contactPersonModel.touched)">
+                  </app-select>
+                  <div *ngIf="contactPersonModel.invalid && (contactPersonModel.dirty || contactPersonModel.touched)"
+                    class="text-danger small">
+                    {{ 'ContactPerson' | translate }}  {{ 'is required' | translate }}
+                  </div>
+                  </label>
+                </div>
+
+                <div class="col-12 col-lg-3 mb-2">
+                  <label class="form-label bold d-block">{{ 'ContactPhone'| translate}}
+                  <app-select [options]="detailLookUpPhone" [(ngModel)]="collectionNote.contactPhone" name="contactPhone" required #contactPhoneModel="ngModel"
+                  [invalid]="contactPhoneModel.invalid && (contactPhoneModel.dirty || contactPhoneModel.touched)">
+                  </app-select>
+                  <div *ngIf="contactPhoneModel.invalid && (contactPhoneModel.dirty || contactPhoneModel.touched)"
+                    class="text-danger small">
+                    {{ 'ContactPhone' | translate }}  {{ 'is required' | translate }}
+                  </div>
+                  </label>
+                </div>
+
+              </div>
+              <div class="row">
+                <div class="col-12 col-lg-3 mb-2">
+                  <label  class="form-label bold d-block">{{ 'FollowupResult'| translate}}
+                    <app-select [options]="followupResultList" [(ngModel)]="collectionNote.followupResult" name="followupResult"
+                      required #followupResultModel="ngModel"
+                      [invalid]="followupResultModel.invalid && (followupResultModel.dirty || followupResultModel.touched)">
+                    </app-select>
+                    <div *ngIf="followupResultModel.invalid && (followupResultModel.dirty || followupResultModel.touched)"
+                      class="text-danger small">
+                      {{ 'FollowupResult' | translate }}  {{ 'is required' | translate }}
+                    </div>
+                  </label>
+                </div>
+
+                <div class="col-12 col-lg-3 mb-2">
+                  <label  class="form-label bold d-block">{{ 'NextFollowupDate' | translate}}
+                    <app-calendar [(ngModel)]="collectionNote.nextFollowupDate" name="nextFollowupDate" [format]="'dd/MM/yyyy HH:mm:ss'" [placeholder]="'NextFollowupDate'"></app-calendar>
+                  </label>
+                </div>
+
+                <div class="col-12 col-lg-3 mb-2">
+                  <label  class="form-label bold d-block">{{ 'PromiseToPayDate'| translate}}
+                    <app-calendar [(ngModel)]="collectionNote.promiseToPayDate" name="promiseToPayDate" [format]="'dd/MM/yyyy HH:mm:ss'" [placeholder]="'PromiseToPayDate'"></app-calendar>
+                    </label>
+                </div>
+
+                <div class="col-12 col-lg-3 mb-2">
+                  <label  class="form-label bold d-block">{{ 'PromiseToPayAmount' | translate}}
+                    <app-input-number name="promiseToPayAmount" [(ngModel)]="collectionNote.promiseToPayAmount"
+                      #promiseToPayAmountModel="ngModel" [step]="1" [fractionDigits]="2">
+                    </app-input-number>
+                  </label>
+                </div>
+
+              </div>
+              <div class="row">
+                <div class="col-12">
+
+                  <label  class="form-label bold d-block">{{ 'Remark' | translate}}
+
+                    <textarea rows="3" cols="30" class="form-control w-80" name="collectionRemark"
+                      [(ngModel)]="collectionNote.collectionRemark"></textarea>
+                  </label>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-12 d-flex ">
+                  <button ejs-button class="ejs-button-left" cssClass="e-primary" iconCss="fa-solid fa-floppy-disk" [disabled]="!permission.allowEdit"
+                    (click)="saveCollection()" appDebounceClick [debounceTime]="1000">
+                    {{ "Save" | translate }}
+                  </button>
+
+                  <button ejs-button class="ejs-button-left" cssClass="e-secondary" iconCss="fa-solid fa-xmark" [disabled]="!permission.allowEdit"
+                    (click)="cancelCollection()" appDebounceClick [debounceTime]="1000">
+                    {{ "Cancel" | translate }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+    </div>
+  </div>
+
+</div>
+
+}
+
+
+@if(permission?.allowView === false){
+  <div class="d-flex justify-content-center align-items-center vh-100">
+    <h2 class="text-muted">{{'No Permission' | translate}}</h2>
+  </div>
+}

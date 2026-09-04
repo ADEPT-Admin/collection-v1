@@ -1,0 +1,198 @@
+<div class="card-header d-flex justify-content-start">
+  <div><strong class="d-block mt-1">{{'BorrowerDetails' | translate }}</strong></div>
+</div>
+
+<div class="card-body">
+  <div class="row">
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'CustomerName' | translate }}
+        <input type="text" class="form-control w-80" [(ngModel)]="dataBorrowerdetails.fullName" [readOnly]="true">
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'IDCard' | translate }}
+        <input type="text" class="form-control w-80" [(ngModel)]="dataBorrowerdetails.idCard" [readOnly]="true">
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'DateOfBirth'| translate}}
+        <app-calendar [(ngModel)]="dataBorrowerdetails.dateOfBirth" name="dateOfBirth" [format]="'dd/MM/yyyy HH:mm:ss'" [placeholder]="'DateOfBirth'" [disabled]="true"></app-calendar>
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'Age' | translate }}
+        <input type="text" class="form-control w-80" [(ngModel)]="dataBorrowerdetails.age" [readOnly]="true">
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'Gender' | translate }}
+        <input type="text" class="form-control w-80" [(ngModel)]="dataBorrowerdetails.gender" [readOnly]="true">
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'MaritalStatus' | translate }}
+        <input type="text" class="form-control w-80" [(ngModel)]="dataBorrowerdetails.maritalStatus" [readOnly]="true">
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'Occupation' | translate }}
+        <input type="text" class="form-control w-80" [(ngModel)]="dataBorrowerdetails.occupation" [readOnly]="true">
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'Income'| translate}}
+        <app-input-number name="income" [(ngModel)]="dataBorrowerdetails.income" required #incomeModel="ngModel"
+          [step]="1" [fractionDigits]="2" [readonly]="true">
+        </app-input-number>
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'WorkPlace' | translate }}
+        <input type="text" class="form-control w-80" [(ngModel)]="dataBorrowerdetails.workPlace" [readOnly]="true">
+      </label>
+    </div>
+
+    <div class="col-12 col-lg-3 mb-2">
+      <label class="form-label bold d-block">{{ 'Email' | translate }}
+        <input type="text" class="form-control w-80" [(ngModel)]="dataBorrowerdetails.email" [readOnly]="true">
+      </label>
+    </div>
+
+  </div>
+
+
+</div>
+
+
+<div class="card-header d-flex justify-content-start">
+  <div><strong class="d-block mt-1">{{'GuarantorDetails' | translate }}</strong></div>
+</div>
+
+<div class="row py-3">
+  <div class="col-12">
+      <ejs-grid #grid [dataSource]="list" [allowPaging]="true" [pageSettings]="pageSettings" [allowSorting]="true" (created)="dataBound($event)"
+       gridLines="Both" [selectionSettings]="selectionOptions" [resizeSettings]="resizeSettings" [allowResizing]="true">
+
+      <e-columns>
+        <e-column field="firstName" width="150" [customAttributes]="customAttributes" clipMode="EllipsisWithTooltip" headerTextAlign="Center">
+          <ng-template #headerTemplate>
+            {{ 'CustomerName' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            {{ data.fullName }}
+          </ng-template>
+        </e-column>
+
+        <e-column field="idCard" width="160" [customAttributes]="customAttributes" clipMode="EllipsisWithTooltip" headerTextAlign="Center">
+          <ng-template #headerTemplate>
+            {{ 'IDCard' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            {{ data.idCard }}
+          </ng-template>
+        </e-column>
+
+        <e-column field="dateOfBirth" width="120" textAlign="Center" [customAttributes]="customAttributes" clipMode="EllipsisWithTooltip" headerTextAlign="Center">
+          <ng-template #headerTemplate>
+            {{ 'DateOfBirth' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            {{ data.dateOfBirth | localizedDate:'dd/MM/yyyy' }}
+          </ng-template>
+        </e-column>
+
+        <e-column field="age" width="80" textAlign="Right" [customAttributes]="customAttributes" clipMode="EllipsisWithTooltip" headerTextAlign="Center">
+          <ng-template #headerTemplate>
+            {{ 'Age' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            <div class="text-right">
+              {{ data.age }}
+            </div>
+          </ng-template>
+        </e-column>
+
+        <e-column field="gender" width="100" [customAttributes]="customAttributes" clipMode="EllipsisWithTooltip" headerTextAlign="Center">
+          <ng-template #headerTemplate>
+            {{ 'Gender' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            {{ data.gender }}
+          </ng-template>
+        </e-column>
+
+        <e-column field="maritalStatus" width="120" [customAttributes]="customAttributes" clipMode="EllipsisWithTooltip" headerTextAlign="Center">
+          <ng-template #headerTemplate>
+            {{ 'MaritalStatus' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            {{ data.maritalStatus }}
+          </ng-template>
+        </e-column>
+
+        <e-column field="occupation" width="150" [customAttributes]="customAttributes" clipMode="EllipsisWithTooltip" headerTextAlign="Center">
+          <ng-template #headerTemplate>
+            {{ 'Occupation' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            {{ data.occupation }}
+          </ng-template>
+        </e-column>
+
+        <e-column field="income" width="120" [customAttributes]="customAttributes" clipMode="EllipsisWithTooltip" textAlign="Right" headerTextAlign="Center"
+          headerTextAlign="Center">
+          <ng-template #headerTemplate>
+            {{ 'Income' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            <div class="text-right">
+              {{ data.income | number:'1.2-2' }}
+            </div>
+          </ng-template>
+        </e-column>
+
+        <e-column field="workPlace" width="150" [customAttributes]="customAttributes" clipMode="EllipsisWithTooltip" headerTextAlign="Center">
+          <ng-template #headerTemplate>
+            {{ 'WorkPlace' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            {{ data.workPlace }}
+          </ng-template>
+        </e-column>
+
+        <e-column field="email" width="200" [customAttributes]="customAttributes" clipMode="EllipsisWithTooltip" headerTextAlign="Center">
+          <ng-template #headerTemplate>
+            {{ 'Email' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            {{ data.email }}
+          </ng-template>
+        </e-column>
+
+        <e-column field="relationship" width="100" [customAttributes]="customAttributes" clipMode="EllipsisWithTooltip" headerTextAlign="Center">
+          <ng-template #headerTemplate>
+            {{ 'Relation' | translate }}
+          </ng-template>
+          <ng-template #template let-data>
+            {{ data.relationship }}
+          </ng-template>
+        </e-column>
+      </e-columns>
+
+          <ng-template #emptyRecordTemplate>
+        <div class='emptyRecordTemplate'>
+          <span>{{ 'EmptyRecord' | translate}}</span>
+        </div>
+      </ng-template>
+    </ejs-grid>
+</div>
+</div>
